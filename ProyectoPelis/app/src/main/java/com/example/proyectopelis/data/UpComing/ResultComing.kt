@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
 @Parcelize
-data class Result(
+data class ResultComing(
     @Json(name = "adult")
     val adult: Boolean?,
     @Json(name = "backdrop_path")
