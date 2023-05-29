@@ -1,4 +1,4 @@
-package com.example.proyectopelis.data.UpComing
+package com.example.proyectopelis.data.network.UpComing
 
 
 import com.squareup.moshi.Json

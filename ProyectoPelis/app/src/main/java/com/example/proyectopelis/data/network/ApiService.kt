@@ -1,7 +1,7 @@
 package com.example.proyectopelis.data.network
 
-import com.example.proyectopelis.data.TopRated.ResultRated
-import com.example.proyectopelis.data.UpComing.ResultComing
+import com.example.proyectopelis.data.network.TopRated.ResultRated
+import com.example.proyectopelis.data.network.UpComing.ResultComing
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
