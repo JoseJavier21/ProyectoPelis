@@ -3,6 +3,7 @@ package com.example.proyectopelis.ui
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModel
 import com.example.proyectopelis.data.Repositorio
 import com.example.proyectopelis.data.models.Detalles.PelisDetalles
 import com.example.proyectopelis.data.models.Imagenes.PelisImagenes

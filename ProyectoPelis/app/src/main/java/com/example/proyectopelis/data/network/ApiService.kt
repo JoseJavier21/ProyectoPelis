@@ -1,11 +1,11 @@
 package com.example.proyectopelis.data.network
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
 import com.example.proyectopelis.data.TopRated.ResultRated
 import com.example.proyectopelis.data.UpComing.ResultComing
-import retrofit2.Response
+/*import retrofit2.Response
 import retrofit2.http.GET
-=======
+=======*/
 import com.example.proyectopelis.data.models.Detalles.PelisDetalles
 import com.example.proyectopelis.data.models.Imagenes.PelisImagenes
 import com.example.proyectopelis.data.models.Videos.PelisVideos
@@ -13,12 +13,12 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path
->>>>>>> Juan
+//>>>>>>> Juan
 import retrofit2.http.Query
 
 interface ApiService {
 
-<<<<<<< HEAD
+//<<<<<<< HEAD
     @GET("movie/top_rated")
     suspend fun getRated(
         @Query("language")idioma: String,
@@ -30,7 +30,7 @@ interface ApiService {
         @Query("language")idioma: String,
         @Query("api_key")api: String
     ): Response<ResultComing>
-=======
+//=======
     @Headers("Content-Type: application/json")
     @GET("movie/{movie_id}")
     suspend fun damePelisDetalles(
@@ -54,5 +54,5 @@ interface ApiService {
         @Query("language") idioma : String,
         @Path("movie_id") idpeli: Int
     ) : Response<PelisVideos>
->>>>>>> Juan
+//>>>>>>> Juan
 }
