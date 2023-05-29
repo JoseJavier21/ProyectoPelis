@@ -24,4 +24,14 @@ class Repositorio(val context: Context) {
         idioma: String,
         idpeli: Int
     ) = retrofit.damePelisVideos(apikey, idioma, idpeli)
+
+    suspend fun getTopRatedd(
+        apikey: String,
+        idioma: String
+    ) = retrofit.getRated(idioma,apikey)
+
+    suspend fun getUpComing(
+        apikey: String,
+        idioma: String
+    ) = retrofit.getComing(idioma,apikey)
 }

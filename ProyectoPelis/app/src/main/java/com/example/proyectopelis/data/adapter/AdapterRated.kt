@@ -4,6 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.proyectopelis.R
 import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.databinding.CeldaratedBinding
 
@@ -15,7 +17,6 @@ class AdapterRated: RecyclerView.Adapter<AdapterRated.CeldaRated>() {
     inner class CeldaRated(val binding: CeldaratedBinding): RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CeldaRated {
-
         val inflater = LayoutInflater.from(parent.context)
         val binding = CeldaratedBinding.inflate(inflater, parent, false)
         return CeldaRated(binding)
@@ -27,16 +28,21 @@ class AdapterRated: RecyclerView.Adapter<AdapterRated.CeldaRated>() {
 
     override fun onBindViewHolder(holder: CeldaRated, position: Int) {
 
-        val peli: ResultRated = copiaLista.get(position)
-        holder.binding.nombrePeli.text = peli.title
-        holder.binding.puntuacion.text = peli.voteAverage.toString()
-        holder.binding.idioma.text = peli.originalLanguage
+        val rated: ResultRated = copiaLista.get(position)
+        val context = holder.itemView.context
+
+        holder.binding.nombrePeli.text = rated.title
+        holder.binding.puntuacion.text = rated.voteAverage.toString()
+        holder.binding.idioma.text = rated.originalLanguage
+
+        //Glide.with(context).load(rated.posterPath).placeholder(R.drawable.ic_launcher_background).into(R.id.imgpeli)
+
         holder.itemView.setOnClickListener {
-            // holder.itemView.findNavController().navigate(R.id) al pinchar sobre la celda que te lleve a otro fragment con toda la informacion
+            // holder.itemView.findNavController().navigate(R.id) navegacion de la celda hacia la pantalla de detalle
         }
     }
 
-    fun actualizar(lista: List<ResultRated>){
+    fun updateComing(lista: List<ResultRated>){
         listaOriginal.clear()
         listaOriginal.addAll(lista)
         copiaLista.clear()
