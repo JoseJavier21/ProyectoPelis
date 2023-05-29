@@ -3,7 +3,7 @@ package com.example.proyectopelis.data.network.Popular
 
 import com.squareup.moshi.Json
 
-data class Result(
+data class ResultPopulares(
     @Json(name = "adult")
     val adult: Boolean?,
     @Json(name = "backdrop_path")
