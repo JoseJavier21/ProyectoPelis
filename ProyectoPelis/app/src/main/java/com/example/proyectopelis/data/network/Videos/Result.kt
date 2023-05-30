@@ -1,4 +1,4 @@
-package com.example.proyectopelis.data.models.Videos
+package com.example.proyectopelis.data.network.Videos
 
 data class Result(
     val id: String,
