@@ -2,15 +2,18 @@ package com.example.proyectopelis.data.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.databinding.CeldapopularesBinding
 
 
 class AdapterPopulares (val listener: OnItemClickListener):
-    RecyclerView.Adapter<AdapterPopulares.CeldaHolder>() {
+    RecyclerView.Adapter<AdapterPopulares.CeldaHolder>(), Filterable {
 
-    private val listaPopulares=ArrayList<ResultPopulares>()
+    private var listaPopulares=ArrayList<ResultPopulares>()
+    private var listaCopia = ArrayList<ResultPopulares>()
 
     interface OnItemClickListener{
         fun OnItemClick(resultPopulares: ResultPopulares)
@@ -43,5 +46,33 @@ class AdapterPopulares (val listener: OnItemClickListener):
         listaPopulares.clear()
         listaPopulares.addAll(lista)
         notifyDataSetChanged()
+    }
+
+    override fun getFilter(): Filter {
+        return object : Filter(){
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val busqueda = constraint.toString()
+
+                if(busqueda.isEmpty()){
+                    listaPopulares = listaCopia
+
+                }else{
+                    listaPopulares = listaCopia.filter {
+                        it.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it.originalTitle?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it.releaseDate?.lowercase()?.contains(busqueda.lowercase()) ?: false
+                    } as ArrayList<ResultPopulares>
+                }
+                val filterResult = FilterResults()
+                filterResult.values = listaPopulares
+                return filterResult
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                listaPopulares = results?.values as ArrayList<ResultPopulares>
+                notifyDataSetChanged()
+            }
+
+        }
     }
 }

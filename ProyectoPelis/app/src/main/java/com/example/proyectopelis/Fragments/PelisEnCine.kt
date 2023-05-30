@@ -3,8 +3,13 @@ package com.example.proyectopelis.Fragments
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectopelis.R
@@ -15,7 +20,7 @@ import com.example.proyectopelis.databinding.FragmentPelisEnCineBinding
 class PelisEnCine : Fragment() {
 
     private lateinit var binding:FragmentPelisEnCineBinding
-    private  lateinit var adapter:AdapterEnCines
+    private lateinit var adapter:AdapterEnCines
 
 
 
@@ -31,7 +36,7 @@ class PelisEnCine : Fragment() {
         val recyclerView=binding.rvPelisCine
         adapter=AdapterEnCines(object : AdapterEnCines.OnItemClickListener{
             override fun OnItemClick(resultEnCine: ResultEnCine) {
-                findNavController().navigate(R.id.)
+                findNavController().navigate(R.id.action_pelisEnCine_to_fragmentPelisDetalles)
 
             }
         })
@@ -39,6 +44,37 @@ class PelisEnCine : Fragment() {
         recyclerView.layoutManager=layoutManager
         recyclerView.adapter=adapter
 
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_main, menu)
+
+                val menuItem = menu.findItem(R.id.app_bar_search)
+                val searchView = menuItem.actionView as SearchView
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+
+                        adapter.filter.filter(query)
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+
+                        adapter.filter.filter(newText)
+                        return true
+                    }
+
+
+                })
+
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+
+                return false
+            }
+
+
+        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
     }
 }
