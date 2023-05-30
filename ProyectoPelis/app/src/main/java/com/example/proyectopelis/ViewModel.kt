@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModel
-import com.example.proyectopelis.data.Repositorio
+import com.example.proyectopelis.data.network.Repositorio
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
 import com.example.proyectopelis.data.network.Videos.PelisVideos
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 class ViewModel(val context: Context): ViewModel() {
 
-    private val repository = Repositorio(context)
+    private val repository = Repositorio()
 
     val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
     val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()

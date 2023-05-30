@@ -43,8 +43,8 @@ class PelisEnCine : Fragment() {
         recyclerView.layoutManager=layoutManager
         recyclerView.adapter=adapter
 
-        myviewModel..observe(viewLifecycleOwner){
-            adapter.actualizaLista2(it)
+        myviewModel.pelisEnCine.observe(viewLifecycleOwner){
+            adapter.actualizaLista2(it as ArrayList<ResultEnCine>)
         }
 
         myviewModel.getListaEnCines()
