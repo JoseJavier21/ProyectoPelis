@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/pelisEnCine">
 
+    <fragment
+        android:id="@+id/pelisEnCine"
+        android:name="com.example.proyectopelis.Fragments.PelisEnCine"
+        android:label="fragment_pelis_en_cine"
+        tools:layout="@layout/fragment_pelis_en_cine" >
+        <action
+            android:id="@+id/action_pelisEnCine_to_fragmentPelisDetalles"
+            app:destination="@id/fragmentPelisDetalles" />
+    </fragment>
+    <fragment
+        android:id="@+id/pelisPopulares"
+        android:name="com.example.proyectopelis.Fragments.PelisPopulares"
+        android:label="fragment_pelis_populares"
+        tools:layout="@layout/fragment_pelis_populares" >
+        <action
+            android:id="@+id/action_pelisPopulares_to_fragmentPelisDetalles"
+            app:destination="@id/fragmentPelisDetalles" />
+    </fragment>
+    <fragment
+        android:id="@+id/topRated"
+        android:name="com.example.proyectopelis.Fragments.TopRated"
+        android:label="fragment_top_rated"
+        tools:layout="@layout/fragment_top_rated" >
+        <action
+            android:id="@+id/action_topRated_to_fragmentPelisDetalles"
+            app:destination="@id/fragmentPelisDetalles" />
+    </fragment>
+    <fragment
+        android:id="@+id/upComing"
+        android:name="com.example.proyectopelis.Fragments.UpComing"
+        android:label="fragment_up_coming"
+        tools:layout="@layout/fragment_up_coming" >
+        <action
+            android:id="@+id/action_upComing_to_fragmentPelisDetalles"
+            app:destination="@id/fragmentPelisDetalles" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentPelisDetalles"
+        android:name="com.example.proyectopelis.ui.pelisdetalles.FragmentPelisDetalles"
+        android:label="FragmentPelisDetalles" />
 </navigation>
