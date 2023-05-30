@@ -1,10 +1,12 @@
 package com.example.proyectopelis.data.network
 
 //<<<<<<< HEAD
+/*
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.data.network.UpComing.ResultComing
+*/
 //=======
 //<<<<<<< HEAD
 import com.example.proyectopelis.data.TopRated.ResultRated
@@ -23,7 +25,7 @@ interface ApiService {
 
 //<<<<<<< HEAD
 //<<<<<<< HEAD
-    @GET("movie/now_playing")
+    /*@GET("movie/now_playing")
     suspend fun getPelisEnCine(
         @Query("language") idioma: String,
         @Query("pages") pagina:Int
@@ -51,7 +53,7 @@ interface ApiService {
     suspend fun getPelisPopulares(
         @Query("language")idioma: String,
         @Query("page")pagina:Int
-    )
+    )*/
 
     @Headers("Content-Type: application/json,api-key:5f7af1e971090ad23a762fcc923ac6ce")
 //>>>>>>> pre-main
