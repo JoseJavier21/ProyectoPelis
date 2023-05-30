@@ -18,41 +18,53 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-//<<<<<<< HEAD
+    @Headers("Content-Type: application/json,api-key:5f7af1e971090ad23a762fcc923ac6ce")
+    @GET("movie/now_playing")
+    suspend fun getPelisEnCine(
+        @Query("language")idioma: String,
+        @Query("page")pagina:String
+    )
+
+    @Headers("Content-Type: application/json,api-key:5f7af1e971090ad23a762fcc923ac6ce")
+    @GET("movie/popular")
+    suspend fun getPelisPopulares(
+        @Query("language")idioma: String,
+        @Query("page")pagina:String
+    )
+
+    @Headers("Content-Type: application/json,api-key:5f7af1e971090ad23a762fcc923ac6ce")
     @GET("movie/top_rated")
     suspend fun getRated(
         @Query("language")idioma: String,
-        @Query("api_key")api: String
+        @Query("page")pagina:String
     ): Response<ResultRated>
 
+    @Headers("Content-Type: application/json,api-key:5f7af1e971090ad23a762fcc923ac6ce")
     @GET("movie/upcoming")
     suspend fun getComing(
         @Query("language")idioma: String,
-        @Query("api_key")api: String
+        @Query("page")pagina:String
     ): Response<ResultComing>
-//=======
-    @Headers("Content-Type: application/json")
+
+    @Headers("Content-Type: application/json,api-key:5f7af1e971090ad23a762fcc923ac6ce")
     @GET("movie/{movie_id}")
     suspend fun damePelisDetalles(
-        @Query("api_key") apikey : String,
         @Query("language") idioma : String,
         @Path("movie_id") idpeli: Int
     ) : Response<PelisDetalles>
 
-    @Headers("Content-Type: application/json")
+    @Headers("Content-Type: application/json,api-key:5f7af1e971090ad23a762fcc923ac6ce")
     @GET("movie/{movie_id}/images")
     suspend fun damePelisImagenes(
-        @Query("api_key") apikey : String,
         @Query("language") idioma : String,
         @Path("movie_id") idpeli: Int
     ) : Response<PelisImagenes>
 
-    @Headers("Content-Type: application/json")
+    @Headers("Content-Type: application/json,api-key:5f7af1e971090ad23a762fcc923ac6ce")
     @GET("movie/{movie_id}/videos")
     suspend fun damePelisVideos(
-        @Query("api_key") apikey : String,
         @Query("language") idioma : String,
         @Path("movie_id") idpeli: Int
     ) : Response<PelisVideos>
-//>>>>>>> Juan
+
 }

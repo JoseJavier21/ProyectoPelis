@@ -33,7 +33,7 @@ class PelisPopulares : Fragment() {
         val recyclerView=binding.rvPelisPopulares
         adapter= AdapterEnCines(object : AdapterEnCines.OnItemClickListener{
             override fun OnItemClick(resultEnCine: ResultEnCine) {
-                findNavController().navigate(R.id.)
+                findNavController().navigate(R.id.action_pelisPopulares_to_fragmentPelisDetalles)
 
             }
         })
