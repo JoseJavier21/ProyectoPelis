@@ -11,17 +11,17 @@ class Repositorio(val context: Context) {
         apikey: String,
         idioma: String,
         idpeli: Int
-    ) = retrofit.damePelisDetalles(apikey, idioma, idpeli)
+    ) = retrofit.damePelisDetalles(idioma, idpeli)
 
     suspend fun getPelisImagenes(
         apikey: String,
         idioma: String,
         idpeli: Int
-    ) = retrofit.damePelisImagenes(apikey, idioma, idpeli)
+    ) = retrofit.damePelisImagenes(idioma, idpeli)
 
     suspend fun getPelisVideos(
         apikey: String,
         idioma: String,
         idpeli: Int
-    ) = retrofit.damePelisVideos(apikey, idioma, idpeli)
+    ) = retrofit.damePelisVideos(idioma, idpeli)
 }
