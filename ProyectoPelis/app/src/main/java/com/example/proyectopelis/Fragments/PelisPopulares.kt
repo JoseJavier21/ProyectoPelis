@@ -3,9 +3,17 @@ package com.example.proyectopelis.Fragments
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import androidx.fragment.app.activityViewModels
+=======
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuProvider
+>>>>>>> ramaInigo
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectopelis.R
@@ -20,10 +28,15 @@ import com.example.proyectopelis.databinding.FragmentPelisPopularesBinding
 class PelisPopulares : Fragment() {
 
     private lateinit var binding:FragmentPelisPopularesBinding
+<<<<<<< HEAD
     private  lateinit var adapter: AdapterPopulares
     private val myviewModel:ViewModel by activityViewModels()
 
+=======
+    private lateinit var adapter: AdapterEnCines
+>>>>>>> ramaInigo
 
+    private lateinit var listAdapter: AdapterPopulares
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,8 +48,13 @@ class PelisPopulares : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val recyclerView=binding.rvPelisPopulares
+<<<<<<< HEAD
         adapter= AdapterPopulares(object : AdapterPopulares.OnItemClickListener{
             override fun OnItemClick(resultPopulares: ResultPopulares) {
+=======
+        adapter= AdapterEnCines(object : AdapterEnCines.OnItemClickListener{
+            override fun OnItemClick(resultEnCine: ResultEnCine) {
+>>>>>>> ramaInigo
                 findNavController().navigate(R.id.action_pelisPopulares_to_fragmentPelisDetalles)
 
             }
@@ -45,11 +63,46 @@ class PelisPopulares : Fragment() {
         recyclerView.layoutManager=layoutManager
         recyclerView.adapter=adapter
 
+<<<<<<< HEAD
         myviewModel.pelisPopulares.observe(viewLifecycleOwner){
             if (it != null) {
                 adapter.actualizaLista(it)
             }
         }
+=======
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_main, menu)
+
+                val menuItem = menu.findItem(R.id.app_bar_search)
+                val searchView = menuItem.actionView as SearchView
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+
+                        listAdapter.filter.filter(query)
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+
+                        listAdapter.filter.filter(newText)
+                        return true
+                    }
+
+
+                })
+
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+
+                return false
+            }
+
+
+        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
+
+>>>>>>> ramaInigo
 
         myviewModel.getListaPopulares(idioma ="es-ES", pagina = 1)
     }
