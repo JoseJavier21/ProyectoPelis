@@ -30,19 +30,16 @@ class AdapterRated: RecyclerView.Adapter<AdapterRated.CeldaRated>() {
 
         val rated: ResultRated = copiaLista.get(position)
         val context = holder.itemView.context
-
         holder.binding.nombrePeli.text = rated.title
         holder.binding.puntuacion.text = rated.voteAverage.toString()
         holder.binding.idioma.text = rated.originalLanguage
-
         //Glide.with(context).load(rated.posterPath).placeholder(R.drawable.ic_launcher_background).into(R.id.imgpeli)
-
         holder.itemView.setOnClickListener {
-            // holder.itemView.findNavController().navigate(R.id) navegacion de la celda hacia la pantalla de detalle
+            holder.itemView.findNavController().navigate(R.id.action_topRated_to_fragmentPelisDetalles)
         }
     }
 
-    fun updateComing(lista: List<ResultRated>){
+    fun updateRated(lista: List<ResultRated>){
         listaOriginal.clear()
         listaOriginal.addAll(lista)
         copiaLista.clear()

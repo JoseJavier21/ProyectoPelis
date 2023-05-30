@@ -11,6 +11,8 @@ import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.data.network.Repositorio
+import com.example.proyectopelis.data.network.TopRated.ResultRated
+import com.example.proyectopelis.data.network.UpComing.ResultComing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,12 +21,14 @@ class ViewModel(): ViewModel() {
 
     private val repository = Repositorio()
 
-    val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
-    val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
-    val peliSelecionada= MutableLiveData<ResultEnCine?>()
+    val pelisEnCine =MutableLiveData<List<ResultEnCine?>?>()
+    val pelisPopulares =MutableLiveData<List<ResultPopulares?>?>()
+    val peliSelecionada = MutableLiveData<ResultEnCine?>()
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
+    val liveDataTopRated = MutableLiveData<List<ResultRated>?>()
+    val liveDataUpComing = MutableLiveData<List<ResultComing?>?>()
 
 
     fun getListaEnCines(idioma: String,apikey: String,pagina:Int){
@@ -43,6 +47,28 @@ class ViewModel(): ViewModel() {
             if (response.isSuccessful){
                 val miRespuesta=response.body()
                 pelisPopulares.postValue(miRespuesta?.resultPopulares)
+            }
+        }
+    }
+
+    fun getListaRated(idioma: String, apikey: String, pagina: Int){
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getRated(idioma,pagina)
+            if(response.isSuccessful){
+                val respuesta = response.body()
+                //liveDataTopRated.postValue(respuesta)
+            }
+        }
+    }
+
+    fun getListaComing(idioma: String, apikey: String, pagina: Int){
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getComing(idioma,pagina)
+            if (response.isSuccessful){
+                val respuesta = response.body()
+                //liveDataUpComing.postValue(respuesta)
             }
         }
     }
@@ -76,10 +102,10 @@ class ViewModel(): ViewModel() {
 //            }
 //        }
 //    }
-//
-//    fun selectPeli(resultEnCine: ResultEnCine){
-//        peliSelecionada.value=resultEnCine
-//    }
+
+    fun selectPeli(resultEnCine: ResultEnCine){
+        peliSelecionada.value=resultEnCine
+    }
 
     class MyViewModelFactory(private val context: Context): ViewModelProvider.Factory {
         override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {

@@ -40,9 +40,9 @@ class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>() {
         holder.binding.popuComing.text = comig.popularity.toString()
         //Glide.with(context).load(comig.posterPath).placeholder(R.drawable.ic_launcher_background).into(R.id.imgComig)
 
-        //holder.itemView.setOnClickListener {
-        //    holder.itemView.findNavController().navigate(R.id.) nagevagion de la celda hacia la pantalla de detalle
-        //}
+        holder.itemView.setOnClickListener {
+            holder.itemView.findNavController().navigate(R.id.action_upComing_to_fragmentPelisDetalles) //nagevagion de la celda hacia la pantalla de detalle
+        }
 
     }
 

@@ -10,13 +10,20 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.proyectopelis.R
+import com.example.proyectopelis.ViewModel
+import com.example.proyectopelis.data.adapter.AdapterRated
 import com.example.proyectopelis.databinding.FragmentTopRatedBinding
 
 
 class TopRated : Fragment() {
 
     private lateinit var binding: FragmentTopRatedBinding
+    private lateinit var adapter: AdapterRated
+    private val myviewModel:ViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -28,6 +35,15 @@ class TopRated : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.recyclerRated.layoutManager = StaggeredGridLayoutManager(2 , RecyclerView.VERTICAL)
+        binding.recyclerRated.adapter = AdapterRated()
+
+        myviewModel.liveDataTopRated.observe(viewLifecycleOwner){
+            if (it != null){
+                adapter.updateRated(it)
+            }
+        }
 
         requireActivity().addMenuProvider(object : MenuProvider{
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -61,6 +77,6 @@ class TopRated : Fragment() {
 
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
-
+        myviewModel.getListaRated("es-ES","5f7af1e971090ad23a762fcc923ac6ce", 1)
     }
 }
