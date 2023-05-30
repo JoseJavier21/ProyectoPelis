@@ -3,19 +3,19 @@
 
     <item
         android:id="@+id/pelisEnCine"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Frag1" />
+        android:icon="@drawable/baseline_local_movies_24"
+        android:title="En Cines" />
     <item
         android:id="@+id/pelisPopulares"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Frag2" />
+        android:icon="@drawable/baseline_moving_24"
+        android:title="Populares" />
     <item
         android:id="@+id/topRated"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Frag3" />
+        android:icon="@drawable/baseline_star_24"
+        android:title="Mejor Valoradas" />
     <item
         android:id="@+id/upComing"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Frag3" />
+        android:icon="@drawable/baseline_movie_24"
+        android:title="Proximamente" />
 
 </menu>
