@@ -6,9 +6,9 @@ import com.example.proyectopelis.data.UpComing.ResultComing
 /*import retrofit2.Response
 import retrofit2.http.GET
 =======*/
-import com.example.proyectopelis.data.models.Detalles.PelisDetalles
-import com.example.proyectopelis.data.models.Imagenes.PelisImagenes
-import com.example.proyectopelis.data.models.Videos.PelisVideos
+import com.example.proyectopelis.data.network.Detalles.PelisDetalles
+import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
+import com.example.proyectopelis.data.network.Videos.PelisVideos
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers

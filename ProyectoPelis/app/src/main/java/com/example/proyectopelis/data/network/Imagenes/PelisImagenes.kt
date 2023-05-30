@@ -1,4 +1,4 @@
-package com.example.proyectopelis.data.models.Imagenes
+package com.example.proyectopelis.data.network.Imagenes
 
 data class PelisImagenes(
     val backdrops: List<Backdrop>,

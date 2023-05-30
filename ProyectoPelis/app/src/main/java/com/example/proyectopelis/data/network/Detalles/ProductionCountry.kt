@@ -1,4 +1,4 @@
-package com.example.proyectopelis.data.models.Detalles
+package com.example.proyectopelis.data.network.Detalles
 
 data class ProductionCountry(
     val iso_3166_1: String,
