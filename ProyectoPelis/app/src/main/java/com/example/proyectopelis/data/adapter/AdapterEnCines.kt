@@ -6,24 +6,18 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
-<<<<<<< HEAD
 import com.example.proyectopelis.databinding.CeldafrancisBinding
 import java.util.ArrayList
-=======
-import com.example.proyectopelis.data.network.Popular.ResultPopulares
-import com.example.proyectopelis.databinding.CeldapopularesBinding
->>>>>>> ramaInigo
+
+
 
 
 class AdapterEnCines (val listener:OnItemClickListener):
     RecyclerView.Adapter<AdapterEnCines.Celda2Holder>(), Filterable{
 
-<<<<<<< HEAD
-    private val listaEnCines=ArrayList<ResultEnCine?>()
-=======
-    private var listaEnCines=ArrayList<ResultEnCine>()
-    private var listaCopia = ArrayList<ResultEnCine>()
->>>>>>> ramaInigo
+    private var listaEnCines=ArrayList<ResultEnCine?>()
+    private var listaCopia = ArrayList<ResultEnCine?>()
+
 
     interface  OnItemClickListener{
         fun OnItemClick(resultEnCine: ResultEnCine)
@@ -58,25 +52,20 @@ class AdapterEnCines (val listener:OnItemClickListener):
         listaEnCines.addAll(lista)
         notifyDataSetChanged()
     }
-<<<<<<< HEAD
-}
-
-=======
-
     override fun getFilter(): Filter {
         return object : Filter(){
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val busqueda = constraint.toString()
 
                 if(busqueda.isEmpty()){
-                    listaEnCines = listaCopia
+                    listaEnCines=listaCopia
 
                 }else{
                     listaEnCines = listaCopia.filter {
-                        it.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
-                                it.originalTitle?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
-                                it.releaseDate?.lowercase()?.contains(busqueda.lowercase()) ?: false
-                    } as ArrayList<ResultEnCine>
+                        it?.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it?.originalTitle?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it?.releaseDate?.lowercase()?.contains(busqueda.lowercase()) ?: false
+                    } as ArrayList<ResultEnCine?>
                 }
                 val filterResult = FilterResults()
                 filterResult.values = listaEnCines
@@ -84,11 +73,15 @@ class AdapterEnCines (val listener:OnItemClickListener):
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                listaEnCines = results?.values as ArrayList<ResultEnCine>
+                listaEnCines = results?.values as ArrayList<ResultEnCine?>
                 notifyDataSetChanged()
             }
 
         }
     }
 }
->>>>>>> ramaInigo
+
+
+
+
+

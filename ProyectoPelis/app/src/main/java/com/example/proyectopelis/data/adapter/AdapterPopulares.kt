@@ -12,12 +12,9 @@ import com.example.proyectopelis.databinding.CeldafrancisBinding
 class AdapterPopulares (val listener: OnItemClickListener):
     RecyclerView.Adapter<AdapterPopulares.CeldaHolder>(), Filterable {
 
-<<<<<<< HEAD
-    private val listaPopulares=ArrayList<ResultPopulares?>()
-=======
-    private var listaPopulares=ArrayList<ResultPopulares>()
-    private var listaCopia = ArrayList<ResultPopulares>()
->>>>>>> ramaInigo
+    private var listaPopulares=ArrayList<ResultPopulares?>()
+    private var listaCopia = ArrayList<ResultPopulares?>()
+
 
     interface OnItemClickListener{
         fun OnItemClick(resultPopulares: ResultPopulares)
@@ -64,10 +61,10 @@ class AdapterPopulares (val listener: OnItemClickListener):
 
                 }else{
                     listaPopulares = listaCopia.filter {
-                        it.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
-                                it.originalTitle?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
-                                it.releaseDate?.lowercase()?.contains(busqueda.lowercase()) ?: false
-                    } as ArrayList<ResultPopulares>
+                        it?.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it?.originalTitle?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it?.releaseDate?.lowercase()?.contains(busqueda.lowercase()) ?: false
+                    } as ArrayList<ResultPopulares?>
                 }
                 val filterResult = FilterResults()
                 filterResult.values = listaPopulares
@@ -75,7 +72,7 @@ class AdapterPopulares (val listener: OnItemClickListener):
             }
 
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-                listaPopulares = results?.values as ArrayList<ResultPopulares>
+                listaPopulares = results?.values as ArrayList<ResultPopulares?>
                 notifyDataSetChanged()
             }
 

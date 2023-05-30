@@ -5,6 +5,7 @@ import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
+import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
@@ -23,7 +24,7 @@ interface ApiService {
     suspend fun getPelisEnCine(
         @Query("language") idioma: String,
         @Query("pages") pagina:Int
-    ):Response<ResultEnCine>
+    ):Response<PelisEnCine>
 
     @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
     @GET("movie/popular")

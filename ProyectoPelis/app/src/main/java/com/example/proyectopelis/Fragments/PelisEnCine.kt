@@ -8,12 +8,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
 import androidx.fragment.app.activityViewModels
-=======
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
->>>>>>> ramaInigo
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectopelis.R
@@ -25,14 +22,8 @@ import com.example.proyectopelis.databinding.FragmentPelisEnCineBinding
 class PelisEnCine : Fragment() {
 
     private lateinit var binding:FragmentPelisEnCineBinding
-<<<<<<< HEAD
     private  lateinit var adapter:AdapterEnCines
     private  val myviewModel:ViewModel by activityViewModels()
-=======
-    private lateinit var adapter:AdapterEnCines
-
->>>>>>> ramaInigo
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,7 +46,7 @@ class PelisEnCine : Fragment() {
         recyclerView.layoutManager=layoutManager
         recyclerView.adapter=adapter
 
-<<<<<<< HEAD
+
         myviewModel.pelisEnCine.observe(viewLifecycleOwner){
             if (it != null) {
                 adapter.actualizaLista2(it)
@@ -64,7 +55,7 @@ class PelisEnCine : Fragment() {
 
         myviewModel.getListaEnCines("es-ES",1)
 
-=======
+
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_main, menu)
@@ -83,20 +74,13 @@ class PelisEnCine : Fragment() {
                         adapter.filter.filter(newText)
                         return true
                     }
-
-
                 })
 
             }
-
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
 
                 return false
             }
-
-
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
->>>>>>> ramaInigo
-
     }
 }

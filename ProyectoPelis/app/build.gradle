@@ -32,21 +32,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> ramaInigo
 
     viewBinding{
         enabled = true
     }
-<<<<<<< HEAD
-    
 }
-=======
-
-
->>>>>>> ramaInigo
 
 dependencies {
 
@@ -78,4 +69,3 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
-}
