@@ -1,4 +1,4 @@
-package com.example.proyectopelis.data.TopRated
+package com.example.proyectopelis.data.network.UpComing
 
 
 import com.squareup.moshi.Json
@@ -6,7 +6,7 @@ import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
 @Parcelize
-data class ResultRated(
+data class ResultComing(
     @Json(name = "adult")
     val adult: Boolean?,
     @Json(name = "backdrop_path")

@@ -1,4 +1,4 @@
-package com.example.proyectopelis.data.UpComing
+package com.example.proyectopelis.data.network.TopRated
 
 
 import com.squareup.moshi.Json
@@ -6,13 +6,11 @@ import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
 @Parcelize
-data class UpComing(
-    @Json(name = "dates")
-    val dates: Dates?,
+data class Top_rated(
     @Json(name = "page")
     val page: Int?,
     @Json(name = "results")
-    val resultComings: List<ResultComing?>?,
+    val resultRateds: List<ResultRated?>?,
     @Json(name = "total_pages")
     val totalPages: Int?,
     @Json(name = "total_results")
