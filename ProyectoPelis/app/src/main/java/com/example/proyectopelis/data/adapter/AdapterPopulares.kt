@@ -13,7 +13,7 @@ class AdapterPopulares (val listener: OnItemClickListener):
     private val listaPopulares=ArrayList<ResultPopulares>()
 
     interface OnItemClickListener{
-        fun OnItemClickListener(resultPopulares: ResultPopulares)
+        fun OnItemClick(resultPopulares: ResultPopulares)
     }
 
     inner class  CeldaHolder(val binding: CeldapopularesBinding):RecyclerView.ViewHolder(binding.root)
@@ -29,6 +29,10 @@ class AdapterPopulares (val listener: OnItemClickListener):
         holder.binding.nPeli.text=populares.title
         holder.binding.flanzamiento.text=populares.releaseDate
         holder.binding.mediaVoto.text=populares.voteAverage.toString()
+        holder.itemView.setOnClickListener {
+            listener.OnItemClick(populares)
+        }
+        //Glide.with(requireContext).load(populares.posterPath).into(binding.)
     }
 
     override fun getItemCount(): Int {
