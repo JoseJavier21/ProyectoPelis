@@ -32,6 +32,12 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+<<<<<<< HEAD
+
+    viewBinding{
+        enabled = true
+    }
+=======
 /*<<<<<<< HEAD
 <<<<<<< HEAD
 
@@ -43,6 +49,7 @@ android {
         enabled true
     }
 //>>>>>>> Juan
+>>>>>>> origin/pre-main
 }
 
 dependencies {
