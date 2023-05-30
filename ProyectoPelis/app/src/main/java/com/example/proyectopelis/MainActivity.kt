@@ -24,8 +24,10 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(binding.toolbar)
 
 
-        val navController= findNavController(R.id.fragmentContainerView)
+        val navController= findNavController(this,R.id.fragmentContainerView)
+        navController.setGraph(R.navigation.nav_graph)
         appBarConfiguration = AppBarConfiguration(navController.graph)
+
 
         val navView:BottomNavigationView=binding.bottomNavigationView
 
