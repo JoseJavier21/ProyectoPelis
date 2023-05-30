@@ -10,7 +10,6 @@
         android:icon="@drawable/baseline_moving_24"
         android:title="Populares" />
     <item
-<<<<<<< HEAD
         android:id="@+id/topRated"
         android:icon="@drawable/baseline_star_24"
         android:title="Mejor Valoradas" />
@@ -19,13 +18,4 @@
         android:icon="@drawable/baseline_movie_24"
         android:title="Proximamente" />
 
-=======
-        android:id="@+id/fragment3"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Frag3" />
-    <item
-        android:id="@+id/fragment4"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Frag4" />
->>>>>>> ramaInigo
 </menu>
