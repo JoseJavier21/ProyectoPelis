@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        val navController = findNavController(R.id.fragmentContainerView)
+        val navController= findNavController(R.id.fragmentContainerView)
         appBarConfiguration = AppBarConfiguration(navController.graph)
 
         val navView:BottomNavigationView=binding.bottomNavigationView
@@ -37,9 +37,9 @@ class MainActivity : AppCompatActivity() {
         )
 
         setupActionBarWithNavController(navController, appBarConfiguration)
-        binding.bottomNavigationView.setupWithNavController(navController)
+        navView.setupWithNavController(navController)
 
-        setContentView(binding.root)
+
     }
 
     override fun onSupportNavigateUp(): Boolean {
