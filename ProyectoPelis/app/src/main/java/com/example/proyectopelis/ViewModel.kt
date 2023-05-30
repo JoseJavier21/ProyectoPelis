@@ -47,39 +47,39 @@ class ViewModel(): ViewModel() {
         }
     }
 
-    fun getPelisDetalles(idioma: String, idpeli: Int) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisDetalles(idioma, idpeli)
-            if (response.isSuccessful) {
-                val miRespuesta = response.body()
-                liveDataPelisDetalles.postValue(miRespuesta)
-            }
-        }
-    }
-
-    fun getPelisImagenes(idioma: String, idpeli: Int) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisImagenes(idioma, idpeli)
-            if (response.isSuccessful) {
-                val miRespuesta = response.body()
-                liveDataPelisImagenes.postValue(miRespuesta)
-            }
-        }
-    }
-
-    fun getPelisVideos(idioma: String, idpeli: Int) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisVideos(idioma, idpeli)
-            if (response.isSuccessful) {
-                val miRespuesta = response.body()
-                liveDataPelisVideos.postValue(miRespuesta)
-            }
-        }
-    }
-
-    fun selectPeli(resultEnCine: ResultEnCine){
-        peliSelecionada.value=resultEnCine
-    }
+//    fun getPelisDetalles(idioma: String, idpeli: Int) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val response = repository.getPelisDetalles(idioma, idpeli)
+//            if (response.isSuccessful) {
+//                val miRespuesta = response.body()
+//                liveDataPelisDetalles.postValue(miRespuesta)
+//            }
+//        }
+//    }
+//
+//    fun getPelisImagenes(idioma: String, idpeli: Int) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val response = repository.getPelisImagenes(idioma, idpeli)
+//            if (response.isSuccessful) {
+//                val miRespuesta = response.body()
+//                liveDataPelisImagenes.postValue(miRespuesta)
+//            }
+//        }
+//    }
+//
+//    fun getPelisVideos(idioma: String, idpeli: Int) {
+//        CoroutineScope(Dispatchers.IO).launch {
+//            val response = repository.getPelisVideos(idioma, idpeli)
+//            if (response.isSuccessful) {
+//                val miRespuesta = response.body()
+//                liveDataPelisVideos.postValue(miRespuesta)
+//            }
+//        }
+//    }
+//
+//    fun selectPeli(resultEnCine: ResultEnCine){
+//        peliSelecionada.value=resultEnCine
+//    }
 
     class MyViewModelFactory(private val context: Context): ViewModelProvider.Factory {
         override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {

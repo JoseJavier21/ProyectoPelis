@@ -10,7 +10,6 @@ import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.databinding.CeldacomingBinding
 import com.example.proyectopelis.databinding.CeldaratedBinding
 import com.example.proyectopelis.databinding.FragmentUpComingBinding
-import com.example.proyectopelis.ui.ViewModel
 
 class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>() {
 
