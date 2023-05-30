@@ -4,9 +4,9 @@ class Repositorio {
 
     private val retrofit= RetrofitHelper.getRetrofit()
 
-    suspend fun getPelisEnCines(idioma: String,pagina: Int)=retrofit.getPelisEnCine(idioma, pagina)
+    suspend fun getPelisEnCines(idioma: String,apikey:String,pagina: Int)=retrofit.getPelisEnCine(idioma, apikey ,pagina)
 
-    suspend fun getPelisPopulares(idioma: String,pagina: Int)=retrofit.getPelisPopulares(idioma, pagina)
+    suspend fun getPelisPopulares(idioma: String,apikey:String,pagina: Int)=retrofit.getPelisPopulares(idioma,apikey, pagina)
 
     suspend fun getRated(idioma: String, pagina: Int) = retrofit.getRated(idioma, pagina)
 

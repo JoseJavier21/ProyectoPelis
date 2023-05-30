@@ -18,18 +18,19 @@ import retrofit2.http.Query
 interface ApiService {
 
 
-    @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
-
+    @Headers("Content-Type: application/json")
     @GET("movie/now_playing")
     suspend fun getPelisEnCine(
         @Query("language") idioma: String,
+        @Query("api_key")apikey:String,
         @Query("pages") pagina:Int
     ):Response<PelisEnCine>
 
-    @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
+    @Headers("Content-Type: application/json")
     @GET("movie/popular")
     suspend fun getPelisPopulares(
         @Query("language")idioma: String,
+        @Query("api_key")apikey:String,
         @Query("page")pagina:Int
     ):Response<PelisPopulares>
 

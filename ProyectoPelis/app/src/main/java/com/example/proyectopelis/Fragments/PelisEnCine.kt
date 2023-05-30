@@ -38,9 +38,8 @@ class PelisEnCine : Fragment() {
         adapter=AdapterEnCines(object : AdapterEnCines.OnItemClickListener{
             override fun OnItemClick(resultEnCine: ResultEnCine) {
                 findNavController().navigate(R.id.action_pelisEnCine_to_fragmentPelisDetalles)
-
+                myviewModel.selectPeli(resultEnCine)
             }
-
         })
         val layoutManager=LinearLayoutManager(requireContext())
         recyclerView.layoutManager=layoutManager
@@ -53,7 +52,8 @@ class PelisEnCine : Fragment() {
             }
         }
 
-        myviewModel.getListaEnCines("es-ES",1)
+
+        myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
 
 
         requireActivity().addMenuProvider(object : MenuProvider {

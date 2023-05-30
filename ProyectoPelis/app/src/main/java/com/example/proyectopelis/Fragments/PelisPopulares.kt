@@ -86,6 +86,6 @@ class PelisPopulares : Fragment() {
 
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
-        myviewModel.getListaPopulares(idioma ="es-ES", pagina = 1)
+        myviewModel.getListaPopulares(idioma ="es-ES","5f7af1e971090ad23a762fcc923ac6ce", pagina = 1)
     }
 }
