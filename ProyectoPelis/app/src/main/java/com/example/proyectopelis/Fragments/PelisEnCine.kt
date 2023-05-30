@@ -33,21 +33,22 @@ class PelisEnCine : Fragment() {
         val recyclerView=binding.rvPelisCine
         adapter=AdapterEnCines(object : AdapterEnCines.OnItemClickListener{
             override fun OnItemClick(resultEnCine: ResultEnCine) {
-
                 findNavController().navigate(R.id.action_pelisEnCine_to_fragmentPelisDetalles)
 
-
             }
+
         })
         val layoutManager=LinearLayoutManager(requireContext())
         recyclerView.layoutManager=layoutManager
         recyclerView.adapter=adapter
 
-        myviewModel..observe(viewLifecycleOwner){
-            adapter.actualizaLista2(it)
+        myviewModel.pelisEnCine.observe(viewLifecycleOwner){
+            if (it != null) {
+                adapter.actualizaLista2(it)
+            }
         }
 
-        myviewModel.getListaEnCines()
+        myviewModel.getListaEnCines("es-ES",1)
 
 
     }

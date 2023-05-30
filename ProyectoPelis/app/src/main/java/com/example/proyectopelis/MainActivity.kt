@@ -20,9 +20,9 @@ class MainActivity : AppCompatActivity() {
         val navController = findNavController(R.id.fragmentContainerView)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.fragment1,
-                R.id.fragment2,
-                R.id.fragment3
+                R.id.upComing,
+                R.id.topRated,
+                R.id.pelisPopulares
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
