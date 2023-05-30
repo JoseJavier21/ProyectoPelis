@@ -33,7 +33,7 @@ class PelisEnCine : Fragment() {
         val recyclerView=binding.rvPelisCine
         adapter=AdapterEnCines(object : AdapterEnCines.OnItemClickListener{
             override fun OnItemClick(resultEnCine: ResultEnCine) {
-                findNavController().navigate(R.id.)
+                findNavController().navigate(R.id.
 
             }
         })
