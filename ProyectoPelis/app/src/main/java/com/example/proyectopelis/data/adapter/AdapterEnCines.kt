@@ -6,24 +6,18 @@ import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
-<<<<<<< HEAD
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.databinding.CeldapopularesBinding
-=======
 import com.example.proyectopelis.databinding.CeldafrancisBinding
 import java.util.ArrayList
->>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
 
 
 class AdapterEnCines (val listener:OnItemClickListener):
     RecyclerView.Adapter<AdapterEnCines.Celda2Holder>(), Filterable{
 
-    <<<<<<< HEAD
     private var listaEnCines=ArrayList<ResultEnCine>()
     private var listaCopia = ArrayList<ResultEnCine>()
-    =======
     private val listaEnCines=ArrayList<ResultEnCine?>()
-    >>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
 
     interface  OnItemClickListener{
         fun OnItemClick(resultEnCine: ResultEnCine)
@@ -58,7 +52,6 @@ class AdapterEnCines (val listener:OnItemClickListener):
         listaEnCines.addAll(lista)
         notifyDataSetChanged()
     }
-    <<<<<<< HEAD
 
     override fun getFilter(): Filter {
         return object : Filter(){
@@ -88,7 +81,4 @@ class AdapterEnCines (val listener:OnItemClickListener):
         }
     }
 }
-=======
 }
-
->>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237

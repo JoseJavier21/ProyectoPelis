@@ -33,23 +33,12 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration=AppBarConfiguration(
             setOf(
-<<<<<<< HEAD
-<<<<<<< HEAD
-                R.id.fragment1,
-                R.id.fragment2,
-                R.id.fragment3,
-                R.id.fragment4
-=======
                 R.id.upComing,
                 R.id.topRated,
-                R.id.pelisPopulares
->>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
-=======
+                R.id.pelisPopulares,
                 R.id.pelisEnCine,
                 R.id.pelisPopulares,
                 R.id.topRated,
-                R.id.upComing
->>>>>>> Francis
             )
         )
 

@@ -1,26 +1,17 @@
 package com.example.proyectopelis.data.network
 
-<<<<<<< HEAD
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
-=======
 
->>>>>>> pre-main
 import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
-<<<<<<< HEAD
-<<<<<<< HEAD
 import com.example.proyectopelis.data.network.Videos.PelisVideos
-=======
-=======
 import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
->>>>>>> Francis
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
->>>>>>> pre-main
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -29,7 +20,6 @@ import retrofit2.http.Query
 
 interface ApiService {
 
-<<<<<<< HEAD
     /*@GET("movie/now_playing")
 =======
 
@@ -62,12 +52,8 @@ interface ApiService {
     )
 
     @Headers("Content-Type: application/json,api-key:5f7af1e971090ad23a762fcc923ac6ce")
-=======
     @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
->>>>>>> pre-main
-=======
     @Headers("Content-Type: application/json")
->>>>>>> Francis
     @GET("movie/popular")
     suspend fun getPelisPopulares(
         @Query("language")idioma: String,
