@@ -4,17 +4,21 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModel
+<<<<<<< HEAD
 import com.example.proyectopelis.data.network.Repositorio
+=======
+>>>>>>> pre-main
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
 import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
+import com.example.proyectopelis.data.network.Repositorio
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ViewModel(val context: Context): ViewModel() {
+class ViewModel(): ViewModel() {
 
     private val repository = Repositorio()
 
@@ -25,31 +29,29 @@ class ViewModel(val context: Context): ViewModel() {
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
 
 
-    fun getListaEnCines(){
+    fun getListaEnCines(idioma: String,pagina:Int){
         CoroutineScope(Dispatchers.IO).launch {
-            val response=repository.getPelisEnCine()
+            val response=repository.getPelisEnCines(idioma,pagina)
             if(response.isSuccessful){
                 val miRespuesta=response.body()
-                pelisEnCine.postValue(miRespuesta)
+                pelisEnCine.postValue(miRespuesta?.resultEnCines)
             }
         }
     }
 
-    fun getListaPopulares(){
+    fun getListaPopulares(idioma: String,pagina: Int){
         CoroutineScope(Dispatchers.IO).launch{
-            val response=repository.getPelisPopulares()
-            if (response.isSuccesful){
+            val response=repository.getPelisPopulares(idioma,pagina)
+            if (response.isSuccessful){
                 val miRespuesta=response.body()
-                pelisPopulares.postValue(miRespuesta)
+                pelisPopulares.postValue(miRespuesta?.resultPopulares)
             }
         }
     }
 
-
-
-    fun getPelisDetalles(apikey: String, idioma: String, idpeli: Int) {
+    fun getPelisDetalles(idioma: String, idpeli: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisDetalles(apikey, idioma, idpeli)
+            val response = repository.getPelisDetalles(idioma, idpeli)
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisDetalles.postValue(miRespuesta)
@@ -57,9 +59,9 @@ class ViewModel(val context: Context): ViewModel() {
         }
     }
 
-    fun getPelisImagenes(apikey: String, idioma: String, idpeli: Int) {
+    fun getPelisImagenes(idioma: String, idpeli: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisImagenes(apikey, idioma, idpeli)
+            val response = repository.getPelisImagenes(idioma, idpeli)
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisImagenes.postValue(miRespuesta)
@@ -67,9 +69,9 @@ class ViewModel(val context: Context): ViewModel() {
         }
     }
 
-    fun getPelisVideos(apikey: String, idioma: String, idpeli: Int) {
+    fun getPelisVideos(idioma: String, idpeli: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisVideos(apikey, idioma, idpeli)
+            val response = repository.getPelisVideos(idioma, idpeli)
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisVideos.postValue(miRespuesta)

@@ -2,35 +2,50 @@ package com.example.proyectopelis.data.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
+<<<<<<< HEAD
+import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.databinding.CeldapopularesBinding
+=======
+import com.example.proyectopelis.databinding.CeldafrancisBinding
+import java.util.ArrayList
+>>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
 
 
 class AdapterEnCines (val listener:OnItemClickListener):
-    RecyclerView.Adapter<AdapterEnCines.Celda2Holder>(){
+    RecyclerView.Adapter<AdapterEnCines.Celda2Holder>(), Filterable{
 
-    private val listaEnCines=ArrayList<ResultEnCine>()
+<<<<<<< HEAD
+    private var listaEnCines=ArrayList<ResultEnCine>()
+    private var listaCopia = ArrayList<ResultEnCine>()
+=======
+    private val listaEnCines=ArrayList<ResultEnCine?>()
+>>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
 
     interface  OnItemClickListener{
         fun OnItemClick(resultEnCine: ResultEnCine)
     }
 
-    inner class Celda2Holder(val binding: CeldapopularesBinding):RecyclerView.ViewHolder(binding.root)
+    inner class Celda2Holder(val binding: CeldafrancisBinding):RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Celda2Holder {
         val inflater=LayoutInflater.from(parent.context)
-        val binding=CeldapopularesBinding.inflate(inflater,parent,false)
+        val binding=CeldafrancisBinding.inflate(inflater,parent,false)
         return Celda2Holder(binding)
     }
 
     override fun onBindViewHolder(holder: Celda2Holder, position: Int) {
-        val enCine: ResultEnCine =listaEnCines.get(position)
-        holder.binding.nPeli.text=enCine.title
-        holder.binding.flanzamiento.text=enCine.releaseDate
-        holder.binding.mediaVoto.text=enCine.voteAverage.toString()
+        val enCine=listaEnCines?.get(position)
+        holder.binding.nPeli.text=enCine?.title
+        holder.binding.flanzamiento.text=enCine?.releaseDate
+        holder.binding.mediaVoto.text=enCine?.voteAverage.toString()
         holder.itemView.setOnClickListener {
-            listener.OnItemClick(enCine)
+            if (enCine != null) {
+                listener.OnItemClick(enCine)
+            }
         }
     }
 
@@ -38,9 +53,42 @@ class AdapterEnCines (val listener:OnItemClickListener):
        return listaEnCines.size
     }
 
-    fun actualizaLista2(lista:ArrayList<ResultEnCine>){
+    fun actualizaLista2(lista: List<ResultEnCine?>){
         listaEnCines.clear()
         listaEnCines.addAll(lista)
         notifyDataSetChanged()
     }
+<<<<<<< HEAD
+
+    override fun getFilter(): Filter {
+        return object : Filter(){
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val busqueda = constraint.toString()
+
+                if(busqueda.isEmpty()){
+                    listaEnCines = listaCopia
+
+                }else{
+                    listaEnCines = listaCopia.filter {
+                        it.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it.originalTitle?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it.releaseDate?.lowercase()?.contains(busqueda.lowercase()) ?: false
+                    } as ArrayList<ResultEnCine>
+                }
+                val filterResult = FilterResults()
+                filterResult.values = listaEnCines
+                return filterResult
+            }
+
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                listaEnCines = results?.values as ArrayList<ResultEnCine>
+                notifyDataSetChanged()
+            }
+
+        }
+    }
 }
+=======
+}
+
+>>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237

@@ -34,23 +34,33 @@ android {
     }
 //<<<<<<< HEAD
 
+=======
+>>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
+
     viewBinding{
         enabled = true
     }
+<<<<<<< HEAD
 //=======
 /*<<<<<<< HEAD
+=======
+>>>>>>> pre-main
 <<<<<<< HEAD
 
-    viewBinding {
-        enabled true
+
 =======
+<<<<<<< HEAD
 =======*/
     viewBinding {
         enabled true
     }
 //>>>>>>> Juan
 //>>>>>>> origin/pre-main
+=======
+    
+>>>>>>> pre-main
 }
+>>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
 
 dependencies {
 
@@ -80,4 +90,6 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+}
+
 }
