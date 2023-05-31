@@ -4,6 +4,10 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModel
+<<<<<<< HEAD
+import com.example.proyectopelis.data.network.Repositorio
+=======
+>>>>>>> pre-main
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
 import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
