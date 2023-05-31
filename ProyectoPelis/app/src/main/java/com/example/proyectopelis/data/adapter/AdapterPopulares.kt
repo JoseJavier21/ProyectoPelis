@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.databinding.CeldafrancisBinding
 
@@ -30,6 +31,8 @@ class AdapterPopulares (val listener: OnItemClickListener):
 
     override fun onBindViewHolder(holder: CeldaHolder, position: Int) {
         val populares: ResultPopulares? =listaPopulares?.get(position)
+        val pathPoster=populares?.posterPath
+        Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/original/${pathPoster}").into(holder.binding.imagenPeli)
         holder.binding.nPeli.text=populares?.title
         holder.binding.flanzamiento.text=populares?.releaseDate
         holder.binding.mediaVoto.text=populares?.voteAverage.toString()
@@ -38,7 +41,7 @@ class AdapterPopulares (val listener: OnItemClickListener):
                 listener.OnItemClick(populares)
             }
         }
-        //Glide.with(requireContext).load(populares.posterPath).into(binding.)
+
     }
 
     override fun getItemCount(): Int {

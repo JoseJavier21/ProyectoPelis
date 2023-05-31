@@ -4,12 +4,13 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.databinding.CeldafrancisBinding
 import java.util.ArrayList
-
-
 
 
 class AdapterEnCines (val listener:OnItemClickListener):
@@ -33,6 +34,8 @@ class AdapterEnCines (val listener:OnItemClickListener):
 
     override fun onBindViewHolder(holder: Celda2Holder, position: Int) {
         val enCine=listaEnCines?.get(position)
+        val pathPoster=enCine?.posterPath
+        Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/original/${pathPoster}").into(holder.binding.imagenPeli)
         holder.binding.nPeli.text=enCine?.title
         holder.binding.flanzamiento.text=enCine?.releaseDate
         holder.binding.mediaVoto.text=enCine?.voteAverage.toString()
