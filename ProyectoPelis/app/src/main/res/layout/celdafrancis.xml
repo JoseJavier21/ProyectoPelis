@@ -15,11 +15,14 @@
 
     <TextView
         android:id="@+id/nPeli"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="45dp"
         android:text="TextView"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imagenPeli"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,14 +36,24 @@
         app:layout_constraintStart_toEndOf="@+id/imagenPeli"
         app:layout_constraintTop_toBottomOf="@+id/nPeli" />
 
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/flanzamiento"
+        app:layout_constraintTop_toBottomOf="@+id/nPeli"
+        app:srcCompat="@drawable/baseline_star_24" />
+
     <TextView
         android:id="@+id/mediaVoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:text="TextView"
+        android:textColor="#FFC107"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imagenPeli"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/nPeli" />
 </androidx.constraintlayout.widget.ConstraintLayout>
