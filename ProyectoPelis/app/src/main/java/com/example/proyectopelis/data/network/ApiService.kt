@@ -11,8 +11,12 @@ import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.example.proyectopelis.data.network.Videos.PelisVideos
 =======
+=======
+import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
+>>>>>>> Francis
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
@@ -29,15 +33,16 @@ interface ApiService {
     /*@GET("movie/now_playing")
 =======
 
-    @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
-
+    @Headers("Content-Type: application/json")
     @GET("movie/now_playing")
 >>>>>>> pre-main
     suspend fun getPelisEnCine(
         @Query("language") idioma: String,
+        @Query("api_key")apikey:String,
         @Query("pages") pagina:Int
-    ):Response<ResultEnCine>
+    ):Response<PelisEnCine>
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @GET("movie/popular")
     suspend fun getPelisPopulares(
@@ -60,9 +65,13 @@ interface ApiService {
 =======
     @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
 >>>>>>> pre-main
+=======
+    @Headers("Content-Type: application/json")
+>>>>>>> Francis
     @GET("movie/popular")
     suspend fun getPelisPopulares(
         @Query("language")idioma: String,
+        @Query("api_key")apikey:String,
         @Query("page")pagina:Int
     ):Response<PelisPopulares>
 

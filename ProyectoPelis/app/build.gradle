@@ -32,14 +32,19 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+<<<<<<< HEAD
 //<<<<<<< HEAD
 
 =======
 >>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
+=======
+
+>>>>>>> Francis
 
     viewBinding{
         enabled = true
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
 //=======
 /*<<<<<<< HEAD
@@ -61,6 +66,9 @@ android {
 >>>>>>> pre-main
 }
 >>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
+=======
+}
+>>>>>>> Francis
 
 dependencies {
 
@@ -92,4 +100,3 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 }
 
-}
