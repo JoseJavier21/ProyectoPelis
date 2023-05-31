@@ -1,27 +1,20 @@
-package com.example.proyectopelis.ui.pelisvideos
+package com.example.proyectopelis.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
 import com.example.proyectopelis.R
-import com.example.proyectopelis.databinding.FragmentPelisVideosBinding
 
-class FragmentPelisVideos : Fragment() {
-
-    private lateinit var binding: FragmentPelisVideosBinding
-
-    private val viewModel by activityViewModels<ViewModel>()
+class FragmentPelisImagenes : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentPelisVideosBinding.inflate(inflater, container, false)
-        return binding.root
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_pelis_imagenes, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

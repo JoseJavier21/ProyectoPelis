@@ -1,20 +1,27 @@
-package com.example.proyectopelis.ui.pelisimagenes
+package com.example.proyectopelis.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.proyectopelis.R
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModel
+import com.example.proyectopelis.databinding.FragmentPelisCoordinatorBinding
 
-class FragmentPelisImagenes : Fragment() {
+class FragmentPelisCoordinator : Fragment() {
+
+    private var _binding: FragmentPelisCoordinatorBinding? = null
+    private val binding get() = _binding!!
+
+    private val viewModel by activityViewModels<ViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_pelis_imagenes, container, false)
+        _binding = FragmentPelisCoordinatorBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -44,6 +51,15 @@ class FragmentPelisImagenes : Fragment() {
         viewModel.getPelisPuntuadas.observe(viewLifecycleOwnere) {
             viewModel.getPelisVideos("481ea8c2e7722a6ef472f71742f4b90c", "es-ES", it.results.id)
             viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
+
+            }
+        }
+
+        val adapter = ViewPagerAdapter(this)
+        binding.viewpager.adapter = adapter
+
+        TabLayoutMediator(binding.tablayout, binding.viewpager) {tab, position ->
+            tab.text = when (position) {
 
             }
         }*/

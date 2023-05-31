@@ -1,4 +1,4 @@
-package com.example.proyectopelis.ui.peliscoordinator
+package com.example.proyectopelis.Fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,14 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
-import com.example.proyectopelis.databinding.FragmentPelisCoordinatorBinding
-import com.example.proyectopelis.ui.viewpageradapter.ViewPagerAdapter
-import com.google.android.material.tabs.TabLayoutMediator
+import com.example.proyectopelis.R
+import com.example.proyectopelis.databinding.FragmentPelisVideosBinding
 
-class FragmentPelisCoordinator : Fragment() {
+class FragmentPelisVideos : Fragment() {
 
-    private var _binding: FragmentPelisCoordinatorBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: FragmentPelisVideosBinding
 
     private val viewModel by activityViewModels<ViewModel>()
 
@@ -22,7 +20,7 @@ class FragmentPelisCoordinator : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentPelisCoordinatorBinding.inflate(inflater, container, false)
+        binding = FragmentPelisVideosBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -53,15 +51,6 @@ class FragmentPelisCoordinator : Fragment() {
         viewModel.getPelisPuntuadas.observe(viewLifecycleOwnere) {
             viewModel.getPelisVideos("481ea8c2e7722a6ef472f71742f4b90c", "es-ES", it.results.id)
             viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
-
-            }
-        }
-
-        val adapter = ViewPagerAdapter(this)
-        binding.viewpager.adapter = adapter
-
-        TabLayoutMediator(binding.tablayout, binding.viewpager) {tab, position ->
-            tab.text = when (position) {
 
             }
         }*/

@@ -1,4 +1,4 @@
-package com.example.proyectopelis.data.TopRated
+package com.example.proyectopelis.data.network.TopRated
 
 
 import com.squareup.moshi.Json
@@ -7,12 +7,12 @@ import android.os.Parcelable
 
 @Parcelize
 data class Top_rated(
-    @Json(name = "page")
+    @field:Json(name = "page")
     val page: Int?,
-    @Json(name = "results")
+    @field:Json(name = "results")
     val resultRateds: List<ResultRated?>?,
-    @Json(name = "total_pages")
+    @field:Json(name = "total_pages")
     val totalPages: Int?,
-    @Json(name = "total_results")
+    @field:Json(name = "total_results")
     val totalResults: Int?
 ) : Parcelable
