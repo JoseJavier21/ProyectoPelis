@@ -35,7 +35,7 @@ class AdapterRated: RecyclerView.Adapter<AdapterRated.CeldaRated>() {
         holder.binding.idioma.text = rated.originalLanguage
         //Glide.with(context).load(rated.posterPath).placeholder(R.drawable.ic_launcher_background).into(R.id.imgpeli)
         holder.itemView.setOnClickListener {
-            holder.itemView.findNavController().navigate(R.id.action_topRated_to_fragmentPelisDetalles)
+            holder.itemView.findNavController().navigate(R.id.)
         }
     }
 
