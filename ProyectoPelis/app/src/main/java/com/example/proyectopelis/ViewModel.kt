@@ -82,7 +82,7 @@ class ViewModel(): ViewModel() {
     }
 
     class MyViewModelFactory(private val context: Context): ViewModelProvider.Factory {
-        override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return modelClass.getConstructor(Context::class.java).newInstance(context)
         }
     }

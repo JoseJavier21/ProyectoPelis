@@ -13,6 +13,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.proyectopelis.R
 import com.example.proyectopelis.ViewModel
 import com.example.proyectopelis.data.adapter.AdapterEnCines
@@ -40,6 +42,7 @@ class PelisPopulares : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val recyclerView=binding.rvPelisPopulares
+        recyclerView.layoutManager= StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
         adapter= AdapterPopulares(object : AdapterPopulares.OnItemClickListener{
             override fun OnItemClick(resultPopulares: ResultPopulares) {
                 findNavController().navigate(R.id.action_pelisPopulares_to_fragmentPelisDetalles)

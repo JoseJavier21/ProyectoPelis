@@ -30,6 +30,7 @@ class AdapterPopulares (val listener: OnItemClickListener):
 
     override fun onBindViewHolder(holder: CeldaHolder, position: Int) {
         val populares: ResultPopulares? =listaPopulares?.get(position)
+        //Glide.with(requireContext()).load(imagen.posters.get(0).file_path).into(binding.ima)
         holder.binding.nPeli.text=populares?.title
         holder.binding.flanzamiento.text=populares?.releaseDate
         holder.binding.mediaVoto.text=populares?.voteAverage.toString()
@@ -38,7 +39,7 @@ class AdapterPopulares (val listener: OnItemClickListener):
                 listener.OnItemClick(populares)
             }
         }
-        //Glide.with(requireContext).load(populares.posterPath).into(binding.)
+
     }
 
     override fun getItemCount(): Int {

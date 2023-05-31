@@ -4,17 +4,19 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.databinding.CeldafrancisBinding
 import java.util.ArrayList
 
 
-
-
 class AdapterEnCines (val listener:OnItemClickListener):
     RecyclerView.Adapter<AdapterEnCines.Celda2Holder>(), Filterable{
 
+    private var listaImagenes=ArrayList<PelisImagenes>()
     private var listaEnCines=ArrayList<ResultEnCine?>()
     private var listaCopia = ArrayList<ResultEnCine?>()
 
@@ -33,6 +35,9 @@ class AdapterEnCines (val listener:OnItemClickListener):
 
     override fun onBindViewHolder(holder: Celda2Holder, position: Int) {
         val enCine=listaEnCines?.get(position)
+        val imagen=listaImagenes?.get(position)
+        Glide.with(requireContext())).load(imagen?.posters?.get(0)?.file_path).into(bin)
+
         holder.binding.nPeli.text=enCine?.title
         holder.binding.flanzamiento.text=enCine?.releaseDate
         holder.binding.mediaVoto.text=enCine?.voteAverage.toString()
