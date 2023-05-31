@@ -38,11 +38,7 @@ class TopRated : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val recyclerView = binding.recyclerRated
-        recyclerView.findNavController().navigate(R.id.action_topRated_to_fragmentPelisDetalles)
-        binding.recyclerRated.layoutManager = LinearLayoutManager(requireContext())
-        binding.recyclerRated.adapter = AdapterRated()
-        recyclerView.adapter = adapter
+
 
 
 //         requireActivity().addMenuProvider(object : MenuProvider{
@@ -52,31 +48,49 @@ class TopRated : Fragment() {
 //                val menuItem = menu.findItem(R.id.app_bar_search)
 //                val searchView = menuItem.actionView as SearchView
 //                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+//
 //                    override fun onQueryTextSubmit(query: String?): Boolean {
 //
 //                        listAdapter.filter.filter(query)
 //                        return true
 //                    }
 //
-//                    override fun onQueryTextChange(newText: String?): Boolean {
+//                    //override fun onQueryTextChange(newText: String?): Boolean {
 //
-//                        listAdapter.filter.filter(newText)
+//                    //                        listAdapter.filter.filter(newText)
 //                        return true
+//                    //}
+//                    override fun onQueryTextSubmit(query: String?): Boolean {
+//                        TODO("Not yet implemented")
 //                    }
 //
+//                    override fun onQueryTextChange(newText: String?): Boolean {
+//                        TODO("Not yet implemented")
+//                    }
 //
 //                })
-
-            }
-
+//
+//            }
+//
 //            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
 //
 //                return false
 //            }
+//
+//
+//        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
 
- //       }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
+        val recyclerView = binding.recyclerRated
+
+        binding.recyclerRated.layoutManager = LinearLayoutManager(requireContext())
+
+        recyclerView.findNavController().navigate(R.id.action_topRated_to_fragmentPelisDetalles)
+        binding.recyclerRated.adapter = AdapterRated()
+        recyclerView.adapter = adapter
+
+
 
         //myviewModel.getListaRated("es-ES","5f7af1e971090ad23a762fcc923ac6ce", 1)
-    //}
+    }
 }

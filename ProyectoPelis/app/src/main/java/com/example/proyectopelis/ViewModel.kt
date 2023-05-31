@@ -28,8 +28,8 @@ class ViewModel(): ViewModel() {
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
-    val liveDataTopRated = MutableLiveData<List<ResultRated>?>()
-    val liveDataUpComing = MutableLiveData<List<ResultComing?>?>()
+    val liveDataTopRated = MutableLiveData<ResultRated?>()
+    val liveDataUpComing = MutableLiveData<List<ResultComing>?>()
 
 
     fun getListaEnCines(idioma: String,apikey: String,pagina:Int){
@@ -67,9 +67,11 @@ class ViewModel(): ViewModel() {
 
         CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getComing(idioma,pagina)
-            if (response.isSuccessful){
-                val respuesta = response.body()
-                //liveDataUpComing.postValue(respuesta)
+            if (response != null) {
+                if (response.isSuccessful){
+                    val respuesta = response.body()
+                    liveDataUpComing.postValue(respuesta)
+                }
             }
         }
     }

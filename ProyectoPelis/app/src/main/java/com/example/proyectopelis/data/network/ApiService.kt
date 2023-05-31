@@ -31,19 +31,21 @@ interface ApiService {
         @Query("page")pagina:Int
     ):Response<PelisPopulares>
 
-    @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
+    @Headers("Content-Type: application/json")
     @GET("movie/top_rated")
     suspend fun getRated(
         @Query("language")idioma: String,
+        @Query("api_key")apikey: String,
         @Query("page")pagina:Int
     ): Response<ResultRated>
 
-    @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
+    @Headers("Content-Type: application/json")
     @GET("movie/upcoming")
     suspend fun getComing(
         @Query("language")idioma: String,
+        @Query("api_key")apikey: String,
         @Query("page")pagina:Int
-    ): Response<ResultComing>
+    ): Response<List<ResultComing>?>?
 
 //    @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
 //    @GET("movie/{movie_id}")
