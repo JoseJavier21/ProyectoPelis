@@ -29,8 +29,7 @@ class PelisPopulares : Fragment() {
     private lateinit var binding:FragmentPelisPopularesBinding
     private  lateinit var adapter: AdapterPopulares
     private val myviewModel:ViewModel by activityViewModels()
-
-    private lateinit var listAdapter: AdapterPopulares
+    private var pagina=1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,6 +40,32 @@ class PelisPopulares : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+            requireActivity().addMenuProvider(object : MenuProvider {
+                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                    menuInflater.inflate(R.menu.menu_main, menu)
+
+                    val menuItem = menu.findItem(R.id.app_bar_search)
+                    val searchView = menuItem.actionView as SearchView
+                    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                        override fun onQueryTextSubmit(query: String?): Boolean {
+                            adapter.filter.filter(query)
+                            return true
+                        }
+
+                        override fun onQueryTextChange(newText: String?): Boolean {
+                            adapter.filter.filter(newText)
+                            return true
+                        }
+                    })
+                }
+                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                    return false
+                }
+            }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
+
+
         val recyclerView=binding.rvPelisPopulares
         recyclerView.layoutManager= StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
         adapter= AdapterPopulares(object : AdapterPopulares.OnItemClickListener{
@@ -54,40 +79,43 @@ class PelisPopulares : Fragment() {
         recyclerView.adapter=adapter
 
 
+        myviewModel.pelisPopu.observe(viewLifecycleOwner){
+            var totalPaginas=it.totalPages
+
+            if (totalPaginas==1){
+                binding.btnIzq.visibility=View.GONE
+                binding.btnDrch.visibility=View.GONE
+            }else{
+                if (pagina==1){
+                    binding.btnIzq.visibility=View.GONE
+                }else{
+                    binding.btnIzq.visibility=View.VISIBLE
+                }
+            }
+
+            if (pagina==totalPaginas){
+                binding.btnDrch.visibility=View.GONE
+            }else{
+                binding.btnDrch.visibility=View.VISIBLE
+            }
+
+            binding.btnIzq.setOnClickListener {
+                pagina--
+                myviewModel.getListaPopulares("es-ES","5f7af1e971090ad23a762fcc923ac6ce",pagina)
+            }
+
+            binding.btnDrch.setOnClickListener {
+                pagina++
+                myviewModel.getListaPopulares("es-ES","5f7af1e971090ad23a762fcc923ac6ce",pagina)
+            }
+        }
+
+
         myviewModel.pelisPopulares.observe(viewLifecycleOwner){
             if (it != null) {
                 adapter.actualizaLista(it)
             }
         }
-
-        requireActivity().addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_main, menu)
-
-                val menuItem = menu.findItem(R.id.app_bar_search)
-                val searchView = menuItem.actionView as SearchView
-                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-
-                        listAdapter.filter.filter(query)
-                        return true
-                    }
-
-                    override fun onQueryTextChange(newText: String?): Boolean {
-
-                        listAdapter.filter.filter(newText)
-                        return true
-                    }
-                })
-
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-
-                return false
-            }
-
-        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
         myviewModel.getListaPopulares(idioma ="es-ES","5f7af1e971090ad23a762fcc923ac6ce", pagina = 1)
     }

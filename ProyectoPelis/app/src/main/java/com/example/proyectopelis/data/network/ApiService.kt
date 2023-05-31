@@ -31,7 +31,7 @@ interface ApiService {
     suspend fun getPelisPopulares(
         @Query("language")idioma: String,
         @Query("api_key")apikey:String,
-        @Query("page")pagina:Int
+        @Query("page") pagina:Int
     ):Response<PelisPopulares>
 
     @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")

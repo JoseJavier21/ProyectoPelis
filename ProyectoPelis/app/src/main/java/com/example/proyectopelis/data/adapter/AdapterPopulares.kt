@@ -50,7 +50,9 @@ class AdapterPopulares (val listener: OnItemClickListener):
 
     fun actualizaLista(lista:List<ResultPopulares?>){
         listaPopulares.clear()
+        listaCopia.clear()
         listaPopulares.addAll(lista)
+        listaCopia.addAll(lista)
         notifyDataSetChanged()
     }
 

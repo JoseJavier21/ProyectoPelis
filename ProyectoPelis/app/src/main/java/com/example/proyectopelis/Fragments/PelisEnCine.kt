@@ -108,8 +108,6 @@ class PelisEnCine : Fragment() {
                 pagina++
                 myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",pagina)
             }
-
-
         }
 
         myviewModel.pelisEnCine.observe(viewLifecycleOwner){

@@ -9,6 +9,7 @@ import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
 import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
 import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
+import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.data.network.Repositorio
 import kotlinx.coroutines.CoroutineScope
@@ -22,6 +23,7 @@ class ViewModel(): ViewModel() {
     val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
     val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
     val pelisCine=MutableLiveData<PelisEnCine>()
+    val pelisPopu=MutableLiveData<PelisPopulares>()
     val peliSelecionada= MutableLiveData<ResultEnCine?>()
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
@@ -45,6 +47,7 @@ class ViewModel(): ViewModel() {
             if (response.isSuccessful){
                 val miRespuesta=response.body()
                 pelisPopulares.postValue(miRespuesta?.resultPopulares)
+                pelisPopu.postValue(miRespuesta!!)
             }
         }
     }
