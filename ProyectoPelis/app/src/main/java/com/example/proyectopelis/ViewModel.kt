@@ -12,6 +12,7 @@ import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.data.network.Repositorio
 import com.example.proyectopelis.data.network.TopRated.ResultRated
+import com.example.proyectopelis.data.network.TopRated.Top_rated
 import com.example.proyectopelis.data.network.UpComing.ResultComing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -57,7 +58,7 @@ class ViewModel(): ViewModel() {
             val response = repository.getRated(idioma,pagina)
             if(response.isSuccessful){
                 val respuesta = response.body()
-                //liveDataTopRated.postValue(respuesta)
+                liveDataTopRated.postValue(respuesta)
             }
         }
     }

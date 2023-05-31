@@ -5,6 +5,7 @@ import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
+import com.example.proyectopelis.data.network.TopRated.Top_rated
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers

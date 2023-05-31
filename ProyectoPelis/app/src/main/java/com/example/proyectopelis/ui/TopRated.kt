@@ -12,6 +12,9 @@ import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.proyectopelis.R
@@ -35,22 +38,19 @@ class TopRated : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding.recyclerRated.layoutManager = StaggeredGridLayoutManager(2 , RecyclerView.VERTICAL)
+        val recyclerView = binding.recyclerRated
+        recyclerView.findNavController().navigate(R.id.action_topRated_to_fragmentPelisDetalles)
+        binding.recyclerRated.layoutManager = LinearLayoutManager(requireContext())
         binding.recyclerRated.adapter = AdapterRated()
+        recyclerView.adapter = adapter
 
-//        myviewModel.liveDataTopRated.observe(viewLifecycleOwner){
-//            if (it != null){
-//                adapter.updateRated(it)
-//            }
-//        }
 
-        requireActivity().addMenuProvider(object : MenuProvider{
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu, menu)
-
-                val menuItem = menu.findItem(R.id.app_bar_search)
-                val searchView = menuItem.actionView as SearchView
+//         requireActivity().addMenuProvider(object : MenuProvider{
+//            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+//                menuInflater.inflate(R.menu.menu, menu)
+//
+//                val menuItem = menu.findItem(R.id.app_bar_search)
+//                val searchView = menuItem.actionView as SearchView
 //                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
 //                    override fun onQueryTextSubmit(query: String?): Boolean {
 //
@@ -69,14 +69,14 @@ class TopRated : Fragment() {
 
             }
 
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+//            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+//
+//                return false
+//            }
 
-                return false
-            }
 
-
-        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
+ //       }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
         //myviewModel.getListaRated("es-ES","5f7af1e971090ad23a762fcc923ac6ce", 1)
-    }
+    //}
 }
