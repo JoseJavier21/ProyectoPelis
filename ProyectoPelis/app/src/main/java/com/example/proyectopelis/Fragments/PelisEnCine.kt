@@ -26,6 +26,7 @@ class PelisEnCine : Fragment() {
     private lateinit var binding:FragmentPelisEnCineBinding
     private  lateinit var adapter:AdapterEnCines
     private  val myviewModel:ViewModel by activityViewModels()
+    private  var pagina=1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -76,6 +77,40 @@ class PelisEnCine : Fragment() {
         val layoutManager=LinearLayoutManager(requireContext())
         recyclerView.layoutManager=layoutManager
         recyclerView.adapter=adapter
+
+
+        myviewModel.pelisCine.observe(viewLifecycleOwner){
+            var totalPaginas=it.totalPages
+
+            if (totalPaginas==1){
+                binding.botonizq.visibility=View.GONE
+                binding.botondrcha.visibility=View.GONE
+            }else{
+                if (pagina==1){
+                    binding.botonizq.visibility=View.GONE
+                }else{
+                    binding.botonizq.visibility=View.VISIBLE
+                }
+            }
+
+            if (pagina==totalPaginas){
+                binding.botondrcha.visibility=View.GONE
+            }else{
+                binding.botondrcha.visibility=View.VISIBLE
+            }
+
+            binding.botonizq.setOnClickListener {
+                pagina--
+                myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",pagina)
+            }
+
+            binding.botondrcha.setOnClickListener {
+                pagina++
+                myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",pagina)
+            }
+
+
+        }
 
         myviewModel.pelisEnCine.observe(viewLifecycleOwner){
             if (it != null) {

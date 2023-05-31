@@ -21,6 +21,7 @@ class ViewModel(): ViewModel() {
 
     val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
     val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
+    val pelisCine=MutableLiveData<PelisEnCine>()
     val peliSelecionada= MutableLiveData<ResultEnCine?>()
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
@@ -33,6 +34,7 @@ class ViewModel(): ViewModel() {
             if(response.isSuccessful){
                 val miRespuesta=response.body()
                 pelisEnCine.postValue(miRespuesta?.resultEnCines)
+                pelisCine.postValue(miRespuesta!!)
             }
         }
     }

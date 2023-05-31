@@ -23,7 +23,7 @@ interface ApiService {
     suspend fun getPelisEnCine(
         @Query("language") idioma: String,
         @Query("api_key")apikey:String,
-        @Query("pages") pagina:Int
+        @Query("page") pagina:Int
     ):Response<PelisEnCine>
 
     @Headers("Content-Type: application/json")
