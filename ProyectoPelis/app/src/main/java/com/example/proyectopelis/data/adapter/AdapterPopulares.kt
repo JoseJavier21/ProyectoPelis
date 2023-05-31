@@ -12,18 +12,9 @@ import com.example.proyectopelis.databinding.CeldafrancisBinding
 class AdapterPopulares (val listener: OnItemClickListener):
     RecyclerView.Adapter<AdapterPopulares.CeldaHolder>(), Filterable {
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private var listaPopulares=ArrayList<ResultPopulares>()
-    private var listaCopia = ArrayList<ResultPopulares>()
-=======
-    private val listaPopulares=ArrayList<ResultPopulares?>()
->>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
-=======
     private var listaPopulares=ArrayList<ResultPopulares?>()
     private var listaCopia = ArrayList<ResultPopulares?>()
 
->>>>>>> Francis
 
     interface OnItemClickListener{
         fun OnItemClick(resultPopulares: ResultPopulares)

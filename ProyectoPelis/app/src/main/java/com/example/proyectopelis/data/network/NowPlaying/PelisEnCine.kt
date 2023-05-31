@@ -2,7 +2,6 @@ package com.example.proyectopelis.data.network.NowPlaying
 
 
 import com.squareup.moshi.Json
-import retrofit2.http.Field
 
 data class PelisEnCine(
     @field:Json(name = "dates")

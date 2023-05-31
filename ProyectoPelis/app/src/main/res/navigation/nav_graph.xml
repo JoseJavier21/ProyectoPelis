@@ -44,5 +44,6 @@
     <fragment
         android:id="@+id/fragmentPelisDetalles"
         android:name="com.example.proyectopelis.Fragments.FragmentPelisDetalles"
-        android:label="FragmentPelisDetalles" />
+        android:label="Detalles"
+        tools:layout="@layout/fragment_pelis_detalles"/>
 </navigation>

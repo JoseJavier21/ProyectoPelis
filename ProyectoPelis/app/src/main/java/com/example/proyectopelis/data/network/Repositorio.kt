@@ -1,6 +1,8 @@
 package com.example.proyectopelis.data.network
 
-class Repositorio {
+import android.content.Context
+
+class Repositorio(val context: Context) {
 
     private val retrofit= RetrofitHelper.getRetrofit()
 
@@ -11,7 +13,6 @@ class Repositorio {
     suspend fun getRated(idioma: String, pagina: Int) = retrofit.getRated(idioma, pagina)
 
     suspend fun getComing(idioma: String, pagina: Int) = retrofit.getComing(idioma, pagina)
-
 
     suspend fun getPelisDetalles(idioma: String, idpeli: Int) = retrofit.damePelisDetalles(idioma, idpeli)
 

@@ -8,18 +8,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
-<<<<<<< HEAD
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuProvider
-=======
-import androidx.fragment.app.activityViewModels
->>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
-=======
 import androidx.fragment.app.activityViewModels
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
->>>>>>> Francis
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -36,20 +27,11 @@ import com.example.proyectopelis.databinding.FragmentPelisPopularesBinding
 class PelisPopulares : Fragment() {
 
     private lateinit var binding:FragmentPelisPopularesBinding
-<<<<<<< HEAD
-<<<<<<< HEAD
-    private lateinit var adapter: AdapterEnCines
-=======
     private  lateinit var adapter: AdapterPopulares
-    private val myviewModel:ViewModel by activityViewModels()
+    private val myviewModel by activityViewModels<ViewModel> {
+        ViewModel.MyViewModelFactory(requireContext())
+    }
 
->>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
-
-=======
-    private  lateinit var adapter: AdapterPopulares
-    private val myviewModel:ViewModel by activityViewModels()
-
->>>>>>> Francis
     private lateinit var listAdapter: AdapterPopulares
 
     override fun onCreateView(
@@ -62,19 +44,9 @@ class PelisPopulares : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val recyclerView=binding.rvPelisPopulares
-<<<<<<< HEAD
-<<<<<<< HEAD
-        adapter= AdapterEnCines(object : AdapterEnCines.OnItemClickListener{
-            override fun OnItemClick(resultEnCine: ResultEnCine) {
-=======
-        adapter= AdapterPopulares(object : AdapterPopulares.OnItemClickListener{
-            override fun OnItemClick(resultPopulares: ResultPopulares) {
->>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
-=======
         recyclerView.layoutManager= StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
         adapter= AdapterPopulares(object : AdapterPopulares.OnItemClickListener{
             override fun OnItemClick(resultPopulares: ResultPopulares) {
->>>>>>> Francis
                 findNavController().navigate(R.id.action_pelisPopulares_to_fragmentPelisDetalles)
             }
         })
@@ -83,9 +55,6 @@ class PelisPopulares : Fragment() {
         recyclerView.layoutManager=layoutManager
         recyclerView.adapter=adapter
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
         myviewModel.pelisPopulares.observe(viewLifecycleOwner){
             if (it != null) {
@@ -93,7 +62,6 @@ class PelisPopulares : Fragment() {
             }
         }
 
->>>>>>> Francis
         requireActivity().addMenuProvider(object : MenuProvider {
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_main, menu)
@@ -123,18 +91,6 @@ class PelisPopulares : Fragment() {
 
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
-<<<<<<< HEAD
-=======
-        myviewModel.pelisPopulares.observe(viewLifecycleOwner){
-            if (it != null) {
-                adapter.actualizaLista(it)
-            }
-        }
->>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
-
-        myviewModel.getListaPopulares(idioma ="es-ES", pagina = 1)
-=======
         myviewModel.getListaPopulares(idioma ="es-ES","5f7af1e971090ad23a762fcc923ac6ce", pagina = 1)
->>>>>>> Francis
     }
 }
