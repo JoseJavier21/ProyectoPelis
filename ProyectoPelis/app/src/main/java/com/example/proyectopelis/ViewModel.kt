@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModel
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
+import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
 import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
@@ -20,14 +21,15 @@ class ViewModel(): ViewModel() {
 
     val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
     val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
+    val peliSelecionada= MutableLiveData<ResultEnCine?>()
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
 
 
-    fun getListaEnCines(idioma: String,pagina:Int){
+    fun getListaEnCines(idioma: String,apikey: String,pagina:Int){
         CoroutineScope(Dispatchers.IO).launch {
-            val response=repository.getPelisEnCines(idioma,pagina)
+            val response=repository.getPelisEnCines(idioma,apikey,pagina)
             if(response.isSuccessful){
                 val miRespuesta=response.body()
                 pelisEnCine.postValue(miRespuesta?.resultEnCines)
@@ -35,9 +37,9 @@ class ViewModel(): ViewModel() {
         }
     }
 
-    fun getListaPopulares(idioma: String,pagina: Int){
+    fun getListaPopulares(idioma: String,apikey: String,pagina:Int){
         CoroutineScope(Dispatchers.IO).launch{
-            val response=repository.getPelisPopulares(idioma,pagina)
+            val response=repository.getPelisPopulares(idioma,apikey,pagina)
             if (response.isSuccessful){
                 val miRespuesta=response.body()
                 pelisPopulares.postValue(miRespuesta?.resultPopulares)
@@ -75,8 +77,12 @@ class ViewModel(): ViewModel() {
         }
     }
 
+    fun selectPeli(resultEnCine: ResultEnCine){
+        peliSelecionada.value=resultEnCine
+    }
+
     class MyViewModelFactory(private val context: Context): ViewModelProvider.Factory {
-        override fun <T : androidx.lifecycle.ViewModel> create(modelClass: Class<T>): T {
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
             return modelClass.getConstructor(Context::class.java).newInstance(context)
         }
     }

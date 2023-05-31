@@ -7,8 +7,8 @@ import android.os.Parcelable
 
 @Parcelize
 data class Dates(
-    @Json(name = "maximum")
+    @field:Json(name = "maximum")
     val maximum: String?,
-    @Json(name = "minimum")
+    @field:Json(name = "minimum")
     val minimum: String?
 ) : Parcelable
