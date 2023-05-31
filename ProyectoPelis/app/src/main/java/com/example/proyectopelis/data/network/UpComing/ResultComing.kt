@@ -1,9 +1,12 @@
-package com.example.proyectopelis.data.network.NowPlaying
+package com.example.proyectopelis.data.network.UpComing
 
 
 import com.squareup.moshi.Json
+import kotlinx.parcelize.Parcelize
+import android.os.Parcelable
 
-data class Result(
+@Parcelize
+data class ResultComing(
     @Json(name = "adult")
     val adult: Boolean?,
     @Json(name = "backdrop_path")
@@ -32,4 +35,4 @@ data class Result(
     val voteAverage: Double?,
     @Json(name = "vote_count")
     val voteCount: Int?
-)
+) : Parcelable

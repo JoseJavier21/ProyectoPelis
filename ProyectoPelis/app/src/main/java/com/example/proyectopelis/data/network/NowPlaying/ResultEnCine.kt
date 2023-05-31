@@ -1,9 +1,9 @@
-package com.example.proyectopelis.data.network.Popular
+package com.example.proyectopelis.data.network.NowPlaying
 
 
 import com.squareup.moshi.Json
 
-data class Result(
+data class ResultEnCine(
     @Json(name = "adult")
     val adult: Boolean?,
     @Json(name = "backdrop_path")

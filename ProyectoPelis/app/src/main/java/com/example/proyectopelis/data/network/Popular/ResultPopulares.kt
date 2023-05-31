@@ -1,12 +1,9 @@
-package com.example.proyectopelis.data.TopRated
+package com.example.proyectopelis.data.network.Popular
 
 
 import com.squareup.moshi.Json
-import kotlinx.parcelize.Parcelize
-import android.os.Parcelable
 
-@Parcelize
-data class ResultRated(
+data class ResultPopulares(
     @Json(name = "adult")
     val adult: Boolean?,
     @Json(name = "backdrop_path")
@@ -35,4 +32,4 @@ data class ResultRated(
     val voteAverage: Double?,
     @Json(name = "vote_count")
     val voteCount: Int?
-) : Parcelable
+)
