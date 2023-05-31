@@ -16,7 +16,6 @@ import java.util.ArrayList
 class AdapterEnCines (val listener:OnItemClickListener):
     RecyclerView.Adapter<AdapterEnCines.Celda2Holder>(), Filterable{
 
-    private var listaImagenes=ArrayList<PelisImagenes>()
     private var listaEnCines=ArrayList<ResultEnCine?>()
     private var listaCopia = ArrayList<ResultEnCine?>()
 
@@ -35,9 +34,8 @@ class AdapterEnCines (val listener:OnItemClickListener):
 
     override fun onBindViewHolder(holder: Celda2Holder, position: Int) {
         val enCine=listaEnCines?.get(position)
-        val imagen=listaImagenes?.get(position)
-        Glide.with(requireContext())).load(imagen?.posters?.get(0)?.file_path).into(bin)
-
+        val pathPoster=enCine?.posterPath
+        Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/original/${pathPoster}").into(holder.binding.imagenPeli)
         holder.binding.nPeli.text=enCine?.title
         holder.binding.flanzamiento.text=enCine?.releaseDate
         holder.binding.mediaVoto.text=enCine?.voteAverage.toString()
