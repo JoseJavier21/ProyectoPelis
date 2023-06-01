@@ -9,7 +9,7 @@ import com.example.proyectopelis.ui.UpComing
 
 class ViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
     override fun getItemCount(): Int {
-        return 2
+        return 4
     }
 
     override fun createFragment(position: Int): Fragment {

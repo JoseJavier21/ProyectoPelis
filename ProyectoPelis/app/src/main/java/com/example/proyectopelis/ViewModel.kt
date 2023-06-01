@@ -55,7 +55,7 @@ class ViewModel(): ViewModel() {
     fun getListaRated(idioma: String, apikey: String, pagina: Int){
 
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getRated(idioma,pagina)
+            val response = repository.getRated(idioma,apikey,pagina)
             if(response.isSuccessful){
                 val respuesta = response.body()
                 liveDataTopRated.postValue(respuesta)
@@ -66,7 +66,7 @@ class ViewModel(): ViewModel() {
     fun getListaComing(idioma: String, apikey: String, pagina: Int){
 
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getComing(idioma,pagina)
+            val response = repository.getComing(idioma,apikey,pagina)
             if (response != null) {
                 if (response.isSuccessful){
                     val respuesta = response.body()

@@ -28,6 +28,7 @@ class TopRated : Fragment() {
     private lateinit var adapter: AdapterRated
     private val myviewModel: ViewModel by activityViewModels()
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,7 +39,6 @@ class TopRated : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
 
 
 //         requireActivity().addMenuProvider(object : MenuProvider{
@@ -81,13 +81,13 @@ class TopRated : Fragment() {
 //        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
 
-        val recyclerView = binding.recyclerRated
-
-        binding.recyclerRated.layoutManager = LinearLayoutManager(requireContext())
-
-        recyclerView.findNavController().navigate(R.id.action_topRated_to_fragmentPelisDetalles)
-        binding.recyclerRated.adapter = AdapterRated()
-        recyclerView.adapter = adapter
+//        val recyclerView = binding.recyclerRated
+//
+//        binding.recyclerRated.layoutManager = LinearLayoutManager(requireContext())
+//
+//        recyclerView.findNavController().navigate(R.id.action_topRated_to_fragmentPelisDetalles)
+//        binding.recyclerRated.adapter = AdapterRated()
+//        recyclerView.adapter = adapter
 
 
 
