@@ -14,13 +14,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ViewModel(context: Context) : ViewModel() {
+class ViewModel(val context: Context) : ViewModel() {
 
     private val repository = Repositorio(context)
 
     val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
     val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
-    val peliSelecionada= MutableLiveData<ResultEnCine?>()
+    val peliSelecionada= MutableLiveData<ResultEnCine>()
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
@@ -46,9 +46,9 @@ class ViewModel(context: Context) : ViewModel() {
         }
     }
 
-    fun getPelisDetalles(idioma: String, idpeli: Int) {
+    fun getPelisDetalles(idioma: String, key: String, idpeli: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisDetalles(idioma, idpeli)
+            val response = repository.getPelisDetalles(idioma, key, idpeli)
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisDetalles.postValue(miRespuesta)
@@ -56,9 +56,9 @@ class ViewModel(context: Context) : ViewModel() {
         }
     }
 
-    fun getPelisImagenes(idioma: String, idpeli: Int) {
+    fun getPelisImagenes(idioma: String, key: String, idpeli: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisImagenes(idioma, idpeli)
+            val response = repository.getPelisImagenes(idioma, key, idpeli)
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisImagenes.postValue(miRespuesta)
@@ -66,9 +66,9 @@ class ViewModel(context: Context) : ViewModel() {
         }
     }
 
-    fun getPelisVideos(idioma: String, idpeli: Int) {
+    fun getPelisVideos(idioma: String, key: String, idpeli: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisVideos(idioma, idpeli)
+            val response = repository.getPelisVideos(idioma, key, idpeli)
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisVideos.postValue(miRespuesta)
