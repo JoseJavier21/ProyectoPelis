@@ -12,6 +12,10 @@ import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.data.network.Repositorio
+import com.example.proyectopelis.data.network.TopRated.ResultRated
+import com.example.proyectopelis.data.network.TopRated.Top_rated
+import com.example.proyectopelis.data.network.UpComing.ResultComing
+import com.example.proyectopelis.data.network.UpComing.UpComing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,6 +32,8 @@ class ViewModel(): ViewModel() {
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
+    val LivePeliRated = MutableLiveData<List<ResultRated>?>()
+    val livePeliComing = MutableLiveData<List<ResultComing?>?>()
 
 
     fun getListaEnCines(idioma: String,apikey: String,pagina:Int){
@@ -50,6 +56,29 @@ class ViewModel(): ViewModel() {
                 pelisPopu.postValue(miRespuesta!!)
             }
         }
+    }
+
+    fun getListaComing(idioma: String, apikey: String, pagina: Int){
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getComing(idioma,apikey,pagina)
+            if(response?.isSuccessful == true){
+                val respuesta = response.body()
+                livePeliComing.postValue(respuesta)
+            }
+        }
+    }
+
+    suspend fun getListaRated(idioma: String, apikey: String, pagina: Int){
+
+        CoroutineScope(Dispatchers.IO).launch{
+            val response = repository.getRated(idioma, apikey, pagina)
+            if (response?.isSuccessful == true){
+                val respuesta = response.body()
+                LivePeliRated.postValue(respuesta)
+            }
+        }
+
     }
 
     fun getPelisDetalles(idioma: String, idpeli: Int) {

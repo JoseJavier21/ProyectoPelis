@@ -8,9 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.proyectopelis.R
 import com.example.proyectopelis.data.network.UpComing.ResultComing
+import com.example.proyectopelis.data.network.UpComing.UpComing
 import com.example.proyectopelis.databinding.CeldacomingBinding
-import com.example.proyectopelis.databinding.CeldaratedBinding
-import com.example.proyectopelis.databinding.FragmentUpComingBinding
 
 class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>() {
 
@@ -31,7 +30,7 @@ class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>() {
 
     override fun onBindViewHolder(holder: CeldaComing, position: Int) {
 
-        val comig: ResultComing? = copiaLista.get(position)
+        val comig: ResultComing? = listaOriginal.get(position)
         val context = holder.itemView.context
 
         holder.binding.titleComing.text = comig?.title
@@ -47,7 +46,7 @@ class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>() {
 
     }
 
-    fun updataComing(lista: List<ResultComing>){
+    fun updataComing(lista: List<ResultComing?>){
         listaOriginal.clear()
         listaOriginal.addAll(lista)
         copiaLista.clear()

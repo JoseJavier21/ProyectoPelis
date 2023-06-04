@@ -12,7 +12,7 @@ data class UpComing(
     @field:Json(name = "page")
     val page: Int?,
     @field:Json(name = "results")
-    val resultComings: List<ResultComing?>?,
+    val resultComings: List<ResultComing?>,
     @field:Json(name = "total_pages")
     val totalPages: Int?,
     @field:Json(name = "total_results")
