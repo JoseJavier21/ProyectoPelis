@@ -52,7 +52,9 @@ class AdapterEnCines (val listener:OnItemClickListener):
 
     fun actualizaLista2(lista: List<ResultEnCine?>){
         listaEnCines.clear()
+        listaCopia.clear()
         listaEnCines.addAll(lista)
+        listaCopia.addAll(lista)
         notifyDataSetChanged()
     }
     override fun getFilter(): Filter {
