@@ -68,7 +68,6 @@ class PelisEnCine : Fragment() {
 
 
         val recyclerView=binding.rvPelisCine
-
         recyclerView.layoutManager=StaggeredGridLayoutManager(1,RecyclerView.VERTICAL)
 
         adapter=AdapterEnCines(object : AdapterEnCines.OnItemClickListener{
