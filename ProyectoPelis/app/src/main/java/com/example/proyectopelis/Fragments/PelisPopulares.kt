@@ -40,7 +40,7 @@ class PelisPopulares : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        myviewModel.pelisPopulares.observe(viewLifecycleOwner){
+        myviewModel.pelisPopulares.observe(viewLifecycleOwner) {
             adapter.actualizaLista(it as ArrayList<ResultPopulares?>)
 
             requireActivity().addMenuProvider(object : MenuProvider {
@@ -49,7 +49,7 @@ class PelisPopulares : Fragment() {
 
                     val menuItem = menu.findItem(R.id.app_bar_search)
                     val searchView = menuItem.actionView as SearchView
-                    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                         override fun onQueryTextSubmit(query: String?): Boolean {
                             adapter.filter.filter(query)
                             return true
@@ -61,11 +61,12 @@ class PelisPopulares : Fragment() {
                         }
                     })
                 }
+
                 override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                     return false
                 }
             }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
-
+        }
 
             val recyclerView=binding.rvPelisPopulares
             recyclerView.layoutManager= StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
@@ -117,6 +118,6 @@ class PelisPopulares : Fragment() {
                 }
             }
             myviewModel.getListaPopulares(idioma ="es-ES","5f7af1e971090ad23a762fcc923ac6ce", pagina = 1)
-        }
+
     }
 }
