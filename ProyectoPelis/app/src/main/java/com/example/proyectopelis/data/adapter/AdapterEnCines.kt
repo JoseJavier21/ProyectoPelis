@@ -4,10 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.databinding.CeldafrancisBinding
 import java.util.ArrayList
@@ -17,8 +15,7 @@ class AdapterEnCines (val listener:OnItemClickListener):
     RecyclerView.Adapter<AdapterEnCines.Celda2Holder>(), Filterable{
 
     private var listaEnCines=ArrayList<ResultEnCine?>()
-    private var listaCopia = ArrayList<ResultEnCine?>()
-
+    private var listaCopia =ArrayList<ResultEnCine?>()
 
     interface  OnItemClickListener{
         fun OnItemClick(resultEnCine: ResultEnCine)
@@ -34,6 +31,7 @@ class AdapterEnCines (val listener:OnItemClickListener):
 
     override fun onBindViewHolder(holder: Celda2Holder, position: Int) {
         val enCine=listaEnCines?.get(position)
+
         val pathPoster=enCine?.posterPath
         Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/original/${pathPoster}").into(holder.binding.imagenPeli)
         holder.binding.nPeli.text=enCine?.title
@@ -47,22 +45,24 @@ class AdapterEnCines (val listener:OnItemClickListener):
     }
 
     override fun getItemCount(): Int {
-       return listaEnCines.size
+        return listaEnCines.size
     }
 
     fun actualizaLista2(lista: List<ResultEnCine?>){
         listaEnCines.clear()
+        listaCopia.clear()
         listaEnCines.addAll(lista)
+        listaCopia.addAll(lista)
         notifyDataSetChanged()
     }
+
     override fun getFilter(): Filter {
         return object : Filter(){
             override fun performFiltering(constraint: CharSequence?): FilterResults {
                 val busqueda = constraint.toString()
 
                 if(busqueda.isEmpty()){
-                    listaEnCines=listaCopia
-
+                    listaEnCines = listaCopia
                 }else{
                     listaEnCines = listaCopia.filter {
                         it?.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
@@ -74,17 +74,10 @@ class AdapterEnCines (val listener:OnItemClickListener):
                 filterResult.values = listaEnCines
                 return filterResult
             }
-
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 listaEnCines = results?.values as ArrayList<ResultEnCine?>
                 notifyDataSetChanged()
             }
-
         }
     }
 }
-
-
-
-
-

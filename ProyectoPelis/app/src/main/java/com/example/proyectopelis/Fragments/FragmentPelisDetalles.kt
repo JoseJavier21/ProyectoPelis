@@ -56,3 +56,9 @@ class FragmentPelisDetalles : Fragment() {
         }*/
     }
 }
+
+/*
+https://www.youtube.com/watch?v=//Df00ZNYEcAY
+carrusel con fotos
+el enlace youtbe con boton
+ */

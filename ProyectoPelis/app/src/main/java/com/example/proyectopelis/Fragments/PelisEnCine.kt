@@ -8,9 +8,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,8 +24,9 @@ import com.example.proyectopelis.databinding.FragmentPelisEnCineBinding
 class PelisEnCine : Fragment() {
 
     private lateinit var binding:FragmentPelisEnCineBinding
-    private  lateinit var adapter:AdapterEnCines
+    private lateinit var adapter:AdapterEnCines
     private  val myviewModel:ViewModel by activityViewModels()
+    private  var pagina=1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,7 +39,11 @@ class PelisEnCine : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        myviewModel.pelisEnCine.observe(viewLifecycleOwner){
+            adapter.actualizaLista2(it as ArrayList<ResultEnCine?>)
+
             requireActivity().addMenuProvider(object : MenuProvider {
+
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_main, menu)
 
@@ -63,7 +68,6 @@ class PelisEnCine : Fragment() {
 
 
         val recyclerView=binding.rvPelisCine
-
         recyclerView.layoutManager=StaggeredGridLayoutManager(1,RecyclerView.VERTICAL)
 
         adapter=AdapterEnCines(object : AdapterEnCines.OnItemClickListener{
@@ -77,12 +81,44 @@ class PelisEnCine : Fragment() {
         recyclerView.layoutManager=layoutManager
         recyclerView.adapter=adapter
 
+
+        myviewModel.pelisCine.observe(viewLifecycleOwner){
+            val totalPaginas=it.totalPages
+
+            if (totalPaginas==1){
+                binding.botonizq.visibility=View.GONE
+                binding.botondrcha.visibility=View.GONE
+            }else{
+                if (pagina==1){
+                    binding.botonizq.visibility=View.GONE
+                }else{
+                    binding.botonizq.visibility=View.VISIBLE
+                }
+            }
+
+            if (pagina==totalPaginas){
+                binding.botondrcha.visibility=View.GONE
+            }else{
+                binding.botondrcha.visibility=View.VISIBLE
+            }
+
+            binding.botonizq.setOnClickListener {
+                pagina--
+                myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",pagina)
+            }
+
+            binding.botondrcha.setOnClickListener {
+                pagina++
+                myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",pagina)
+            }
+        }
+
         myviewModel.pelisEnCine.observe(viewLifecycleOwner){
             if (it != null) {
                 adapter.actualizaLista2(it)
             }
         }
-
         myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
     }
+}
 }

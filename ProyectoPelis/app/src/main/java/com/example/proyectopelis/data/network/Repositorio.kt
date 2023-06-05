@@ -15,7 +15,4 @@ class Repositorio {
     suspend fun getPelisDetalles(idioma: String, idpeli: Int) = retrofit.damePelisDetalles(idioma, idpeli)
 
     suspend fun getPelisImagenes(idioma: String, idpeli: Int) = retrofit.damePelisImagenes(idioma, idpeli)
-
-    suspend fun getPelisVideos(idioma: String, idpeli: Int) = retrofit.damePelisVideos(idioma, idpeli)
-
 }
