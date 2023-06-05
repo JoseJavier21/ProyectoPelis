@@ -54,6 +54,8 @@ class PelisEnCine : Fragment() {
 
         myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
 
+        //myviewModel.getPelisDetalles("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 634649)
+
         myviewModel.pelisEnCine.observe(viewLifecycleOwner){
             if (it != null) {
                 adapter.actualizaLista2(it)
