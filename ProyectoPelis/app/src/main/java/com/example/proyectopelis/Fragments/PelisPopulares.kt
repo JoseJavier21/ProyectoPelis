@@ -17,9 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.proyectopelis.R
 import com.example.proyectopelis.ViewModel
-import com.example.proyectopelis.data.adapter.AdapterEnCines
 import com.example.proyectopelis.data.adapter.AdapterPopulares
-import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.databinding.FragmentPelisPopularesBinding
 
@@ -43,7 +41,7 @@ class PelisPopulares : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         myviewModel.pelisPopulares.observe(viewLifecycleOwner){
-            adapter.actualizaLista(it as ArrayList<ResultPopulares>)
+            adapter.actualizaLista(it as ArrayList<ResultPopulares?>)
 
             requireActivity().addMenuProvider(object : MenuProvider {
                 override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -84,7 +82,7 @@ class PelisPopulares : Fragment() {
 
 
             myviewModel.pelisPopu.observe(viewLifecycleOwner){
-                var totalPaginas=it.totalPages
+                val totalPaginas=it.totalPages
 
                 if (totalPaginas == 1) {
                     binding.btnIzq.visibility = View.GONE

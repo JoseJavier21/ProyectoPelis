@@ -40,7 +40,7 @@ class PelisEnCine : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         myviewModel.pelisEnCine.observe(viewLifecycleOwner){
-            adapter.actualizaLista2(it as ArrayList<ResultEnCine>)
+            adapter.actualizaLista2(it as ArrayList<ResultEnCine?>)
 
             requireActivity().addMenuProvider(object : MenuProvider {
 
@@ -83,7 +83,7 @@ class PelisEnCine : Fragment() {
 
 
         myviewModel.pelisCine.observe(viewLifecycleOwner){
-            var totalPaginas=it.totalPages
+            val totalPaginas=it.totalPages
 
             if (totalPaginas==1){
                 binding.botonizq.visibility=View.GONE
