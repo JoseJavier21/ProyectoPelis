@@ -1,22 +1,22 @@
 package com.example.proyectopelis.data.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
-import com.example.proyectopelis.ViewModel
+import com.bumptech.glide.Glide
 import com.example.proyectopelis.databinding.HoldercarruseladapterpagerBinding
 
-/*class CarruselAdapterPager(val listaImagenes: List<String>) :
+class CarruselAdapterPager(val listaImagenes: List<String>) :
     RecyclerView.Adapter<CarruselAdapterPager.MiCelda>() {
-
-    //private val viewModel by activityViewModels<ViewModel>()
 
         inner class MiCelda(val binding: HoldercarruseladapterpagerBinding) :
                 RecyclerView.ViewHolder(binding.root)
 
-    /*override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MiCelda {
-
-    }*/
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MiCelda {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val binding = HoldercarruseladapterpagerBinding.inflate(layoutInflater, parent, false)
+        return MiCelda(binding)
+    }
 
     override fun getItemCount(): Int {
         return listaImagenes.size
@@ -24,6 +24,8 @@ import com.example.proyectopelis.databinding.HoldercarruseladapterpagerBinding
 
     override fun onBindViewHolder(holder: MiCelda, position: Int) {
         val imagen = listaImagenes[position]
-        //viewModel.
+        Glide.with(holder.itemView)
+            .load("https://image.tmdb.org/t/p/original$imagen")
+            .into(holder.binding.carruselgrande)
     }
-}*/
+}
