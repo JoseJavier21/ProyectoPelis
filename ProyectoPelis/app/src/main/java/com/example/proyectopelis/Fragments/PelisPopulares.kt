@@ -42,31 +42,32 @@ class PelisPopulares : Fragment() {
 
         myviewModel.pelisPopulares.observe(viewLifecycleOwner) {
             adapter.actualizaLista(it as ArrayList<ResultPopulares?>)
-
-            requireActivity().addMenuProvider(object : MenuProvider {
-                override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                    menuInflater.inflate(R.menu.menu_main, menu)
-
-                    val menuItem = menu.findItem(R.id.app_bar_search)
-                    val searchView = menuItem.actionView as SearchView
-                    searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-                        override fun onQueryTextSubmit(query: String?): Boolean {
-                            adapter.filter.filter(query)
-                            return true
-                        }
-
-                        override fun onQueryTextChange(newText: String?): Boolean {
-                            adapter.filter.filter(newText)
-                            return true
-                        }
-                    })
-                }
-
-                override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                    return false
-                }
-            }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
         }
+
+        requireActivity().addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                menuInflater.inflate(R.menu.menu_main, menu)
+
+                val menuItem = menu.findItem(R.id.app_bar_search)
+                val searchView = menuItem.actionView as SearchView
+                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                    override fun onQueryTextSubmit(query: String?): Boolean {
+                        adapter.filter.filter(query)
+                        return true
+                    }
+
+                    override fun onQueryTextChange(newText: String?): Boolean {
+                        adapter.filter.filter(newText)
+                        return true
+                    }
+                })
+            }
+
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                return false
+            }
+        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
+
 
             val recyclerView=binding.rvPelisPopulares
             recyclerView.layoutManager= StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
