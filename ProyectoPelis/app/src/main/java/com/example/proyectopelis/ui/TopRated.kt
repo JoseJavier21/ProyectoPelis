@@ -25,7 +25,7 @@ class TopRated : Fragment() {
 
     private lateinit var binding: FragmentTopRatedBinding
     private lateinit var adapterRated: AdapterRated
-    private val myViewModel: com.example.proyectopelis.ViewModel by activityViewModels()
+    private val myViewModel: ViewModel by activityViewModels()
 
 
     override fun onCreateView(
@@ -63,7 +63,7 @@ class TopRated : Fragment() {
                 return false
             }
 
-        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
 
         binding.recyclerRated.layoutManager = LinearLayoutManager(requireContext())
@@ -76,7 +76,7 @@ class TopRated : Fragment() {
             }
         }
 
-        //myViewModel.getListaRated("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1 )
+        myViewModel.getListaRated("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
 
 
     }

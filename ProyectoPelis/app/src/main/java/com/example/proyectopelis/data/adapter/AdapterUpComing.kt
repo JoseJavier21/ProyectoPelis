@@ -55,7 +55,6 @@ class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>() {
     }
 
     fun filtro(): Filter{
-
         return object : Filter(){
             override fun performFiltering(p0: CharSequence?): FilterResults {
                 val busqueda = p0.toString()

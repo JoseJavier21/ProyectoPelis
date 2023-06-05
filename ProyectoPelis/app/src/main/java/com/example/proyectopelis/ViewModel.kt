@@ -1,6 +1,7 @@
 package com.example.proyectopelis
 
 import android.content.Context
+import android.provider.Telephony.Mms.Rate
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModel
@@ -32,7 +33,9 @@ class ViewModel(): ViewModel() {
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
-    val LivePeliRated = MutableLiveData<List<ResultRated>?>()
+    val LivePeliRated = MutableLiveData<List<ResultRated?>?>()
+    val Rated = MutableLiveData<Top_rated?>()
+    val Coming = MutableLiveData<UpComing?>()
     val livePeliComing = MutableLiveData<List<ResultComing?>?>()
 
 
@@ -62,20 +65,22 @@ class ViewModel(): ViewModel() {
 
         CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getComing(idioma,apikey,pagina)
-            if(response?.isSuccessful == true){
+            if(response.isSuccessful){
                 val respuesta = response.body()
-                livePeliComing.postValue(respuesta)
+                livePeliComing.postValue(respuesta?.resultComings)
+                Coming.postValue(respuesta!!)
             }
         }
     }
 
-    suspend fun getListaRated(idioma: String, apikey: String, pagina: Int){
+    fun getListaRated(idioma: String, apikey: String, pagina: Int){
 
         CoroutineScope(Dispatchers.IO).launch{
             val response = repository.getRated(idioma, apikey, pagina)
-            if (response?.isSuccessful == true){
+            if (response.isSuccessful){
                 val respuesta = response.body()
-                LivePeliRated.postValue(respuesta)
+                LivePeliRated.postValue(respuesta?.resultRateds)
+                Rated.postValue(respuesta!!)
             }
         }
 

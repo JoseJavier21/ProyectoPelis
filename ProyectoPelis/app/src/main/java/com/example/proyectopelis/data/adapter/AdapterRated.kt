@@ -11,8 +11,8 @@ import com.example.proyectopelis.databinding.CeldaratedBinding
 
 class AdapterRated: RecyclerView.Adapter<AdapterRated.CeldaRated>() {
 
-    private val listaOriginal = ArrayList<ResultRated>()
-    private val copiaLista = ArrayList<ResultRated>()
+    private val listaOriginal = ArrayList<ResultRated?>()
+    private val copiaLista = ArrayList<ResultRated?>()
 
     inner class CeldaRated(val binding: CeldaratedBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -28,18 +28,18 @@ class AdapterRated: RecyclerView.Adapter<AdapterRated.CeldaRated>() {
 
     override fun onBindViewHolder(holder: CeldaRated, position: Int) {
 
-        val rated: ResultRated = copiaLista.get(position)
+        val rated: ResultRated? = listaOriginal.get(position)
         val context = holder.itemView.context
-        holder.binding.nombrePeli.text = rated.title
-        holder.binding.puntuacion.text = rated.voteAverage.toString()
-        holder.binding.idioma.text = rated.originalLanguage
-        Glide.with(context).load("https://image.tmdb.org/t/p/original/${rated.posterPath}").into(holder.binding.imgpeli)
+        holder.binding.nombrePeli.text = rated?.title
+        holder.binding.puntuacion.text = rated?.voteAverage.toString()
+        holder.binding.idioma.text = rated?.originalLanguage
+        Glide.with(context).load("https://image.tmdb.org/t/p/original/${rated?.posterPath}").into(holder.binding.imgpeli)
         holder.itemView.setOnClickListener {
             holder.itemView.findNavController().navigate(R.id.action_topRated_to_fragmentPelisDetalles)
         }
     }
 
-    fun updateRated(lista: List<ResultRated>){
+    fun updateRated(lista: List<ResultRated?>){
         listaOriginal.clear()
         listaOriginal.addAll(lista)
         copiaLista.clear()

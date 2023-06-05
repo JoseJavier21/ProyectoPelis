@@ -8,6 +8,7 @@ import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.TopRated.Top_rated
+import com.example.proyectopelis.data.network.UpComing.UpComing
 import com.example.proyectopelis.data.network.Videos.PelisVideos
 import retrofit2.Response
 import retrofit2.http.GET
@@ -40,7 +41,7 @@ interface ApiService {
         @Query("language")idioma: String,
         @Query("api_key")apikey: String,
         @Query("page")pagina:Int
-    ): Response<List<ResultRated>?>?
+    ): Response<Top_rated>
 
     @Headers("Content-Type: application/json")
     @GET("movie/upcoming")
@@ -48,7 +49,7 @@ interface ApiService {
         @Query("language")idioma: String,
         @Query("api_key")apikey: String,
         @Query("page")pagina:Int
-    ): Response<List<ResultComing>?>?
+    ): Response<UpComing>
 
     @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
     @GET("movie/{movie_id}")
