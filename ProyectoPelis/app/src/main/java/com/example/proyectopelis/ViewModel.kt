@@ -4,10 +4,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModel
-<<<<<<< HEAD
 import com.example.proyectopelis.data.network.Repositorio
-=======
->>>>>>> pre-main
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
 import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
@@ -15,7 +12,6 @@ import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
-import com.example.proyectopelis.data.network.Repositorio
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,7 +19,6 @@ import kotlinx.coroutines.launch
 class ViewModel(): ViewModel() {
 
     private val repository = Repositorio()
-
     val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
     val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
     val pelisCine=MutableLiveData<PelisEnCine>()
@@ -72,16 +67,6 @@ class ViewModel(): ViewModel() {
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisImagenes.postValue(miRespuesta)
-            }
-        }
-    }
-
-    fun getPelisVideos(idioma: String, idpeli: Int) {
-        CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisVideos(idioma, idpeli)
-            if (response.isSuccessful) {
-                val miRespuesta = response.body()
-                liveDataPelisVideos.postValue(miRespuesta)
             }
         }
     }

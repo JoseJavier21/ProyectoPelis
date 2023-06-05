@@ -31,53 +31,11 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
-//<<<<<<< HEAD
-
-=======
->>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
-=======
-
->>>>>>> Francis
-
-    viewBinding{
-        enabled = true
-    }
-<<<<<<< HEAD
-<<<<<<< HEAD
-//=======
-/*<<<<<<< HEAD
-=======
->>>>>>> pre-main
-<<<<<<< HEAD
-=======
-
->>>>>>> origin/pre-main
 
     viewBinding {
         enabled true
-
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======*/
-    viewBinding {
-        enabled true
     }
-//>>>>>>> Juan
-//>>>>>>> origin/pre-main
-=======
-    
->>>>>>> pre-main
-}
->>>>>>> e18ade48dca65f9bf350f6ed011444d44c1d4237
-=======
-}
->>>>>>> Francis
-=======
-}
->>>>>>> origin/pre-main
+
 
 dependencies {
 
@@ -108,9 +66,5 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
-<<<<<<< HEAD
 }
-
-=======
 }
->>>>>>> origin/pre-main
