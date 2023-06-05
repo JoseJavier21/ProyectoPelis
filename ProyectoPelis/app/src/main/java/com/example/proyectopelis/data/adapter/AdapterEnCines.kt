@@ -14,8 +14,12 @@ class AdapterEnCines (private val listener: OnItemClickListener) :
     RecyclerView.Adapter<AdapterEnCines.Celda2Holder>(), Filterable{
 
     private var listaEnCines=ArrayList<ResultEnCine?>()
+<<<<<<< HEAD
     private var listaCopia = ArrayList<ResultEnCine?>()
 
+=======
+    private var listaCopia =ArrayList<ResultEnCine?>()
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
 
     interface  OnItemClickListener{
         fun OnItemClick(resultEnCine: ResultEnCine)
@@ -31,6 +35,10 @@ class AdapterEnCines (private val listener: OnItemClickListener) :
 
     override fun onBindViewHolder(holder: Celda2Holder, position: Int) {
         val enCine=listaEnCines?.get(position)
+<<<<<<< HEAD
+=======
+
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
         val pathPoster=enCine?.posterPath
         Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/original/${pathPoster}").into(holder.binding.imagenPeli)
         holder.binding.nPeli.text=enCine?.title
@@ -49,7 +57,9 @@ class AdapterEnCines (private val listener: OnItemClickListener) :
 
     fun actualizaLista2(lista: List<ResultEnCine?>){
         listaEnCines.clear()
+        listaCopia.clear()
         listaEnCines.addAll(lista)
+        listaCopia.addAll(lista)
         notifyDataSetChanged()
     }
     override fun getFilter(): Filter {
@@ -58,8 +68,12 @@ class AdapterEnCines (private val listener: OnItemClickListener) :
                 val busqueda = constraint.toString()
 
                 if(busqueda.isEmpty()){
+<<<<<<< HEAD
                     listaEnCines=listaCopia
 
+=======
+                    listaEnCines = listaCopia
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
                 }else{
                     listaEnCines = listaCopia.filter {
                         it?.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
@@ -71,17 +85,18 @@ class AdapterEnCines (private val listener: OnItemClickListener) :
                 filterResult.values = listaEnCines
                 return filterResult
             }
-
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 listaEnCines = results?.values as ArrayList<ResultEnCine?>
                 notifyDataSetChanged()
             }
-
         }
     }
 }
+<<<<<<< HEAD
 
 
 
 
 
+=======
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2

@@ -8,9 +8,15 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
 import androidx.fragment.app.activityViewModels
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
+=======
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuProvider
+import androidx.fragment.app.activityViewModels
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectopelis.R
@@ -22,10 +28,16 @@ import com.example.proyectopelis.databinding.FragmentPelisEnCineBinding
 class PelisEnCine : Fragment() {
 
     private lateinit var binding:FragmentPelisEnCineBinding
+<<<<<<< HEAD
     //private  lateinit var adapter:AdapterEnCines
     private  val myviewModel by activityViewModels<ViewModel> {
         ViewModel.MyViewModelFactory(requireContext())
     }
+=======
+    private lateinit var adapter:AdapterEnCines
+    private  val myviewModel:ViewModel by activityViewModels()
+    private  var pagina=1
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +49,7 @@ class PelisEnCine : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+<<<<<<< HEAD
 
         val recyclerView=binding.rvPelisCine
 
@@ -63,6 +76,14 @@ class PelisEnCine : Fragment() {
         }
 
             requireActivity().addMenuProvider(object : MenuProvider {
+=======
+
+        myviewModel.pelisEnCine.observe(viewLifecycleOwner){
+            adapter.actualizaLista2(it as ArrayList<ResultEnCine?>)
+
+            requireActivity().addMenuProvider(object : MenuProvider {
+
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_main, menu)
 
@@ -86,7 +107,12 @@ class PelisEnCine : Fragment() {
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
 
+<<<<<<< HEAD
 
+=======
+        val recyclerView=binding.rvPelisCine
+        recyclerView.layoutManager=StaggeredGridLayoutManager(1,RecyclerView.VERTICAL)
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
 
         //recyclerView.layoutManager=StaggeredGridLayoutManager(1,RecyclerView.VERTICAL)
 
@@ -95,8 +121,50 @@ class PelisEnCine : Fragment() {
 
 
 
+<<<<<<< HEAD
 
 
 
+=======
+
+        myviewModel.pelisCine.observe(viewLifecycleOwner){
+            val totalPaginas=it.totalPages
+
+            if (totalPaginas==1){
+                binding.botonizq.visibility=View.GONE
+                binding.botondrcha.visibility=View.GONE
+            }else{
+                if (pagina==1){
+                    binding.botonizq.visibility=View.GONE
+                }else{
+                    binding.botonizq.visibility=View.VISIBLE
+                }
+            }
+
+            if (pagina==totalPaginas){
+                binding.botondrcha.visibility=View.GONE
+            }else{
+                binding.botondrcha.visibility=View.VISIBLE
+            }
+
+            binding.botonizq.setOnClickListener {
+                pagina--
+                myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",pagina)
+            }
+
+            binding.botondrcha.setOnClickListener {
+                pagina++
+                myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",pagina)
+            }
+        }
+
+        myviewModel.pelisEnCine.observe(viewLifecycleOwner){
+            if (it != null) {
+                adapter.actualizaLista2(it)
+            }
+        }
+        myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
     }
+}
 }
