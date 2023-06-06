@@ -8,4 +8,9 @@
         android:title="Buscar"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/info"
+        android:icon="@drawable/baseline_info_24"
+        android:title="Item"
+        app:showAsAction="always" />
 </menu>

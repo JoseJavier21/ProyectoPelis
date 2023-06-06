@@ -64,6 +64,9 @@ class PelisEnCine : Fragment() {
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                if (menuItem.itemId==R.id.info){
+                    findNavController().navigate(R.id.action_pelisEnCine_to_mapa)
+                }
                 return false
             }
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
@@ -114,12 +117,16 @@ class PelisEnCine : Fragment() {
             }
         }
 
-        myviewModel.pelisEnCine.observe(viewLifecycleOwner) {
+        myviewModel.pelisEnCine.observe(viewLifecycleOwner){
+            binding.swipe.isRefreshing = false
             if (it != null) {
                 adapter.actualizaLista2(it)
             }
         }
         myviewModel.getListaEnCines("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
 
+        binding.swipe.setOnRefreshListener {
+            myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+        }
     }
 }

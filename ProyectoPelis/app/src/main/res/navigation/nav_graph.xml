@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_pelisEnCine_to_fragmentPelisDetalles"
             app:destination="@id/fragmentPelisDetalles" />
+        <action
+            android:id="@+id/action_pelisEnCine_to_mapa"
+            app:destination="@id/mapa" />
     </fragment>
     <fragment
         android:id="@+id/pelisPopulares"
@@ -45,4 +48,9 @@
         android:id="@+id/fragmentPelisDetalles"
         android:name="com.example.proyectopelis.Fragments.FragmentPelisDetalles"
         android:label="Detalles" />
+    <fragment
+        android:id="@+id/mapa"
+        android:name="com.example.proyectopelis.Fragments.Mapa"
+        android:label="Cines Cercanos"
+        tools:layout="@layout/fragment_mapa" />
 </navigation>

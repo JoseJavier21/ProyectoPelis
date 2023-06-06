@@ -24,16 +24,16 @@ import com.example.proyectopelis.databinding.FragmentPelisPopularesBinding
 
 class PelisPopulares : Fragment() {
 
-    private lateinit var binding:FragmentPelisPopularesBinding
-    private  lateinit var adapter: AdapterPopulares
-    private val myviewModel:ViewModel by activityViewModels()
-    private var pagina=1
+    private lateinit var binding: FragmentPelisPopularesBinding
+    private lateinit var adapter: AdapterPopulares
+    private val myviewModel: ViewModel by activityViewModels()
+    private var pagina = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding= FragmentPelisPopularesBinding.inflate(inflater,container,false)
+        binding = FragmentPelisPopularesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -62,63 +62,70 @@ class PelisPopulares : Fragment() {
                     }
                 })
             }
-
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return false
             }
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
 
-            val recyclerView=binding.rvPelisPopulares
-            recyclerView.layoutManager= StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
+        val recyclerView = binding.rvPelisPopulares
+        recyclerView.layoutManager = StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
 
-            adapter= AdapterPopulares(object : AdapterPopulares.OnItemClickListener{
-                override fun OnItemClick(resultPopulares: ResultPopulares) {
-                    findNavController().navigate(R.id.action_pelisPopulares_to_fragmentPelisDetalles)
-                }
-            })
+        adapter = AdapterPopulares(object : AdapterPopulares.OnItemClickListener {
+            override fun OnItemClick(resultPopulares: ResultPopulares) {
+                findNavController().navigate(R.id.action_pelisPopulares_to_fragmentPelisDetalles)
+            }
+        })
 
-            val layoutManager= LinearLayoutManager(requireContext())
-            recyclerView.layoutManager=layoutManager
-            recyclerView.adapter=adapter
+        val layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = adapter
 
 
-            myviewModel.pelisPopu.observe(viewLifecycleOwner){
-                val totalPaginas=it.totalPages
+        myviewModel.pelisPopu.observe(viewLifecycleOwner) {
+            val totalPaginas = it.totalPages
 
-                if (totalPaginas == 1) {
+            if (totalPaginas == 1) {
+                binding.btnIzq.visibility = View.GONE
+                binding.btnDrch.visibility = View.GONE
+            } else {
+                if (pagina == 1) {
                     binding.btnIzq.visibility = View.GONE
-                    binding.btnDrch.visibility = View.GONE
                 } else {
-                    if (pagina == 1) {
-                        binding.btnIzq.visibility = View.GONE
-                    } else {
-                        binding.btnIzq.visibility = View.VISIBLE
-                    }
-                }
-
-                if (pagina == totalPaginas) {
-                    binding.btnDrch.visibility = View.GONE
-                } else {
-                    binding.btnDrch.visibility = View.VISIBLE
-                }
-
-                binding.btnIzq.setOnClickListener {
-                    pagina--
-                    myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", pagina)
-                }
-
-                binding.btnDrch.setOnClickListener {
-                    pagina++
-                    myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", pagina)
+                    binding.btnIzq.visibility = View.VISIBLE
                 }
             }
-            myviewModel.pelisPopulares.observe(viewLifecycleOwner){
-                if (it != null) {
-                    adapter.actualizaLista(it)
-                }
-            }
-            myviewModel.getListaPopulares(idioma ="es-ES","5f7af1e971090ad23a762fcc923ac6ce", pagina = 1)
 
+            if (pagina == totalPaginas) {
+                binding.btnDrch.visibility = View.GONE
+            } else {
+                binding.btnDrch.visibility = View.VISIBLE
+            }
+
+            binding.btnIzq.setOnClickListener {
+                pagina--
+                myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", pagina)
+            }
+
+            binding.btnDrch.setOnClickListener {
+                pagina++
+                myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", pagina)
+            }
+        }
+        myviewModel.pelisPopulares.observe(viewLifecycleOwner) {
+            if (it != null) {
+                adapter.actualizaLista(it)
+            }
+        }
+        myviewModel.getListaPopulares(
+            idioma = "es-ES",
+            "5f7af1e971090ad23a762fcc923ac6ce",
+            pagina = 1
+        )
+
+        binding.swipe.setOnRefreshListener {
+            myviewModel.getListaPopulares("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+        }
     }
 }
+
