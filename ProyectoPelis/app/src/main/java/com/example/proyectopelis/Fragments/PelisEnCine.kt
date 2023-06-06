@@ -44,6 +44,7 @@ class PelisEnCine : Fragment() {
                 menuInflater.inflate(R.menu.menu_main, menu)
 
                 val menuItem = menu.findItem(R.id.app_bar_search)
+                val menuItem2 = menu.findItem(R.id.info)
                 val searchView = menuItem.actionView as SearchView
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                     override fun onQueryTextSubmit(query: String?): Boolean {
@@ -56,6 +57,9 @@ class PelisEnCine : Fragment() {
                         return true
                     }
                 })
+//                menuItem2.setOnMenuItemClickListener {
+//                    findNavController()
+//                }
             }
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return false
@@ -113,11 +117,17 @@ class PelisEnCine : Fragment() {
         }
 
         myviewModel.pelisEnCine.observe(viewLifecycleOwner){
+            binding.swipe.isRefreshing = false
             if (it != null) {
                 adapter.actualizaLista2(it)
             }
         }
 
         myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+
+        binding.swipe.setOnRefreshListener {
+            myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+
+        }
     }
 }

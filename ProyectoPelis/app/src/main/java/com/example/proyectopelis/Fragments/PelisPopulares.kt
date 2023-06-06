@@ -30,8 +30,6 @@ class PelisPopulares : Fragment() {
     private  lateinit var adapter: AdapterPopulares
     private val myviewModel:ViewModel by activityViewModels()
 
-    private lateinit var listAdapter: AdapterPopulares
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -55,9 +53,15 @@ class PelisPopulares : Fragment() {
 
 
         myviewModel.pelisPopulares.observe(viewLifecycleOwner){
+            binding.swipe.isRefreshing = false
             if (it != null) {
                 adapter.actualizaLista(it)
             }
+        }
+
+        binding.swipe.setOnRefreshListener {
+            myviewModel.getListaPopulares("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+
         }
 
         requireActivity().addMenuProvider(object : MenuProvider {
@@ -69,13 +73,13 @@ class PelisPopulares : Fragment() {
                 searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                     override fun onQueryTextSubmit(query: String?): Boolean {
 
-                        listAdapter.filter.filter(query)
+                        adapter.filter.filter(query)
                         return true
                     }
 
                     override fun onQueryTextChange(newText: String?): Boolean {
 
-                        listAdapter.filter.filter(newText)
+                        adapter.filter.filter(newText)
                         return true
                     }
                 })
