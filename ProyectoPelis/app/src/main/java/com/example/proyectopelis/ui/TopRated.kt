@@ -47,12 +47,12 @@ class TopRated : Fragment() {
                 val lupa = menuLupa.actionView as SearchView
                 lupa.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
                     override fun onQueryTextSubmit(query: String?): Boolean {
-                        // meter el filtro del adapter
+                        adapterRated.filter.filter(query)
                         return true
                     }
 
                     override fun onQueryTextChange(newText: String?): Boolean {
-                        // meter el filtro del adapter
+                        adapterRated.filter.filter(newText)
                         return true
                     }
 
