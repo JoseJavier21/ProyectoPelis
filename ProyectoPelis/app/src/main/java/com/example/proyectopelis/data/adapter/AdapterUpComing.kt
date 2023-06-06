@@ -3,19 +3,21 @@ package com.example.proyectopelis.data.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
+import android.widget.Filterable
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.proyectopelis.R
 import com.example.proyectopelis.data.network.Detalles.Genre
+import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.data.network.UpComing.UpComing
 import com.example.proyectopelis.databinding.CeldacomingBinding
 
-class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>() {
+class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>(), Filterable {
 
     private var listaOriginal = ArrayList<ResultComing?>()
-    private val copiaLista = ArrayList<ResultComing?>()
+    private var copiaLista = ArrayList<ResultComing?>()
     private val listageneros = ArrayList<Genre>()
 
     inner class CeldaComing(val binding: CeldacomingBinding):RecyclerView.ViewHolder(binding.root)
@@ -55,23 +57,22 @@ class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>() {
         notifyDataSetChanged()
     }
 
-    fun filtro(): Filter{
-        return object : Filter(){
+    override fun getFilter(): Filter {
+        return object : Filter() {
             override fun performFiltering(p0: CharSequence?): FilterResults {
-                val busqueda = p0.toString()
-
-                if (p0.isNullOrEmpty()){
+                val charFiltro = p0.toString()
+                if (charFiltro.isEmpty()) {
                     listaOriginal = copiaLista
-                }else{
+                } else {
                     listaOriginal = copiaLista.filter {
-                        it?.title?.lowercase()?.contains(p0) ?: false ||
-                                it?.originalTitle?.lowercase()?.contains(p0) ?: false
-
+                        it?.title!!.lowercase().contains(charFiltro.lowercase()) || it?.originalTitle?.lowercase()!!.contains(charFiltro.lowercase())
                     } as ArrayList<ResultComing?>
+
                 }
-                val filtrado = FilterResults()
-                filtrado.values = listaOriginal
-                return filtrado
+
+                val filterResults = FilterResults()
+                filterResults.values = copiaLista
+                return filterResults
             }
 
             override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
