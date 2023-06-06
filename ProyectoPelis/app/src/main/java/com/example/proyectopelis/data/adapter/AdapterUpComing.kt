@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.proyectopelis.R
+import com.example.proyectopelis.data.network.Detalles.Genre
 import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.data.network.UpComing.UpComing
 import com.example.proyectopelis.databinding.CeldacomingBinding
@@ -15,6 +16,7 @@ class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>() {
 
     private var listaOriginal = ArrayList<ResultComing?>()
     private val copiaLista = ArrayList<ResultComing?>()
+    private val listageneros = ArrayList<Genre>()
 
     inner class CeldaComing(val binding: CeldacomingBinding):RecyclerView.ViewHolder(binding.root)
 
@@ -34,10 +36,9 @@ class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>() {
         val context = holder.itemView.context
 
         holder.binding.titleComing.text = comig?.title
-        holder.binding.puntuComing.text = comig?.voteAverage.toString()
         holder.binding.idiomaComing.text = comig?.originalLanguage
-        //holder.binding.genderComing.text revisar para terminar de ponerlo
-        holder.binding.popuComing.text = comig?.popularity.toString()
+        //holder.binding.genderComing.text = comig?.genreIds.toString()
+        holder.binding.popuComing.text = comig?.popularity.toString() + " personas"
         Glide.with(context).load("https://image.tmdb.org/t/p/original/${comig?.posterPath}").into(holder.binding.imgComig)
 
         holder.itemView.setOnClickListener {
