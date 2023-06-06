@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
-@Parcelize
+
 data class Top_rated(
     @field:Json(name = "page")
     val page: Int?,
@@ -15,4 +15,4 @@ data class Top_rated(
     val totalPages: Int?,
     @field:Json(name = "total_results")
     val totalResults: Int?
-) : Parcelable
+)

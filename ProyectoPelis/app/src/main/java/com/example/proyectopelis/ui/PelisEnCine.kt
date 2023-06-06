@@ -8,13 +8,17 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+<<<<<<< HEAD
+import androidx.fragment.app.activityViewModels
+import androidx.appcompat.widget.SearchView
+import androidx.core.view.MenuProvider
+=======
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.activityViewModels
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.proyectopelis.R
 import com.example.proyectopelis.ViewModel
 import com.example.proyectopelis.data.adapter.AdapterEnCines
@@ -23,10 +27,24 @@ import com.example.proyectopelis.databinding.FragmentPelisEnCineBinding
 
 class PelisEnCine : Fragment() {
 
+<<<<<<< HEAD:ProyectoPelis/app/src/main/java/com/example/proyectopelis/Fragments/PelisEnCine.kt
     private lateinit var binding: FragmentPelisEnCineBinding
     private lateinit var adapter: AdapterEnCines
     private val myviewModel: ViewModel by activityViewModels()
     private var pagina = 1
+=======
+    private lateinit var binding:FragmentPelisEnCineBinding
+<<<<<<< HEAD
+    //private  lateinit var adapter:AdapterEnCines
+    private  val myviewModel by activityViewModels<ViewModel> {
+        ViewModel.MyViewModelFactory(requireContext())
+    }
+=======
+    private lateinit var adapter:AdapterEnCines
+    private  val myviewModel:ViewModel by activityViewModels()
+    private  var pagina=1
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
+>>>>>>> 4e1fba6d98173df58cd6e8ab4e06be1258892add:ProyectoPelis/app/src/main/java/com/example/proyectopelis/ui/PelisEnCine.kt
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,6 +56,34 @@ class PelisEnCine : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+<<<<<<< HEAD
+
+        val recyclerView=binding.rvPelisCine
+
+        val adapter=AdapterEnCines(object : AdapterEnCines.OnItemClickListener{
+            override fun OnItemClick(resultEnCine: ResultEnCine) {
+                myviewModel.peliSelecionada.value = resultEnCine
+                findNavController().navigate(R.id.action_pelisEnCine_to_fragmentPelisDetalles)
+            }
+        })
+
+        val layoutManager=LinearLayoutManager(requireContext())
+
+        recyclerView.layoutManager=layoutManager
+        recyclerView.adapter=adapter
+
+        myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+
+        //myviewModel.getPelisDetalles("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 634649)
+
+        myviewModel.pelisEnCine.observe(viewLifecycleOwner){
+            if (it != null) {
+                adapter.actualizaLista2(it)
+            }
+        }
+
+            requireActivity().addMenuProvider(object : MenuProvider {
+=======
 
         myviewModel.pelisEnCine.observe(viewLifecycleOwner) {
             adapter.actualizaLista2(it as ArrayList<ResultEnCine?>)
@@ -45,6 +91,7 @@ class PelisEnCine : Fragment() {
 
         requireActivity().addMenuProvider(object : MenuProvider {
 
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
             override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
                 menuInflater.inflate(R.menu.menu_main, menu)
 
@@ -74,6 +121,7 @@ class PelisEnCine : Fragment() {
         val recyclerView = binding.rvPelisCine
         recyclerView.layoutManager = StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
 
+<<<<<<< HEAD:ProyectoPelis/app/src/main/java/com/example/proyectopelis/Fragments/PelisEnCine.kt
         adapter = AdapterEnCines(object : AdapterEnCines.OnItemClickListener {
             override fun OnItemClick(resultEnCine: ResultEnCine) {
                 findNavController().navigate(R.id.action_pelisEnCine_to_fragmentPelisDetalles)
@@ -84,7 +132,27 @@ class PelisEnCine : Fragment() {
         val layoutManager = LinearLayoutManager(requireContext())
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
+=======
+<<<<<<< HEAD
 
+=======
+        val recyclerView=binding.rvPelisCine
+        recyclerView.layoutManager=StaggeredGridLayoutManager(1,RecyclerView.VERTICAL)
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
+
+        //recyclerView.layoutManager=StaggeredGridLayoutManager(1,RecyclerView.VERTICAL)
+
+
+
+
+
+
+<<<<<<< HEAD
+
+
+>>>>>>> 4e1fba6d98173df58cd6e8ab4e06be1258892add:ProyectoPelis/app/src/main/java/com/example/proyectopelis/ui/PelisEnCine.kt
+
+=======
 
         myviewModel.pelisCine.observe(viewLifecycleOwner) {
             val totalPaginas = it.totalPages
@@ -123,10 +191,15 @@ class PelisEnCine : Fragment() {
                 adapter.actualizaLista2(it)
             }
         }
+<<<<<<< HEAD:ProyectoPelis/app/src/main/java/com/example/proyectopelis/Fragments/PelisEnCine.kt
         myviewModel.getListaEnCines("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
 
         binding.swipe.setOnRefreshListener {
             myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
         }
+=======
+        myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+>>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
+>>>>>>> 4e1fba6d98173df58cd6e8ab4e06be1258892add:ProyectoPelis/app/src/main/java/com/example/proyectopelis/ui/PelisEnCine.kt
     }
 }

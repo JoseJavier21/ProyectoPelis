@@ -33,10 +33,17 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration=AppBarConfiguration(
             setOf(
+<<<<<<< HEAD
                 R.id.upComing,
                 R.id.topRated,
                 R.id.pelisPopulares,
                 R.id.pelisEnCine
+=======
+                R.id.pelisEnCine,
+                R.id.pelisPopulares,
+                R.id.topRated,
+                R.id.upComing
+>>>>>>> 4e1fba6d98173df58cd6e8ab4e06be1258892add
             )
         )
 
