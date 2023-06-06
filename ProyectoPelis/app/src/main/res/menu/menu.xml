@@ -2,19 +2,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/fragment1"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Frag1" />
+        android:id="@+id/pelisEnCine"
+        android:icon="@drawable/baseline_local_movies_24"
+        android:title="Cartelera" />
     <item
-        android:id="@+id/fragment2"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Frag2" />
+        android:id="@+id/pelisPopulares"
+        android:icon="@drawable/baseline_moving_24"
+        android:title="Populares" />
     <item
-        android:id="@+id/fragment3"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Frag3" />
+        android:id="@+id/topRated"
+        android:icon="@drawable/baseline_star_24"
+        android:title="Mejor Valoradas" />
     <item
-        android:id="@+id/fragment4"
-        android:icon="@drawable/ic_android_black_24dp"
-        android:title="Frag4" />
+        android:id="@+id/upComing"
+        android:icon="@drawable/baseline_movie_24"
+        android:title="Proximamente" />
+
 </menu>
