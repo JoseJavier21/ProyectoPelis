@@ -65,6 +65,39 @@ class TopRated : Fragment() {
 
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
 
+        var actual = 1
+
+        myViewModel.Rated.observe(viewLifecycleOwner){
+            val paginas = it?.totalPages
+
+
+            when(actual){
+                1 -> {
+                    binding.buAtras.visibility = View.GONE
+                    binding.buprox.visibility = View.VISIBLE
+                    }
+                2 -> {
+                    binding.buAtras.visibility = View.VISIBLE
+                }
+                else -> {
+                    if(paginas == actual){
+                        binding.buprox.visibility = View.GONE
+                        binding.buAtras.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
+
+        binding.buAtras.setOnClickListener {
+            actual--
+            myViewModel.getListaRated("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", actual)
+        }
+
+        binding.buprox.setOnClickListener {
+            actual++
+            myViewModel.getListaRated("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", actual)
+        }
+
 
         binding.recyclerRated.layoutManager = LinearLayoutManager(requireContext())
         adapterRated = AdapterRated()
@@ -76,7 +109,7 @@ class TopRated : Fragment() {
             }
         }
 
-        myViewModel.getListaRated("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
+        myViewModel.getListaRated("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", actual)
 
 
     }

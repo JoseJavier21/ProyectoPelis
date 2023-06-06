@@ -60,6 +60,40 @@ class UpComing : Fragment() {
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
 
+        var actual = 1
+
+        myViewModel.Rated.observe(viewLifecycleOwner){
+            val paginas = it?.totalPages
+
+
+            when(actual){
+                1 -> {
+                    binding.buAtras.visibility = View.GONE
+                    binding.buprox.visibility = View.VISIBLE
+                }
+                2 -> {
+                    binding.buAtras.visibility = View.VISIBLE
+                }
+                else -> {
+
+                    if(paginas == actual){
+                        binding.buprox.visibility = View.GONE
+                        binding.buAtras.visibility = View.VISIBLE
+                    }
+                }
+            }
+        }
+
+        binding.buAtras.setOnClickListener {
+            actual--
+            myViewModel.getListaComing("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", actual)
+        }
+
+        binding.buprox.setOnClickListener {
+            actual++
+            myViewModel.getListaComing("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", actual)
+        }
+
         binding.recyclerComing.layoutManager = LinearLayoutManager(requireContext())
         adapter = AdapterUpComing()
         binding.recyclerComing.adapter = adapter
