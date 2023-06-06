@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/topRated"
-        android:name="com.example.proyectopelis.Fragments.TopRated"
+        android:name="com.example.proyectopelis.ui.TopRated"
         android:label="Mejor Valoradas"
         tools:layout="@layout/fragment_top_rated">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/upComing"
-        android:name="com.example.proyectopelis.Fragments.UpComing"
+        android:name="com.example.proyectopelis.ui.UpComing"
         android:label="Proximamente"
         tools:layout="@layout/fragment_up_coming">
         <action
