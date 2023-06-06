@@ -59,7 +59,6 @@ class Login : AppCompatActivity() {
         }
 
         binding.invitado.setOnClickListener {
-
             val intent = Intent(this,MainActivity::class.java)
             pref.edit().clear().apply()
             startActivity(intent)
