@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
 
 class ViewModel(val context: Context) : ViewModel() {
 
-    private val repository = Repositorio()
+    private val repository = Repositorio(context)
     val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
     val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
     val pelisCine=MutableLiveData<PelisEnCine>()

@@ -38,36 +38,6 @@ class PelisPopulares : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val recyclerView=binding.rvPelisPopulares
-        recyclerView.layoutManager= StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
-        adapter= AdapterPopulares(object : AdapterPopulares.OnItemClickListener{
-            override fun OnItemClick(resultPopulares: ResultPopulares) {
-                findNavController().navigate(R.id.action_pelisPopulares_to_fragmentPelisDetalles)
-            }
-        })
-
-        val layoutManager= LinearLayoutManager(requireContext())
-        recyclerView.layoutManager=layoutManager
-        recyclerView.adapter=adapter
-
-
-        myviewModel.pelisPopulares.observe(viewLifecycleOwner){
-            if (it != null) {
-                adapter.actualizaLista(it)
-            }
-        }
-
-        requireActivity().addMenuProvider(object : MenuProvider {
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-                menuInflater.inflate(R.menu.menu_main, menu)
-
-                val menuItem = menu.findItem(R.id.app_bar_search)
-                val searchView = menuItem.actionView as SearchView
-                searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-                    override fun onQueryTextSubmit(query: String?): Boolean {
-
-                        listAdapter.filter.filter(query)
-                        return true
         super.onViewCreated(view, savedInstanceState)
 
         myviewModel.pelisPopulares.observe(viewLifecycleOwner) {
@@ -92,6 +62,7 @@ class PelisPopulares : Fragment() {
                     }
                 })
             }
+
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return false
             }
@@ -104,6 +75,7 @@ class PelisPopulares : Fragment() {
         adapter = AdapterPopulares(object : AdapterPopulares.OnItemClickListener {
             override fun OnItemClick(resultPopulares: ResultPopulares) {
                 findNavController().navigate(R.id.action_pelisPopulares_to_fragmentPelisDetalles)
+                myviewModel.selectPeli2(resultPopulares)
             }
         })
 
@@ -151,26 +123,12 @@ class PelisPopulares : Fragment() {
         myviewModel.pelisPopulares.observe(viewLifecycleOwner) {
             if (it != null) {
                 adapter.actualizaLista(it)
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-
-                return false
-            }
-
-        }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
-
-        myviewModel.getListaPopulares(idioma ="es-ES","5f7af1e971090ad23a762fcc923ac6ce", pagina = 1)
-
-            myviewModel.pelisPopulares.observe(viewLifecycleOwner){
-                if (it != null) {
-                    adapter.actualizaLista(it)
-                }
             }
         }
         myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
 
         binding.swipe.setOnRefreshListener {
-            myviewModel.getListaPopulares("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+            myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
         }
     }
 }

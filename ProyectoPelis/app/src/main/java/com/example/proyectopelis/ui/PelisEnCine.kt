@@ -39,26 +39,8 @@ class PelisEnCine : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val recyclerView = binding.rvPelisCine
-
-        val adapter = AdapterEnCines(object : AdapterEnCines.OnItemClickListener {
-            override fun OnItemClick(resultEnCine: ResultEnCine) {
-                myviewModel.peliSelecionada.value = resultEnCine
-                findNavController().navigate(R.id.action_pelisEnCine_to_fragmentPelisDetalles)
-            }
-        })
-
-        val layoutManager = LinearLayoutManager(requireContext())
-
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = adapter
-
-        myviewModel.getListaEnCines("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
-
-        myviewModel.pelisEnCine.observe(viewLifecycleOwner) {
-            if (it != null) {
-                adapter.actualizaLista2(it)
-            }
+        myviewModel.pelisEnCine.observe(viewLifecycleOwner){
+            adapter.actualizaLista2(it as ArrayList<ResultEnCine?>)
         }
 
         requireActivity().addMenuProvider(object : MenuProvider {
