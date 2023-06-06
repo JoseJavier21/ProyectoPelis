@@ -18,12 +18,13 @@ import kotlinx.coroutines.launch
 
 class ViewModel(val context: Context) : ViewModel() {
 
-    private val repository = Repositorio(context)
-    val pelisEnCine = MutableLiveData<List<ResultEnCine?>?>()
-    val pelisPopulares = MutableLiveData<List<ResultPopulares?>?>()
-    val pelisCine = MutableLiveData<PelisEnCine>()
-    val pelisPopu = MutableLiveData<PelisPopulares>()
-    val peliSelecionada = MutableLiveData<ResultEnCine?>()
+    private val repository = Repositorio()
+    val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
+    val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
+    val pelisCine=MutableLiveData<PelisEnCine>()
+    val pelisPopu=MutableLiveData<PelisPopulares>()
+    val peliSelecionada1= MutableLiveData<ResultEnCine?>()
+    val peliSelecionada2= MutableLiveData<ResultPopulares?>()
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
@@ -71,6 +72,7 @@ class ViewModel(val context: Context) : ViewModel() {
         }
     }
 
+
     fun getPelisVideos(idioma: String, key: String, idpeli: Int) {
         CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getPelisVideos(idioma, key, idpeli)
@@ -80,9 +82,12 @@ class ViewModel(val context: Context) : ViewModel() {
             }
         }
 
-        fun selectPeli(resultEnCine: ResultEnCine) {
-            peliSelecionada.value = resultEnCine
-        }
+    fun selectPeli(resultEnCine: ResultEnCine){
+        peliSelecionada1.value=resultEnCine
+    }
+    fun selectPeli2(resultPopulares: ResultPopulares){
+        peliSelecionada2.value=resultPopulares
+    }
 
         class MyViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {

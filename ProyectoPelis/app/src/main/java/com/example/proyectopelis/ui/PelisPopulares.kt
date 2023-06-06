@@ -8,15 +8,9 @@ import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-<<<<<<< HEAD
 import androidx.fragment.app.activityViewModels
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
-=======
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuProvider
-import androidx.fragment.app.activityViewModels
->>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -30,25 +24,10 @@ import com.example.proyectopelis.databinding.FragmentPelisPopularesBinding
 
 class PelisPopulares : Fragment() {
 
-<<<<<<< HEAD:ProyectoPelis/app/src/main/java/com/example/proyectopelis/Fragments/PelisPopulares.kt
     private lateinit var binding: FragmentPelisPopularesBinding
     private lateinit var adapter: AdapterPopulares
     private val myviewModel: ViewModel by activityViewModels()
     private var pagina = 1
-=======
-    private lateinit var binding:FragmentPelisPopularesBinding
-    private  lateinit var adapter: AdapterPopulares
-<<<<<<< HEAD
-    private val myviewModel by activityViewModels<ViewModel> {
-        ViewModel.MyViewModelFactory(requireContext())
-    }
-
-    private lateinit var listAdapter: AdapterPopulares
-=======
-    private val myviewModel:ViewModel by activityViewModels()
-    private var pagina=1
->>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
->>>>>>> 4e1fba6d98173df58cd6e8ab4e06be1258892add:ProyectoPelis/app/src/main/java/com/example/proyectopelis/ui/PelisPopulares.kt
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +38,6 @@ class PelisPopulares : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-<<<<<<< HEAD
         val recyclerView=binding.rvPelisPopulares
         recyclerView.layoutManager= StaggeredGridLayoutManager(1, RecyclerView.VERTICAL)
         adapter= AdapterPopulares(object : AdapterPopulares.OnItemClickListener{
@@ -90,7 +68,6 @@ class PelisPopulares : Fragment() {
 
                         listAdapter.filter.filter(query)
                         return true
-=======
         super.onViewCreated(view, savedInstanceState)
 
         myviewModel.pelisPopulares.observe(viewLifecycleOwner) {
@@ -145,16 +122,13 @@ class PelisPopulares : Fragment() {
                 if (pagina == 1) {
                     binding.btnIzq.visibility = View.GONE
                 } else {
-<<<<<<< HEAD:ProyectoPelis/app/src/main/java/com/example/proyectopelis/Fragments/PelisPopulares.kt
                     binding.btnIzq.visibility = View.VISIBLE
-=======
+
                     if (pagina == 1) {
                         binding.btnIzq.visibility = View.GONE
                     } else {
                         binding.btnIzq.visibility = View.VISIBLE
->>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
                     }
->>>>>>> 4e1fba6d98173df58cd6e8ab4e06be1258892add:ProyectoPelis/app/src/main/java/com/example/proyectopelis/ui/PelisPopulares.kt
                 }
             }
 
@@ -173,13 +147,10 @@ class PelisPopulares : Fragment() {
                 pagina++
                 myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", pagina)
             }
-<<<<<<< HEAD:ProyectoPelis/app/src/main/java/com/example/proyectopelis/Fragments/PelisPopulares.kt
         }
         myviewModel.pelisPopulares.observe(viewLifecycleOwner) {
             if (it != null) {
                 adapter.actualizaLista(it)
-=======
-<<<<<<< HEAD
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
 
@@ -189,24 +160,18 @@ class PelisPopulares : Fragment() {
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
 
         myviewModel.getListaPopulares(idioma ="es-ES","5f7af1e971090ad23a762fcc923ac6ce", pagina = 1)
-=======
+
             myviewModel.pelisPopulares.observe(viewLifecycleOwner){
                 if (it != null) {
                     adapter.actualizaLista(it)
                 }
->>>>>>> 4e1fba6d98173df58cd6e8ab4e06be1258892add:ProyectoPelis/app/src/main/java/com/example/proyectopelis/ui/PelisPopulares.kt
             }
         }
-        myviewModel.getListaPopulares(
-            idioma = "es-ES",
-            "5f7af1e971090ad23a762fcc923ac6ce",
-            pagina = 1
-        )
+        myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
 
         binding.swipe.setOnRefreshListener {
             myviewModel.getListaPopulares("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
         }
->>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
     }
 }
 
