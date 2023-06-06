@@ -23,7 +23,8 @@ class ViewModel(): ViewModel() {
     val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
     val pelisCine=MutableLiveData<PelisEnCine>()
     val pelisPopu=MutableLiveData<PelisPopulares>()
-    val peliSelecionada= MutableLiveData<ResultEnCine?>()
+    val peliSelecionada1= MutableLiveData<ResultEnCine?>()
+    val peliSelecionada2= MutableLiveData<ResultPopulares?>()
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
@@ -72,7 +73,10 @@ class ViewModel(): ViewModel() {
     }
 
     fun selectPeli(resultEnCine: ResultEnCine){
-        peliSelecionada.value=resultEnCine
+        peliSelecionada1.value=resultEnCine
+    }
+    fun selectPeli2(resultPopulares: ResultPopulares){
+        peliSelecionada2.value=resultPopulares
     }
 
     class MyViewModelFactory(private val context: Context): ViewModelProvider.Factory {

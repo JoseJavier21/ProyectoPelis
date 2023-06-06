@@ -74,6 +74,7 @@ class PelisPopulares : Fragment() {
         adapter = AdapterPopulares(object : AdapterPopulares.OnItemClickListener {
             override fun OnItemClick(resultPopulares: ResultPopulares) {
                 findNavController().navigate(R.id.action_pelisPopulares_to_fragmentPelisDetalles)
+                myviewModel.selectPeli2(resultPopulares)
             }
         })
 
@@ -117,11 +118,7 @@ class PelisPopulares : Fragment() {
                 adapter.actualizaLista(it)
             }
         }
-        myviewModel.getListaPopulares(
-            idioma = "es-ES",
-            "5f7af1e971090ad23a762fcc923ac6ce",
-            pagina = 1
-        )
+        myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
 
         binding.swipe.setOnRefreshListener {
             myviewModel.getListaPopulares("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
