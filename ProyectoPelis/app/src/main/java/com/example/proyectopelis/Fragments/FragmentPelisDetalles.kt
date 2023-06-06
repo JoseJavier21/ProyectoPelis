@@ -27,6 +27,7 @@ class FragmentPelisDetalles : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         /*viewModel.getPelisPopulares.observe(viewLifecycleOwnere) {
             viewModel.getPelisVideos("481ea8c2e7722a6ef472f71742f4b90c", "es-ES", it.results.id)
             viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
