@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectopelis.R
 import com.example.proyectopelis.ViewModel
@@ -55,6 +56,9 @@ class UpComing : Fragment() {
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                if (menuItem.itemId==R.id.info){
+                    findNavController().navigate(R.id.action_upComing_to_mapa)
+                }
                 return false
             }
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)
