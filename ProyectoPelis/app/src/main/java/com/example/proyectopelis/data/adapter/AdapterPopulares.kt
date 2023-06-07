@@ -14,12 +14,7 @@ class AdapterPopulares (val listener: OnItemClickListener):
     RecyclerView.Adapter<AdapterPopulares.CeldaHolder>(), Filterable {
 
     private var listaPopulares=ArrayList<ResultPopulares?>()
-<<<<<<< HEAD
     private var listaCopia = ArrayList<ResultPopulares?>()
-
-=======
-    private var listaCopia =ArrayList<ResultPopulares?>()
->>>>>>> 4809d6214505be572d7e32dc00ee585e89dbcff2
 
     interface OnItemClickListener{
         fun OnItemClick(resultPopulares: ResultPopulares)
@@ -35,7 +30,8 @@ class AdapterPopulares (val listener: OnItemClickListener):
 
     override fun onBindViewHolder(holder: CeldaHolder, position: Int) {
 
-        val populares: ResultPopulares? =listaPopulares?.get(position)
+        val populares =listaPopulares?.get(position)
+
         val pathPoster=populares?.posterPath
         Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/original/${pathPoster}").into(holder.binding.imagenPeli)
 

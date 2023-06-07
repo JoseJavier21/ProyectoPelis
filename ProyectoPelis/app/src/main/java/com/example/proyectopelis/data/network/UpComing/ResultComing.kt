@@ -5,7 +5,7 @@ import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
-@Parcelize
+
 data class ResultComing(
     @field:Json(name = "adult")
     val adult: Boolean?,
@@ -35,4 +35,4 @@ data class ResultComing(
     val voteAverage: Double?,
     @field:Json(name = "vote_count")
     val voteCount: Int?
-) : Parcelable
+)

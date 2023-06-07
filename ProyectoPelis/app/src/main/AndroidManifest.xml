@@ -14,13 +14,17 @@
         android:theme="@style/Theme.ProyectoPelis"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".Login"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+        <activity android:name=".MainActivity"/>
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyBnOH8ITh6vCk0CvT4Ust91oVHTOHCSskg" />
+    </application>
 </manifest>
