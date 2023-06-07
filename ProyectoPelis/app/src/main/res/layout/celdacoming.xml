@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center|top">
+    android:layout_gravity="center|top"
+    android:background="#000000">
 
     <ImageView
         android:id="@+id/imgComig"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="24dp"
         android:adjustViewBounds="true"
         android:cropToPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,8 +23,9 @@
         android:id="@+id/titleComing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="8dp"
         android:text="titulo"
+        android:textColor="#FFFFFF"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/imgComig"
@@ -34,8 +36,9 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:text="Idioma:"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/imgComig"
         app:layout_constraintTop_toBottomOf="@+id/titleComing" />
@@ -46,6 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="idioma"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/textView8"
         app:layout_constraintStart_toEndOf="@+id/textView8"
         app:layout_constraintTop_toTopOf="@+id/textView8" />
@@ -56,6 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:text="Popularidad:"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textView8"
         app:layout_constraintTop_toBottomOf="@+id/idiomaComing" />
@@ -66,6 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="popularidad"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="@+id/textView6" />
@@ -75,8 +81,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:text="Genero:"
+        android:textColor="#FFFCFC"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/textView6"
@@ -88,6 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="Accion"
+        android:textColor="#FFF9F9"
         app:layout_constraintBottom_toBottomOf="@+id/textView7"
         app:layout_constraintStart_toEndOf="@+id/textView7"
         app:layout_constraintTop_toTopOf="@+id/textView7" />
