@@ -9,7 +9,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.proyectopelis.R
 import com.example.proyectopelis.databinding.FragmentPelisDetallesBinding
 
 class FragmentPelisDetalles : Fragment() {
