@@ -1,25 +1,13 @@
 package com.example.proyectopelis.data.network
 
-<<<<<<< HEAD
-import com.example.proyectopelis.data.network.TopRated.ResultRated
-import com.example.proyectopelis.data.network.UpComing.ResultComing
-=======
 
->>>>>>> origin/ramaDePrueba
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
-import com.example.proyectopelis.data.network.TopRated.ResultRated
-import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
-<<<<<<< HEAD
 import com.example.proyectopelis.data.network.Videos.PelisVideos
-import com.example.proyectopelis.data.network.Popular.PelisPopulares
-=======
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.TopRated.Top_rated
 import com.example.proyectopelis.data.network.UpComing.UpComing
-import com.example.proyectopelis.data.network.Videos.PelisVideos
->>>>>>> origin/ramaDePrueba
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -66,21 +54,15 @@ interface ApiService {
         @Query("language") idioma : String,
         @Path("movie_id") idpeli: Int
     ) : Response<PelisDetalles>
-<<<<<<< HEAD
 
-    @Headers("Content-Type: application/json")
-=======
-//
+
     @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
->>>>>>> origin/ramaDePrueba
     @GET("movie/{movie_id}/images")
     suspend fun damePelisImagenes(
         @Query("language") idioma : String,
         @Path("movie_id") idpeli: Int
     ) : Response<PelisImagenes>
-<<<<<<< HEAD
-=======
-//
+
     @Headers("Content-Type: application/json","api-key: 5f7af1e971090ad23a762fcc923ac6ce")
     @GET("movie/{movie_id}/videos")
     suspend fun damePelisVideos(
@@ -88,5 +70,5 @@ interface ApiService {
         @Path("movie_id") idpeli: Int
     ) : Response<PelisVideos>
 
->>>>>>> origin/ramaDePrueba
+
 }

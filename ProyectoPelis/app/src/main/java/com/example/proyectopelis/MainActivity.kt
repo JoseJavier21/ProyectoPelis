@@ -33,17 +33,10 @@ class MainActivity : AppCompatActivity() {
 
         val appBarConfiguration=AppBarConfiguration(
             setOf(
-<<<<<<< HEAD
                 R.id.upComing,
                 R.id.topRated,
                 R.id.pelisPopulares,
                 R.id.pelisEnCine
-=======
-                R.id.pelisEnCine,
-                R.id.pelisPopulares,
-                R.id.topRated,
-                R.id.upComing
->>>>>>> origin/ramaDePrueba
             )
         )
 
@@ -55,10 +48,8 @@ class MainActivity : AppCompatActivity() {
 
 
     override fun onSupportNavigateUp(): Boolean {
-
         val navController=findNavController(R.id.fragmentContainerView)
         return navController.navigateUp(appBarConfiguration)||super.onSupportNavigateUp()
-
     }
 
 
