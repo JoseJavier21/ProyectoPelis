@@ -14,8 +14,8 @@ import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.data.network.UpComing.ResultComing
-import com.example.proyectopelis.ui.TopRated
 import com.example.proyectopelis.ui.UpComing
+import com.example.proyectopelis.data.network.TopRated.Top_rated
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -33,7 +33,7 @@ class ViewModel(val context: Context) : ViewModel() {
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
     val LivePeliRated=MutableLiveData<List<ResultRated?>?>()
-    val Rated=MutableLiveData<TopRated?>()
+    val Rated=MutableLiveData<Top_rated?>()
     val Coming=MutableLiveData<UpComing?>()
     val livePeliComing=MutableLiveData<List<ResultComing?>?>()
 
