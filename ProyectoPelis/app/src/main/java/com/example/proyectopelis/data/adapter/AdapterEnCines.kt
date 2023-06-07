@@ -38,7 +38,6 @@ class AdapterEnCines (val listener:OnItemClickListener):
         holder.binding.nPeli.text=enCine?.title
         holder.binding.flanzamiento.text=enCine?.releaseDate
         holder.binding.mediaVoto.text=enCine?.voteAverage.toString()
-
         holder.itemView.setOnClickListener {
             if (enCine != null) {
                 listener.OnItemClick(enCine)
