@@ -29,13 +29,13 @@ class FragmentPelisDetalles : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.peliSelecionada.observe(viewLifecycleOwner) {
+        viewModel.peliSelecionada1.observe(viewLifecycleOwner) {
           when {
               it != null -> {
                   it.id?.let { it1 ->
-                      viewModel.getPelisDetalles("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
-                      viewModel.getPelisVideos("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
-                      viewModel.getPelisImagenes("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
+                      viewModel.getPelisDetalles(it1,"es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                      viewModel.getPelisVideos(it1,"es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                      viewModel.getPelisImagenes(it1,"es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
                   }
                   viewModel.liveDataPelisDetalles.observe(viewLifecycleOwner) {
                       if (it != null) {
@@ -53,14 +53,13 @@ class FragmentPelisDetalles : Fragment() {
                               genresText.deleteCharAt(genresText.length - 1)
                           }
                           binding.genres.text = genresText.toString()
-                          //binding.video.text = "https://image.tmdb.org/t/p/original" + it.backdrop_path
+                          binding.video.text = "https://image.tmdb.org/t/p/original" + it.backdrop_path
                       }
                   }
 
                   viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
                       if (it != null) {
-                          binding.video.text =
-                              "https://www.youtube.com/watch?v=" + it.results.get(0).key
+                          binding.video.text = "https://www.youtube.com/watch?v=" + it.results.get(0).key
                       }
                   }
 
