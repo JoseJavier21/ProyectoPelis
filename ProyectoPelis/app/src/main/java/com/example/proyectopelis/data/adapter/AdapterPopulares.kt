@@ -14,7 +14,7 @@ class AdapterPopulares (val listener: OnItemClickListener):
     RecyclerView.Adapter<AdapterPopulares.CeldaHolder>(), Filterable {
 
     private var listaPopulares=ArrayList<ResultPopulares?>()
-    private var listaCopia =ArrayList<ResultPopulares?>()
+    private var listaCopia = ArrayList<ResultPopulares?>()
 
     interface OnItemClickListener{
         fun OnItemClick(resultPopulares: ResultPopulares)

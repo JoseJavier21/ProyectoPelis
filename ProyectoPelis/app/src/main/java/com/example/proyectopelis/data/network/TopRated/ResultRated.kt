@@ -5,17 +5,16 @@ import com.squareup.moshi.Json
 import kotlinx.parcelize.Parcelize
 import android.os.Parcelable
 
-@Parcelize
 data class ResultRated(
-    @field:Json(name = "adult")
+    @field: Json(name = "adult")
     val adult: Boolean?,
-    @field:Json(name = "backdrop_path")
+    @field: Json(name = "backdrop_path")
     val backdropPath: String?,
-    @field:Json(name = "genre_ids")
+    @field: Json(name = "genre_ids")
     val genreIds: List<Int?>?,
-    @field:Json(name = "id")
+    @field: Json(name = "id")
     val id: Int?,
-    @field:Json(name = "original_language")
+    @field: Json(name = "original_language")
     val originalLanguage: String?,
     @field:Json(name = "original_title")
     val originalTitle: String?,
@@ -35,4 +34,4 @@ data class ResultRated(
     val voteAverage: Double?,
     @field:Json(name = "vote_count")
     val voteCount: Int?
-) : Parcelable
+)

@@ -8,9 +8,9 @@ class Repositorio {
 
     suspend fun getPelisPopulares(idioma: String,apikey:String,pagina: Int)=retrofit.getPelisPopulares(idioma,apikey, pagina)
 
-    suspend fun getRated(idioma: String, pagina: Int) = retrofit.getRated(idioma, pagina)
+    suspend fun getRated(idioma: String,apikey: String, pagina: Int) = retrofit.getRated(idioma, apikey, pagina)
 
-    suspend fun getComing(idioma: String, pagina: Int) = retrofit.getComing(idioma, pagina)
+    suspend fun getComing(idioma: String,apikey: String, pagina: Int) = retrofit.getComing(idioma,apikey, pagina)
 
     suspend fun getPelisDetalles(idioma: String, idpeli: Int) = retrofit.damePelisDetalles(idioma, idpeli)
 

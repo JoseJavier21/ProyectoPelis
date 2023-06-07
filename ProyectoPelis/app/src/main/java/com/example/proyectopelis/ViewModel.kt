@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModel
-import com.example.proyectopelis.Fragments.UpComing
 import com.example.proyectopelis.data.network.Repositorio
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
@@ -16,6 +15,7 @@ import com.example.proyectopelis.data.network.Popular.ResultPopulares
 import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.data.network.TopRated.Top_rated
 import com.example.proyectopelis.data.network.UpComing.ResultComing
+import com.example.proyectopelis.data.network.UpComing.UpComing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -38,6 +38,7 @@ class ViewModel(): ViewModel() {
     val livePeliComing=MutableLiveData<List<ResultComing?>?>()
 
 
+
     fun getListaEnCines(idioma: String,apikey: String,pagina:Int){
         CoroutineScope(Dispatchers.IO).launch {
             val response=repository.getPelisEnCines(idioma,apikey,pagina)
@@ -58,6 +59,31 @@ class ViewModel(): ViewModel() {
                 pelisPopu.postValue(miRespuesta!!)
             }
         }
+    }
+
+    fun getListaComing(idioma: String, apikey: String, pagina: Int){
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getComing(idioma,apikey,pagina)
+            if(response.isSuccessful){
+                val respuesta = response.body()
+                livePeliComing.postValue(respuesta?.resultComings)
+                Coming.postValue(respuesta!!)
+            }
+        }
+    }
+
+    fun getListaRated(idioma: String, apikey: String, pagina: Int){
+
+        CoroutineScope(Dispatchers.IO).launch{
+            val response = repository.getRated(idioma, apikey, pagina)
+            if (response.isSuccessful){
+                val respuesta = response.body()
+                LivePeliRated.postValue(respuesta?.resultRateds)
+                Rated.postValue(respuesta!!)
+            }
+        }
+
     }
 
     fun getPelisDetalles(idioma: String, idpeli: Int) {
