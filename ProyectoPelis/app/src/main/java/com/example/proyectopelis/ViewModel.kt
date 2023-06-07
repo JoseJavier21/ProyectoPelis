@@ -29,6 +29,8 @@ class ViewModel(): ViewModel() {
     val pelisPopu=MutableLiveData<PelisPopulares>()
     val peliSelecionada1= MutableLiveData<ResultEnCine?>()
     val peliSelecionada2= MutableLiveData<ResultPopulares?>()
+    val peliSelecionada3=MutableLiveData<ResultRated?>()
+    val peliSelecionada4=MutableLiveData<ResultComing?>()
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
