@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="puntuacion"
-        android:textColor="#D5E815"
+        android:textColor="#CDDC39"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
@@ -58,12 +58,12 @@
         android:id="@+id/nombrePeli"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="2dp"
         android:text="titulo"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/imgpeli"
         app:layout_constraintTop_toBottomOf="@+id/imgpeli" />
 
     <TextView
