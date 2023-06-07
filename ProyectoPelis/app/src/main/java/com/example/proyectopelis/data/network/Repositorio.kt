@@ -14,10 +14,10 @@ class Repositorio(val context: Context) {
 
     suspend fun getComing(idioma: String,apikey: String, pagina: Int) = retrofit.getComing(idioma,apikey, pagina)
 
-    suspend fun getPelisDetalles(idioma: String, key: String, idpeli: Int) = retrofit.damePelisDetalles(idioma, key, idpeli)
+    suspend fun getPelisDetalles(idpeli: Int,idioma: String, key: String) = retrofit.damePelisDetalles(idpeli,idioma, key)
 
-    suspend fun getPelisImagenes(idioma: String, key: String, idpeli: Int) = retrofit.damePelisImagenes(idioma, key, idpeli)
+    suspend fun getPelisImagenes(idpeli: Int,idioma: String, key: String) = retrofit.damePelisImagenes(idpeli,idioma, key)
 
-    suspend fun getPelisVideos(idioma: String, key: String, idpeli: Int) = retrofit.damePelisVideos(idioma, key, idpeli)
+    suspend fun getPelisVideos(idpeli: Int,idioma: String, key: String) = retrofit.damePelisVideos(idpeli,idioma, key)
 
 }
