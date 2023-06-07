@@ -6,15 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-//import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectopelis.databinding.FragmentPelisDetallesBinding
 import com.example.proyectopelis.ViewModel
 import com.example.proyectopelis.data.adapter.CarruselAdapter
 import com.example.proyectopelis.data.adapter.CarruselAdapterPager
-import com.example.proyectopelis.data.network.Imagenes.Poster
+
 
 class FragmentPelisDetalles : Fragment() {
 
