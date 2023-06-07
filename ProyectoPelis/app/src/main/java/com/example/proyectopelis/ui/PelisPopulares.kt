@@ -29,6 +29,7 @@ class PelisPopulares : Fragment() {
     private val myviewModel: ViewModel by activityViewModels()
     private var pagina = 1
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,6 +63,7 @@ class PelisPopulares : Fragment() {
                     }
                 })
             }
+
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
                 return false
             }
@@ -82,9 +84,8 @@ class PelisPopulares : Fragment() {
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
 
-
         myviewModel.pelisPopu.observe(viewLifecycleOwner) {
-            val totalPaginas = it.totalPages
+            var totalPaginas = it.totalPages
 
             if (totalPaginas == 1) {
                 binding.btnIzq.visibility = View.GONE
@@ -113,16 +114,12 @@ class PelisPopulares : Fragment() {
                 myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", pagina)
             }
         }
-        myviewModel.pelisPopulares.observe(viewLifecycleOwner) {
-            if (it != null) {
-                adapter.actualizaLista(it)
-            }
-        }
         myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
 
         binding.swipe.setOnRefreshListener {
-            myviewModel.getListaPopulares("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+            myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
         }
+        myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
     }
 }
 

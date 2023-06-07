@@ -15,7 +15,8 @@ class AdapterEnCines (val listener:OnItemClickListener):
     RecyclerView.Adapter<AdapterEnCines.Celda2Holder>(), Filterable{
 
     private var listaEnCines=ArrayList<ResultEnCine?>()
-    private var listaCopia =ArrayList<ResultEnCine?>()
+    private var listaCopia = ArrayList<ResultEnCine?>()
+
 
     interface  OnItemClickListener{
         fun OnItemClick(resultEnCine: ResultEnCine)
@@ -82,3 +83,4 @@ class AdapterEnCines (val listener:OnItemClickListener):
         }
     }
 }
+

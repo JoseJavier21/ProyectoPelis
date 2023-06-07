@@ -23,10 +23,12 @@ import com.example.proyectopelis.databinding.FragmentPelisEnCineBinding
 
 class PelisEnCine : Fragment() {
 
+
     private lateinit var binding: FragmentPelisEnCineBinding
     private lateinit var adapter: AdapterEnCines
     private val myviewModel: ViewModel by activityViewModels()
     private var pagina = 1
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -128,5 +130,6 @@ class PelisEnCine : Fragment() {
         binding.swipe.setOnRefreshListener {
             myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
         }
+        myviewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
     }
 }
