@@ -4,12 +4,10 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModel
-<<<<<<< HEAD
-=======
 import com.example.proyectopelis.data.network.Repositorio
->>>>>>> main
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
+import com.example.proyectopelis.data.network.NowPlaying.PelisEnCine
 import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
@@ -24,58 +22,51 @@ import kotlinx.coroutines.launch
 
 class ViewModel(val context: Context) : ViewModel() {
 
-<<<<<<< HEAD
     private val repository = Repositorio(context)
 
-    val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
-    val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
-    val peliSelecionada= MutableLiveData<ResultEnCine>()
-=======
-    private val repository = Repositorio()
-    val pelisEnCine=MutableLiveData<List<ResultEnCine?>?>()
-    val pelisPopulares=MutableLiveData<List<ResultPopulares?>?>()
-    val pelisCine=MutableLiveData<PelisEnCine>()
-    val pelisPopu=MutableLiveData<PelisPopulares>()
-    val peliSelecionada1= MutableLiveData<ResultEnCine?>()
-    val peliSelecionada2= MutableLiveData<ResultPopulares?>()
->>>>>>> main
+    val pelisEnCine = MutableLiveData<List<ResultEnCine?>?>()
+    val pelisPopulares = MutableLiveData<List<ResultPopulares?>?>()
+    val peliSelecionada = MutableLiveData<ResultEnCine>()
+    val pelisCine = MutableLiveData<PelisEnCine>()
+    val pelisPopu = MutableLiveData<PelisPopulares>()
+    val peliSelecionada1 = MutableLiveData<ResultEnCine?>()
+    val peliSelecionada2 = MutableLiveData<ResultPopulares?>()
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
-    val LivePeliRated=MutableLiveData<List<ResultRated?>?>()
-    val Rated=MutableLiveData<Top_rated?>()
-    val Coming=MutableLiveData<UpComing?>()
-    val livePeliComing=MutableLiveData<List<ResultComing?>?>()
+    val LivePeliRated = MutableLiveData<List<ResultRated?>?>()
+    val Rated = MutableLiveData<Top_rated?>()
+    val Coming = MutableLiveData<UpComing?>()
+    val livePeliComing = MutableLiveData<List<ResultComing?>?>()
 
 
-
-    fun getListaEnCines(idioma: String,apikey: String,pagina:Int){
+    fun getListaEnCines(idioma: String, apikey: String, pagina: Int) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response=repository.getPelisEnCines(idioma,apikey,pagina)
-            if(response.isSuccessful){
-                val miRespuesta=response.body()
+            val response = repository.getPelisEnCines(idioma, apikey, pagina)
+            if (response.isSuccessful) {
+                val miRespuesta = response.body()
                 pelisEnCine.postValue(miRespuesta?.resultEnCines)
                 pelisCine.postValue(miRespuesta!!)
             }
         }
     }
 
-    fun getListaPopulares(idioma: String,apikey: String,pagina:Int){
-        CoroutineScope(Dispatchers.IO).launch{
-            val response=repository.getPelisPopulares(idioma,apikey,pagina)
-            if (response.isSuccessful){
-                val miRespuesta=response.body()
+    fun getListaPopulares(idioma: String, apikey: String, pagina: Int) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getPelisPopulares(idioma, apikey, pagina)
+            if (response.isSuccessful) {
+                val miRespuesta = response.body()
                 pelisPopulares.postValue(miRespuesta?.resultPopulares)
                 pelisPopu.postValue(miRespuesta!!)
             }
         }
     }
 
-    fun getListaComing(idioma: String, apikey: String, pagina: Int){
+    fun getListaComing(idioma: String, apikey: String, pagina: Int) {
 
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getComing(idioma,apikey,pagina)
-            if(response.isSuccessful){
+            val response = repository.getComing(idioma, apikey, pagina)
+            if (response.isSuccessful) {
                 val respuesta = response.body()
                 livePeliComing.postValue(respuesta?.resultComings)
                 Coming.postValue(respuesta!!)
@@ -83,11 +74,11 @@ class ViewModel(val context: Context) : ViewModel() {
         }
     }
 
-    fun getListaRated(idioma: String, apikey: String, pagina: Int){
+    fun getListaRated(idioma: String, apikey: String, pagina: Int) {
 
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getRated(idioma, apikey, pagina)
-            if (response.isSuccessful){
+            if (response.isSuccessful) {
                 val respuesta = response.body()
                 LivePeliRated.postValue(respuesta?.resultRateds)
                 Rated.postValue(respuesta!!)
@@ -116,7 +107,6 @@ class ViewModel(val context: Context) : ViewModel() {
         }
     }
 
-<<<<<<< HEAD
     fun getPelisVideos(idpeli: Int, idioma: String, key: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getPelisVideos(idpeli, idioma, key)
@@ -125,18 +115,18 @@ class ViewModel(val context: Context) : ViewModel() {
                 liveDataPelisVideos.postValue(miRespuesta)
             }
         }
-=======
-    fun selectPeli(resultEnCine: ResultEnCine){
-        peliSelecionada1.value=resultEnCine
-    }
-    fun selectPeli2(resultPopulares: ResultPopulares){
-        peliSelecionada2.value=resultPopulares
->>>>>>> main
-    }
+        fun selectPeli(resultEnCine: ResultEnCine) {
+            peliSelecionada1.value = resultEnCine
+        }
 
-    class MyViewModelFactory(private val context: Context): ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return modelClass.getConstructor(Context::class.java).newInstance(context)
+        fun selectPeli2(resultPopulares: ResultPopulares) {
+            peliSelecionada2.value = resultPopulares
+        }
+
+        class MyViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+            override fun <T : ViewModel> create(modelClass: Class<T>): T {
+                return modelClass.getConstructor(Context::class.java).newInstance(context)
+            }
         }
     }
 }

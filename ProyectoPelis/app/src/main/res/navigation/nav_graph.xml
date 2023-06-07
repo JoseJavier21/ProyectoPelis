@@ -56,15 +56,11 @@
     <fragment
         android:id="@+id/fragmentPelisDetalles"
         android:name="com.example.proyectopelis.Fragments.FragmentPelisDetalles"
-<<<<<<< HEAD
         android:label="Detalles"
         tools:layout="@layout/fragment_pelis_detalles"/>
-=======
-        android:label="Detalles" />
     <fragment
         android:id="@+id/mapa"
         android:name="com.example.proyectopelis.Fragments.Mapa"
         android:label="Cines Cercanos"
         tools:layout="@layout/fragment_mapa" />
->>>>>>> main
 </navigation>
