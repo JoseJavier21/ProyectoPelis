@@ -61,9 +61,15 @@ class ViewModel(val context: Context) : ViewModel() {
         }
     }
 
+<<<<<<< HEAD
+    fun getPelisDetalles(idpeli: Int, idioma: String, key: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getPelisDetalles(idpeli, idioma, key)
+=======
     fun getPelisDetalles(idpeli: Int,idioma: String, key: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getPelisDetalles(idpeli,idioma, key)
+>>>>>>> 95e1437df85d04bb5292ff4079d96b887164abfa
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisDetalles.postValue(miRespuesta)
@@ -71,9 +77,15 @@ class ViewModel(val context: Context) : ViewModel() {
         }
     }
 
+<<<<<<< HEAD
+    fun getPelisImagenes(idpeli: Int, idioma: String, key: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getPelisImagenes(idpeli, idioma, key)
+=======
     fun getPelisImagenes(idpeli: Int,idioma: String, key: String) {
         CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getPelisImagenes(idpeli,idioma, key)
+>>>>>>> 95e1437df85d04bb5292ff4079d96b887164abfa
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisImagenes.postValue(miRespuesta)
@@ -81,8 +93,17 @@ class ViewModel(val context: Context) : ViewModel() {
         }
     }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    fun getPelisVideos(idioma: String, key: String, idpeli: Int) {
+=======
+    fun getPelisVideos(idpeli: Int, idioma: String, key: String) {
+>>>>>>> Juan
+=======
 
     fun getPelisVideos(idpeli: Int,idioma: String, key: String) {
+>>>>>>> 95e1437df85d04bb5292ff4079d96b887164abfa
         CoroutineScope(Dispatchers.IO).launch {
             val response = repository.getPelisVideos(idpeli, idioma, key)
             if (response.isSuccessful) {
