@@ -33,13 +33,17 @@ class FragmentPelisDetalles : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*viewModel.peliSelecionada.observe(viewLifecycleOwner) {
+        //viewModel.getPelisDetalles("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 569094)
+
+        //viewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
+
+        viewModel.peliSelecionada.observe(viewLifecycleOwner) {
             when {
                 it != null -> {
                     it.id?.let { it1 ->
-                        viewModel.getPelisDetalles("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
-                        viewModel.getPelisVideos("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
-                        viewModel.getPelisImagenes("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
+                        viewModel.getPelisDetalles(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                        viewModel.getPelisVideos(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                        viewModel.getPelisImagenes(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
                     }
                     viewModel.liveDataPelisDetalles.observe(viewLifecycleOwner) {
                         if (it != null) {
@@ -257,7 +261,7 @@ class FragmentPelisDetalles : Fragment() {
                     }
                 }*/
             }
-        }*/
+        }
 
         val recyclerView = binding.recyclerview
         var glm = GridLayoutManager(requireContext(), 1, RecyclerView.HORIZONTAL, false)
