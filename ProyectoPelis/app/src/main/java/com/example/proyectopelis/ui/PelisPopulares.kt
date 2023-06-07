@@ -65,6 +65,9 @@ class PelisPopulares : Fragment() {
             }
 
             override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                if (menuItem.itemId==R.id.info){
+                    findNavController().navigate(R.id.action_pelisPopulares_to_mapa)
+                }
                 return false
             }
         }, viewLifecycleOwner, androidx.lifecycle.Lifecycle.State.RESUMED)

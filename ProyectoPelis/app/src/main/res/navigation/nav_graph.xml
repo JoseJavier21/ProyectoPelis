@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_pelisPopulares_to_fragmentPelisDetalles"
             app:destination="@id/fragmentPelisDetalles" />
+        <action
+            android:id="@+id/action_pelisPopulares_to_mapa"
+            app:destination="@id/mapa" />
     </fragment>
     <fragment
         android:id="@+id/topRated"
@@ -34,6 +37,9 @@
         <action
             android:id="@+id/action_topRated_to_fragmentPelisDetalles"
             app:destination="@id/fragmentPelisDetalles" />
+        <action
+            android:id="@+id/action_topRated_to_mapa"
+            app:destination="@id/mapa" />
     </fragment>
     <fragment
         android:id="@+id/upComing"
@@ -43,6 +49,9 @@
         <action
             android:id="@+id/action_upComing_to_fragmentPelisDetalles"
             app:destination="@id/fragmentPelisDetalles" />
+        <action
+            android:id="@+id/action_upComing_to_mapa"
+            app:destination="@id/mapa" />
     </fragment>
     <fragment
         android:id="@+id/fragmentPelisDetalles"
