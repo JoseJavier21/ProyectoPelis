@@ -12,6 +12,10 @@ import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
+import com.example.proyectopelis.data.network.TopRated.ResultRated
+import com.example.proyectopelis.data.network.UpComing.ResultComing
+import com.example.proyectopelis.ui.TopRated
+import com.example.proyectopelis.ui.UpComing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,6 +32,11 @@ class ViewModel(val context: Context) : ViewModel() {
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
+    val LivePeliRated=MutableLiveData<List<ResultRated?>?>()
+    val Rated=MutableLiveData<TopRated?>()
+    val Coming=MutableLiveData<UpComing?>()
+    val livePeliComing=MutableLiveData<List<ResultComing?>?>()
+
 
 
     fun getListaEnCines(idioma: String, apikey: String, pagina: Int) {
