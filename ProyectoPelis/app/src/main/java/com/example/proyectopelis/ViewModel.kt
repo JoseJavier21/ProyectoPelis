@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModel
+import com.example.proyectopelis.Fragments.UpComing
 import com.example.proyectopelis.data.network.Repositorio
 import com.example.proyectopelis.data.network.Detalles.PelisDetalles
 import com.example.proyectopelis.data.network.Imagenes.PelisImagenes
@@ -12,6 +13,9 @@ import com.example.proyectopelis.data.network.Videos.PelisVideos
 import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.Popular.PelisPopulares
 import com.example.proyectopelis.data.network.Popular.ResultPopulares
+import com.example.proyectopelis.data.network.TopRated.ResultRated
+import com.example.proyectopelis.data.network.TopRated.Top_rated
+import com.example.proyectopelis.data.network.UpComing.ResultComing
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,6 +32,10 @@ class ViewModel(): ViewModel() {
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
+    val LivePeliRated=MutableLiveData<List<ResultRated?>?>()
+    val Rated=MutableLiveData<Top_rated?>()
+    val Coming=MutableLiveData<UpComing?>()
+    val livePeliComing=MutableLiveData<List<ResultComing?>?>()
 
 
     fun getListaEnCines(idioma: String,apikey: String,pagina:Int){
