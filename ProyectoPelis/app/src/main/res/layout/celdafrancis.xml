@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="#000000">
 
     <ImageView
         android:id="@+id/imagenPeli"
@@ -18,8 +19,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="@+id/imagenPeli"
         android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/imagenPeli"
         app:layout_constraintStart_toEndOf="@+id/imagenPeli"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -30,6 +31,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:text="TextView"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/imagenPeli"
         app:layout_constraintTop_toBottomOf="@+id/nPeli" />
 
@@ -37,19 +39,22 @@
         android:id="@+id/imageView2"
         android:layout_width="80dp"
         android:layout_height="80dp"
+        android:background="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/flanzamiento"
         app:layout_constraintTop_toBottomOf="@+id/nPeli"
-        app:srcCompat="@drawable/baseline_star_24" />
+        app:srcCompat="@drawable/icons8_star_80"
+        app:tint="#D9D9D9"/>
 
     <TextView
         android:id="@+id/mediaVoto"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:textColor="#FFC107"
+        android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/nPeli" />
 
