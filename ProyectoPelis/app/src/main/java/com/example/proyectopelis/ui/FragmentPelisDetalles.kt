@@ -37,7 +37,7 @@ class FragmentPelisDetalles : Fragment() {
 
         //viewModel.getListaEnCines("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
 
-        viewModel.peliSelecionada.observe(viewLifecycleOwner) {
+        viewModel.peliSelecionada1.observe(viewLifecycleOwner) {
             when {
                 it != null -> {
                     it.id?.let { it1 ->
