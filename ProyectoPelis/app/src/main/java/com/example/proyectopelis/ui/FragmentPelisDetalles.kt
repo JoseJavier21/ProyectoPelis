@@ -6,9 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectopelis.ViewModel
 import com.example.proyectopelis.databinding.FragmentPelisDetallesBinding
 
 class FragmentPelisDetalles : Fragment() {
@@ -122,7 +122,7 @@ class FragmentPelisDetalles : Fragment() {
               viewModel.getPelisPuntuadas.value != null -> {
                   viewModel.getPelisPuntuadas.observe(viewLifecycleOwnere) {
                       it.id?.let { it1 ->
-                          viewModel.getPelisDetalles("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
+                          viewModel.getPelisDetalles(it1,"es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
                           viewModel.getPelisVideos("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
                           viewModel.getPelisImagenes("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
                       }
@@ -168,11 +168,11 @@ class FragmentPelisDetalles : Fragment() {
               }
 
               viewModel.getPelisPopulares.value != null -> {
-                  viewModel.getPelisPopulares.observe(viewLifecycleOwnere) {
-                      it.id?.let { it1 ->
-                          viewModel.getPelisDetalles("es-ES", "5f7af1e971090ad23a762fcc923ac6ce",it1)
-                          viewModel.getPelisVideos("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
-                          viewModel.getPelisImagenes("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
+                  viewModel.getPelisPopulares.observe(viewLifecycleOwner) {
+                      it?.id?.let { it1 ->
+                          viewModel.getPelisDetalles(it1,"es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                          viewModel.getPelisVideos(it1,"es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                          viewModel.getPelisImagenes(it1,"es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
                       }
 
                       viewModel.liveDataPelisDetalles.observe(viewLifecycleOwner) {
