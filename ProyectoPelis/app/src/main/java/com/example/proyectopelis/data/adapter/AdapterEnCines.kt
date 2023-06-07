@@ -31,8 +31,15 @@ class AdapterEnCines (private val listener: OnItemClickListener) :
 
     override fun onBindViewHolder(holder: Celda2Holder, position: Int) {
         val enCine=listaEnCines?.get(position)
+<<<<<<< HEAD
         val pathPoster=enCine?.posterPath
         Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/original/${pathPoster}").into(holder.binding.imagenPeli)
+=======
+
+        val pathPoster=enCine?.posterPath
+        Glide.with(holder.itemView).load("https://image.tmdb.org/t/p/original/${pathPoster}").into(holder.binding.imagenPeli)
+
+>>>>>>> main
         holder.binding.nPeli.text=enCine?.title
         holder.binding.flanzamiento.text=enCine?.releaseDate
         holder.binding.mediaVoto.text=enCine?.voteAverage.toString()
@@ -49,7 +56,9 @@ class AdapterEnCines (private val listener: OnItemClickListener) :
 
     fun actualizaLista2(lista: List<ResultEnCine?>){
         listaEnCines.clear()
+        listaCopia.clear()
         listaEnCines.addAll(lista)
+        listaCopia.addAll(lista)
         notifyDataSetChanged()
     }
     override fun getFilter(): Filter {
@@ -58,8 +67,12 @@ class AdapterEnCines (private val listener: OnItemClickListener) :
                 val busqueda = constraint.toString()
 
                 if(busqueda.isEmpty()){
+<<<<<<< HEAD
                     listaEnCines=listaCopia
 
+=======
+                    listaEnCines = listaCopia
+>>>>>>> main
                 }else{
                     listaEnCines = listaCopia.filter {
                         it?.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
@@ -71,17 +84,18 @@ class AdapterEnCines (private val listener: OnItemClickListener) :
                 filterResult.values = listaEnCines
                 return filterResult
             }
-
             override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
                 listaEnCines = results?.values as ArrayList<ResultEnCine?>
                 notifyDataSetChanged()
             }
-
         }
     }
 }
 
+<<<<<<< HEAD
 
 
 
 
+=======
+>>>>>>> main
