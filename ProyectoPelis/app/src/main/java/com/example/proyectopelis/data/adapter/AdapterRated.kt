@@ -8,6 +8,7 @@ import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.proyectopelis.R
+import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.data.network.TopRated.Top_rated
 import com.example.proyectopelis.databinding.CeldaratedBinding
@@ -59,28 +60,27 @@ class AdapterRated(val listener:OnItemClickListener): RecyclerView.Adapter<Adapt
     }
 
     override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(p0: CharSequence?): FilterResults {
-                val charFiltro = p0.toString()
-                if (charFiltro.isEmpty()) {
+        return object : Filter(){
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val busqueda = constraint.toString()
+
+                if(busqueda.isEmpty()){
                     listaOriginal = copiaLista
-                } else {
+                }else{
                     listaOriginal = copiaLista.filter {
-                        it?.title!!.lowercase().contains(charFiltro.lowercase()) || it.originalTitle?.lowercase()!!.contains(charFiltro.lowercase())
+                        it?.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it?.originalTitle?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it?.releaseDate?.lowercase()?.contains(busqueda.lowercase()) ?: false
                     } as ArrayList<ResultRated?>
-
                 }
-
-                val filterResults = FilterResults()
-                filterResults.values = listaOriginal
-                return filterResults
+                val filterResult = FilterResults()
+                filterResult.values = listaOriginal
+                return filterResult
             }
-
-            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-                listaOriginal = p1?.values as ArrayList<ResultRated?>
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                listaOriginal = results?.values as ArrayList<ResultRated?>
                 notifyDataSetChanged()
             }
-
         }
     }
 }
