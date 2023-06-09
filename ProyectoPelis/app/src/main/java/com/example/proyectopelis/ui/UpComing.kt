@@ -103,9 +103,14 @@ class UpComing : Fragment() {
         binding.recyclerComing.adapter = adapter
 
         myViewModel.livePeliComing.observe(viewLifecycleOwner){
+            binding.swipe.isRefreshing=false
             if (it != null) {
                 adapter.updataComing(it)
             }
+        }
+
+        binding.swipe.setOnRefreshListener {
+            myViewModel.getListaComing("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
         }
 
         myViewModel.getListaComing("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1 )

@@ -108,9 +108,14 @@ class TopRated : Fragment() {
         binding.recyclerRated.adapter = adapterRated
 
         myViewModel.LivePeliRated.observe(viewLifecycleOwner){
+            binding.swipe.isRefreshing=false
             if (it != null){
                 adapterRated.updateRated(it)
             }
+        }
+
+        binding.swipe.setOnRefreshListener {
+            myViewModel.getListaRated("es-ES","5f7af1e971090ad23a762fcc923ac6ce",1)
         }
 
         myViewModel.getListaRated("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", actual)
