@@ -47,9 +47,13 @@ class FragmentPelisDetalles : Fragment() {
                             binding.budget.text = it.budget.toString() + "$"
                             binding.vote.text = it.vote_average.toString() + "/10"
                             val homepage = it.homepage
-                            binding.web.setOnClickListener {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
-                                startActivity(intent)
+                            if (it.homepage.isNotEmpty()) {
+                                binding.web.setOnClickListener {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
+                                    startActivity(intent)
+                                }
+                            } else {
+                                binding.web.text = "Web no disponible"
                             }
                             //binding.genres.text = it.genres.get(0).name
                             val genresText = StringBuilder()
@@ -92,9 +96,9 @@ class FragmentPelisDetalles : Fragment() {
                                 //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
                                 //binding.carrusel = it.posters
 
+                            } else {
+                                binding.erorview.text = "Imagenes no disponibles"
                             }
-                        } else {
-                            binding.erorview.text = "Imagenes no disponibles"
                         }
                     }
                 }
@@ -118,9 +122,13 @@ class FragmentPelisDetalles : Fragment() {
                             binding.budget.text = it.budget.toString() + "$"
                             binding.vote.text = it.vote_average.toString() + "/10"
                             val homepage = it.homepage
-                            binding.web.setOnClickListener {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
-                                startActivity(intent)
+                            if (it.homepage.isNotEmpty()) {
+                                binding.web.setOnClickListener {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
+                                    startActivity(intent)
+                                }
+                            } else {
+                                binding.web.text = "Web no disponible"
                             }
                             //binding.genres.text = it.genres.get(0).name
                             val genresText = StringBuilder()
@@ -163,9 +171,9 @@ class FragmentPelisDetalles : Fragment() {
                                 //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
                                 //binding.carrusel = it.posters
 
+                            } else {
+                                binding.erorview.text = "Imagenes no disponibles"
                             }
-                        } else {
-                            binding.erorview.text = "Imagenes no disponibles"
                         }
                     }
                 }
@@ -189,9 +197,13 @@ class FragmentPelisDetalles : Fragment() {
                             binding.budget.text = it.budget.toString() + "$"
                             binding.vote.text = it.vote_average.toString() + "/10"
                             val homepage = it.homepage
-                            binding.web.setOnClickListener {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
-                                startActivity(intent)
+                            if (it.homepage.isNotEmpty()) {
+                                binding.web.setOnClickListener {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
+                                    startActivity(intent)
+                                }
+                            } else {
+                                binding.web.text = "Web no disponible"
                             }
                             //binding.genres.text = it.genres.get(0).name
                             val genresText = StringBuilder()
@@ -234,9 +246,9 @@ class FragmentPelisDetalles : Fragment() {
                                 //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
                                 //binding.carrusel = it.posters
 
+                            } else {
+                                binding.erorview.text = "Imagenes no disponibles"
                             }
-                        } else {
-                            binding.erorview.text = "Imagenes no disponibles"
                         }
                     }
 
@@ -261,9 +273,13 @@ class FragmentPelisDetalles : Fragment() {
                             binding.budget.text = it.budget.toString() + "$"
                             binding.vote.text = it.vote_average.toString() + "/10"
                             val homepage = it.homepage
-                            binding.web.setOnClickListener {
-                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
-                                startActivity(intent)
+                            if (it.homepage.isNotEmpty()) {
+                                binding.web.setOnClickListener {
+                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
+                                    startActivity(intent)
+                                }
+                            } else {
+                                binding.web.text = "Web no disponible"
                             }
                             //binding.genres.text = it.genres.get(0).name
                             val genresText = StringBuilder()
@@ -306,9 +322,9 @@ class FragmentPelisDetalles : Fragment() {
                                 //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
                                 //binding.carrusel = it.posters
 
+                            } else {
+                                binding.erorview.text = "Imagenes no disponibles"
                             }
-                        } else {
-                            binding.erorview.text = "Imagenes no disponibles"
                         }
                     }
                 }

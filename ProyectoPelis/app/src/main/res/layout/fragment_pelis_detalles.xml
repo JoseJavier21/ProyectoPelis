@@ -143,23 +143,27 @@
             app:layout_constraintTop_toBottomOf="@+id/web"
             tools:ignore="TextSizeCheck" />
 
+        <TextView
+            android:id="@+id/erorview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@+id/viewpager"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/video" />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager"
             android:layout_width="0dp"
             android:layout_height="500dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/video">
 
         </androidx.viewpager2.widget.ViewPager2>
-
-        <TextView
-            android:id="@+id/erorview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="173dp"
-            tools:layout_editor_absoluteY="783dp" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview"
