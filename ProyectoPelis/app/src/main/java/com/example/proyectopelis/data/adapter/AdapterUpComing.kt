@@ -65,28 +65,27 @@ class AdapterUpComing(val listener:OnItemClickListener): RecyclerView.Adapter<Ad
     }
 
     override fun getFilter(): Filter {
-        return object : Filter() {
-            override fun performFiltering(p0: CharSequence?): FilterResults {
-                val charFiltro = p0.toString()
-                if (charFiltro.isEmpty()) {
+        return object : Filter(){
+            override fun performFiltering(constraint: CharSequence?): FilterResults {
+                val busqueda = constraint.toString()
+
+                if(busqueda.isEmpty()){
                     listaOriginal = copiaLista
-                } else {
+                }else{
                     listaOriginal = copiaLista.filter {
-                        it?.title!!.lowercase().contains(charFiltro.lowercase()) || it?.originalTitle?.lowercase()!!.contains(charFiltro.lowercase())
+                        it?.title?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it?.originalTitle?.lowercase()?.contains(busqueda.lowercase()) ?: false ||
+                                it?.releaseDate?.lowercase()?.contains(busqueda.lowercase()) ?: false
                     } as ArrayList<ResultComing?>
-
                 }
-
-                val filterResults = FilterResults()
-                filterResults.values = copiaLista
-                return filterResults
+                val filterResult = FilterResults()
+                filterResult.values = listaOriginal
+                return filterResult
             }
-
-            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-                listaOriginal = p1?.values as ArrayList<ResultComing?>
+            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+                listaOriginal = results?.values as ArrayList<ResultComing?>
                 notifyDataSetChanged()
             }
-
         }
     }
 }
