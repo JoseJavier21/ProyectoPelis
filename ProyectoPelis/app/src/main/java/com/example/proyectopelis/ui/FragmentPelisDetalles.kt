@@ -133,14 +133,18 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            val results = it.results.get(0).key
-                            binding.video.setOnClickListener {
-                                val intent = Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse("https://www.youtube.com/watch?v=" + results)
-                                )
-                                startActivity(intent)
+                            if (it.results.isNotEmpty()) {
+                                val results = it.results.get(0).key
+                                binding.video.setOnClickListener {
+                                    val intent = Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("https://www.youtube.com/watch?v=" + results)
+                                    )
+                                    startActivity(intent)
 
+                                }
+                            } else {
+                                binding.video.text = "Video no disponible"
                             }
 
                         }
@@ -196,14 +200,18 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            val results = it.results.get(0).key
-                            binding.video.setOnClickListener {
-                                val intent = Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse("https://www.youtube.com/watch?v=" + results)
-                                )
-                                startActivity(intent)
+                            if (it.results.isNotEmpty()) {
+                                val results = it.results.get(0).key
+                                binding.video.setOnClickListener {
+                                    val intent = Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("https://www.youtube.com/watch?v=" + results)
+                                    )
+                                    startActivity(intent)
 
+                                }
+                            } else {
+                                binding.video.text = "Video no disponible"
                             }
 
                         }
@@ -259,14 +267,18 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            val results = it.results.get(0).key
-                            binding.video.setOnClickListener {
-                                val intent = Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse("https://www.youtube.com/watch?v=" + results)
-                                )
-                                startActivity(intent)
+                            if (it.results.isNotEmpty()) {
+                                val results = it.results.get(0).key
+                                binding.video.setOnClickListener {
+                                    val intent = Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("https://www.youtube.com/watch?v=" + results)
+                                    )
+                                    startActivity(intent)
 
+                                }
+                            } else {
+                                binding.video.text = "Video no disponible"
                             }
 
                         }
