@@ -44,15 +44,14 @@ class UpComing : Fragment() {
                 val lupa = menulupa.actionView as SearchView
                 lupa.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                     override fun onQueryTextSubmit(query: String?): Boolean {
-                        adapter.getFilter()
+                        adapter.filter.filter(query)
                         return true
                     }
 
                     override fun onQueryTextChange(newText: String?): Boolean {
-                        adapter.getFilter()
+                        adapter.filter.filter(newText)
                         return true
                     }
-
                 })
             }
 
