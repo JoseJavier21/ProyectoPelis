@@ -91,224 +91,196 @@ class FragmentPelisDetalles : Fragment() {
                     }
                 }
 
-                viewModel.peliSelecionada2.value != null -> {
-                    viewModel.peliSelecionada2.observe(viewLifecycleOwner) {
+
+            }
+        }
+
+        viewModel.peliSelecionada2.observe(viewLifecycleOwner) {
+            when {
+                it != null -> {
+                    it.id?.let { it1 ->
+                        viewModel.getPelisDetalles(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                        viewModel.getPelisVideos(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                        viewModel.getPelisImagenes(it1, "es", "5f7af1e971090ad23a762fcc923ac6ce")
+                    }
+                    viewModel.liveDataPelisDetalles.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            it.id?.let { it1 ->
-                                viewModel.getPelisDetalles(
-                                    it1,
-                                    "es-ES",
-                                    "5f7af1e971090ad23a762fcc923ac6ce"
-                                )
-                                viewModel.getPelisVideos(
-                                    it1,
-                                    "es-ES",
-                                    "5f7af1e971090ad23a762fcc923ac6ce",
-                                )
-                                viewModel.getPelisImagenes(
-                                    it1,
-                                    "es",
-                                    "5f7af1e971090ad23a762fcc923ac6ce",
-                                )
+                            binding.name.text = it.original_title
+                            binding.sinapsis.text = it.overview
+                            binding.budget.text = it.budget.toString() + "$"
+                            binding.vote.text = it.vote_average.toString() + "/10"
+                            val homepage = it.homepage
+                            binding.web.setOnClickListener {
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
+                                startActivity(intent)
                             }
+                            //binding.genres.text = it.genres.get(0).name
+                            val genresText = StringBuilder()
+                            for (genre in it.genres) {
+                                genresText.append(genre.name).append(", ")
+                            }
+                            if (genresText.isNotEmpty()) {
+                                genresText.deleteCharAt(genresText.length - 1)
+                            }
+                            binding.genres.text = genresText.toString()
+                            //binding.video.text = "https://image.tmdb.org/t/p/original" + it.backdrop_path
                         }
-                        viewModel.liveDataPelisDetalles.observe(viewLifecycleOwner) {
-                            if (it != null) {
-                                binding.name.text = it.original_title
-                                binding.sinapsis.text = it.overview
-                                binding.budget.text = it.budget.toString() + "$"
-                                binding.vote.text = it.vote_average.toString() + "/10"
-                                val homepage = it.homepage
-                                binding.web.setOnClickListener {
-                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
-                                    startActivity(intent)
-                                }
-                                //binding.genres.text = it.genres.get(0).name
-                                val genresText = StringBuilder()
-                                for (genre in it.genres) {
-                                    genresText.append(genre.name).append(", ")
-                                }
-                                if (genresText.isNotEmpty()) {
-                                    genresText.deleteCharAt(genresText.length - 1)
-                                }
-                                binding.genres.text = genresText.toString()
-                                //binding.video.text = "https://image.tmdb.org/t/p/original" + it.backdrop_path
+                    }
+
+                    viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            val results = it.results.get(0).key
+                            binding.video.setOnClickListener {
+                                val intent = Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.youtube.com/watch?v=" + results)
+                                )
+                                startActivity(intent)
+
                             }
+
                         }
+                    }
 
-                        viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
-                            if (it != null) {
-                                val results = it.results.get(0).key
-                                binding.video.setOnClickListener {
-                                    val intent = Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://www.youtube.com/watch?v=" + results)
-                                    )
-                                    startActivity(intent)
+                    viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            val posters = it.posters.map { poster -> poster.file_path }
+                            val carruselAdaterPager = CarruselAdapterPager(posters)
+                            binding.viewpager.adapter = carruselAdaterPager
+                            //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
+                            //binding.carrusel = it.posters
 
-                                }
-
-                            }
-                        }
-
-                        viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
-                            if (it != null) {
-                                val posters = it.posters.map { poster -> poster.file_path }
-                                val carruselAdaterPager = CarruselAdapterPager(posters)
-                                binding.viewpager.adapter = carruselAdaterPager
-                                //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
-                                //binding.carrusel = it.posters
-
-                            }
                         }
                     }
                 }
 
-                viewModel.peliSeleccionada3.value != null -> {
-                    viewModel.peliSeleccionada3.observe(viewLifecycleOwner) {
+
+            }
+        }
+
+        viewModel.peliSeleccionada3.observe(viewLifecycleOwner) {
+            when {
+                it != null -> {
+                    it.id?.let { it1 ->
+                        viewModel.getPelisDetalles(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                        viewModel.getPelisVideos(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                        viewModel.getPelisImagenes(it1, "es", "5f7af1e971090ad23a762fcc923ac6ce")
+                    }
+                    viewModel.liveDataPelisDetalles.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            it.id?.let { it1 ->
-                                viewModel.getPelisDetalles(
-                                    it1,
-                                    "es-ES",
-                                    "5f7af1e971090ad23a762fcc923ac6ce"
-                                )
-                                viewModel.getPelisVideos(
-                                    it1,
-                                    "es-ES",
-                                    "5f7af1e971090ad23a762fcc923ac6ce"
-                                )
-                                viewModel.getPelisImagenes(
-                                    it1,
-                                    "es",
-                                    "5f7af1e971090ad23a762fcc923ac6ce",
-                                )
+                            binding.name.text = it.original_title
+                            binding.sinapsis.text = it.overview
+                            binding.budget.text = it.budget.toString() + "$"
+                            binding.vote.text = it.vote_average.toString() + "/10"
+                            val homepage = it.homepage
+                            binding.web.setOnClickListener {
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
+                                startActivity(intent)
                             }
+                            //binding.genres.text = it.genres.get(0).name
+                            val genresText = StringBuilder()
+                            for (genre in it.genres) {
+                                genresText.append(genre.name).append(", ")
+                            }
+                            if (genresText.isNotEmpty()) {
+                                genresText.deleteCharAt(genresText.length - 1)
+                            }
+                            binding.genres.text = genresText.toString()
+                            //binding.video.text = "https://image.tmdb.org/t/p/original" + it.backdrop_path
                         }
-                        viewModel.liveDataPelisDetalles.observe(viewLifecycleOwner) {
-                            if (it != null) {
-                                binding.name.text = it.original_title
-                                binding.sinapsis.text = it.overview
-                                binding.budget.text = it.budget.toString()
-                                binding.vote.text = it.vote_average.toString()
-                                val homepage = it.homepage
-                                binding.web.setOnClickListener {
-                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
-                                    startActivity(intent)
-                                }
-                                //binding.genres.text = it.genres.get(0).name
-                                val genresText = StringBuilder()
-                                for (genre in it.genres) {
-                                    genresText.append(genre.name).append(", ")
-                                }
-                                if (genresText.isNotEmpty()) {
-                                    genresText.deleteCharAt(genresText.length - 1)
-                                }
-                                binding.genres.text = genresText.toString()
-                                //binding.video.text = "https://image.tmdb.org/t/p/original" + it.backdrop_path
+                    }
+
+                    viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            val results = it.results.get(0).key
+                            binding.video.setOnClickListener {
+                                val intent = Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.youtube.com/watch?v=" + results)
+                                )
+                                startActivity(intent)
+
                             }
+
                         }
+                    }
 
-                        viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
-                            if (it != null) {
-                                val results = it.results.get(0).key
-                                binding.video.setOnClickListener {
-                                    val intent = Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://www.youtube.com/watch?v=" + results)
-                                    )
-                                    startActivity(intent)
+                    viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            val posters = it.posters.map { poster -> poster.file_path }
+                            val carruselAdaterPager = CarruselAdapterPager(posters)
+                            binding.viewpager.adapter = carruselAdaterPager
+                            //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
+                            //binding.carrusel = it.posters
 
-                                }
-
-                            }
-                        }
-
-                        viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
-                            if (it != null) {
-                                val posters = it.posters.map { poster -> poster.file_path }
-                                val carruselAdaterPager = CarruselAdapterPager(posters)
-                                binding.viewpager.adapter = carruselAdaterPager
-                                //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
-                                //binding.carrusel = it.posters
-
-                            }
                         }
                     }
                 }
 
-                viewModel.peliSeleccionada4.value != null -> {
-                    viewModel.peliSeleccionada4.observe(viewLifecycleOwner) {
+
+            }
+        }
+
+        viewModel.peliSeleccionada4.observe(viewLifecycleOwner) {
+            when {
+                it != null -> {
+                    it.id?.let { it1 ->
+                        viewModel.getPelisDetalles(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                        viewModel.getPelisVideos(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                        viewModel.getPelisImagenes(it1, "es", "5f7af1e971090ad23a762fcc923ac6ce")
+                    }
+                    viewModel.liveDataPelisDetalles.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            it.id?.let { it1 ->
-                                viewModel.getPelisDetalles(
-                                    it1,
-                                    "es-ES",
-                                    "5f7af1e971090ad23a762fcc923ac6ce"
-                                )
-                                viewModel.getPelisVideos(
-                                    it1,
-                                    "es-ES",
-                                    "5f7af1e971090ad23a762fcc923ac6ce"
-                                )
-                                viewModel.getPelisImagenes(
-                                    it1,
-                                    "es",
-                                    "5f7af1e971090ad23a762fcc923ac6ce"
-                                )
+                            binding.name.text = it.original_title
+                            binding.sinapsis.text = it.overview
+                            binding.budget.text = it.budget.toString() + "$"
+                            binding.vote.text = it.vote_average.toString() + "/10"
+                            val homepage = it.homepage
+                            binding.web.setOnClickListener {
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
+                                startActivity(intent)
                             }
+                            //binding.genres.text = it.genres.get(0).name
+                            val genresText = StringBuilder()
+                            for (genre in it.genres) {
+                                genresText.append(genre.name).append(", ")
+                            }
+                            if (genresText.isNotEmpty()) {
+                                genresText.deleteCharAt(genresText.length - 1)
+                            }
+                            binding.genres.text = genresText.toString()
+                            //binding.video.text = "https://image.tmdb.org/t/p/original" + it.backdrop_path
                         }
-                        viewModel.liveDataPelisDetalles.observe(viewLifecycleOwner) {
-                            if (it != null) {
-                                binding.name.text = it.original_title
-                                binding.sinapsis.text = it.overview
-                                binding.budget.text = it.budget.toString()
-                                binding.vote.text = it.vote_average.toString()
-                                val homepage = it.homepage
-                                binding.web.setOnClickListener {
-                                    val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
-                                    startActivity(intent)
-                                }
-                                //binding.genres.text = it.genres.get(0).name
-                                val genresText = StringBuilder()
-                                for (genre in it.genres) {
-                                    genresText.append(genre.name).append(", ")
-                                }
-                                if (genresText.isNotEmpty()) {
-                                    genresText.deleteCharAt(genresText.length - 1)
-                                }
-                                binding.genres.text = genresText.toString()
-                                //binding.video.text = "https://image.tmdb.org/t/p/original" + it.backdrop_path
+                    }
+
+                    viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            val results = it.results.get(0).key
+                            binding.video.setOnClickListener {
+                                val intent = Intent(
+                                    Intent.ACTION_VIEW,
+                                    Uri.parse("https://www.youtube.com/watch?v=" + results)
+                                )
+                                startActivity(intent)
+
                             }
+
                         }
+                    }
 
-                        viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
-                            if (it != null) {
-                                val results = it.results.get(0).key
-                                binding.video.setOnClickListener {
-                                    val intent = Intent(
-                                        Intent.ACTION_VIEW,
-                                        Uri.parse("https://www.youtube.com/watch?v=" + results)
-                                    )
-                                    startActivity(intent)
+                    viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            val posters = it.posters.map { poster -> poster.file_path }
+                            val carruselAdaterPager = CarruselAdapterPager(posters)
+                            binding.viewpager.adapter = carruselAdaterPager
+                            //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
+                            //binding.carrusel = it.posters
 
-                                }
-
-                            }
-                        }
-
-                        viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
-                            if (it != null) {
-                                val posters = it.posters.map { poster -> poster.file_path }
-                                val carruselAdaterPager = CarruselAdapterPager(posters)
-                                binding.viewpager.adapter = carruselAdaterPager
-                                //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
-                                //binding.carrusel = it.posters
-
-                            }
                         }
                     }
                 }
+
+
             }
         }
 
