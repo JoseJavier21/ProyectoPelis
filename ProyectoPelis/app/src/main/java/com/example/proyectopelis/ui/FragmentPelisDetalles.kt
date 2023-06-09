@@ -85,12 +85,16 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            val posters = it.posters.map { poster -> poster.file_path }
-                            val carruselAdaterPager = CarruselAdapterPager(posters)
-                            binding.viewpager.adapter = carruselAdaterPager
-                            //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
-                            //binding.carrusel = it.posters
+                            if (it.posters.isNotEmpty()) {
+                                val posters = it.posters.map { poster -> poster.file_path }
+                                val carruselAdaterPager = CarruselAdapterPager(posters)
+                                binding.viewpager.adapter = carruselAdaterPager
+                                //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
+                                //binding.carrusel = it.posters
 
+                            }
+                        } else {
+                            binding.erorview.text = "Imagenes no disponibles"
                         }
                     }
                 }
@@ -133,14 +137,18 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            val results = it.results.get(0).key
-                            binding.video.setOnClickListener {
-                                val intent = Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse("https://www.youtube.com/watch?v=" + results)
-                                )
-                                startActivity(intent)
+                            if (it.results.isNotEmpty()) {
+                                val results = it.results.get(0).key
+                                binding.video.setOnClickListener {
+                                    val intent = Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("https://www.youtube.com/watch?v=" + results)
+                                    )
+                                    startActivity(intent)
 
+                                }
+                            } else {
+                                binding.video.text = "Video no disponible"
                             }
 
                         }
@@ -148,12 +156,16 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            val posters = it.posters.map { poster -> poster.file_path }
-                            val carruselAdaterPager = CarruselAdapterPager(posters)
-                            binding.viewpager.adapter = carruselAdaterPager
-                            //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
-                            //binding.carrusel = it.posters
+                            if (it.posters.isNotEmpty()) {
+                                val posters = it.posters.map { poster -> poster.file_path }
+                                val carruselAdaterPager = CarruselAdapterPager(posters)
+                                binding.viewpager.adapter = carruselAdaterPager
+                                //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
+                                //binding.carrusel = it.posters
 
+                            }
+                        } else {
+                            binding.erorview.text = "Imagenes no disponibles"
                         }
                     }
                 }
@@ -196,14 +208,18 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            val results = it.results.get(0).key
-                            binding.video.setOnClickListener {
-                                val intent = Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse("https://www.youtube.com/watch?v=" + results)
-                                )
-                                startActivity(intent)
+                            if (it.results.isNotEmpty()) {
+                                val results = it.results.get(0).key
+                                binding.video.setOnClickListener {
+                                    val intent = Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("https://www.youtube.com/watch?v=" + results)
+                                    )
+                                    startActivity(intent)
 
+                                }
+                            } else {
+                                binding.video.text = "Video no disponible"
                             }
 
                         }
@@ -211,14 +227,19 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            val posters = it.posters.map { poster -> poster.file_path }
-                            val carruselAdaterPager = CarruselAdapterPager(posters)
-                            binding.viewpager.adapter = carruselAdaterPager
-                            //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
-                            //binding.carrusel = it.posters
+                            if (it.posters.isNotEmpty()) {
+                                val posters = it.posters.map { poster -> poster.file_path }
+                                val carruselAdaterPager = CarruselAdapterPager(posters)
+                                binding.viewpager.adapter = carruselAdaterPager
+                                //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
+                                //binding.carrusel = it.posters
 
+                            }
+                        } else {
+                            binding.erorview.text = "Imagenes no disponibles"
                         }
                     }
+
                 }
 
 
@@ -259,14 +280,18 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            val results = it.results.get(0).key
-                            binding.video.setOnClickListener {
-                                val intent = Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse("https://www.youtube.com/watch?v=" + results)
-                                )
-                                startActivity(intent)
+                            if (it.results.isNotEmpty()) {
+                                val results = it.results.get(0).key
+                                binding.video.setOnClickListener {
+                                    val intent = Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("https://www.youtube.com/watch?v=" + results)
+                                    )
+                                    startActivity(intent)
 
+                                }
+                            } else {
+                                binding.video.text = "Video no disponible"
                             }
 
                         }
@@ -274,12 +299,16 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            val posters = it.posters.map { poster -> poster.file_path }
-                            val carruselAdaterPager = CarruselAdapterPager(posters)
-                            binding.viewpager.adapter = carruselAdaterPager
-                            //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
-                            //binding.carrusel = it.posters
+                            if (it.posters.isNotEmpty()) {
+                                val posters = it.posters.map { poster -> poster.file_path }
+                                val carruselAdaterPager = CarruselAdapterPager(posters)
+                                binding.viewpager.adapter = carruselAdaterPager
+                                //binding.foto = "https://image.tmdb.org/t/p/original" + it.logos.get(0).file_path
+                                //binding.carrusel = it.posters
 
+                            }
+                        } else {
+                            binding.erorview.text = "Imagenes no disponibles"
                         }
                     }
                 }
