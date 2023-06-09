@@ -182,7 +182,7 @@ class FragmentPelisDetalles : Fragment() {
             }
         }
 
-        viewModel.peliSeleccionada3.observe(viewLifecycleOwner) {
+        viewModel.peliSelecionada3.observe(viewLifecycleOwner) {
             when {
                 it != null -> {
                     it.id?.let { it1 ->
@@ -258,7 +258,7 @@ class FragmentPelisDetalles : Fragment() {
             }
         }
 
-        viewModel.peliSeleccionada4.observe(viewLifecycleOwner) {
+        viewModel.peliSelecionada4.observe(viewLifecycleOwner) {
             when {
                 it != null -> {
                     it.id?.let { it1 ->
