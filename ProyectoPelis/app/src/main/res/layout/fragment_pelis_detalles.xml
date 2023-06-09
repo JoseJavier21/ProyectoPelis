@@ -43,7 +43,11 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
             app:layout_constraintTop_toBottomOf="@+id/name"/>
+=======
+            app:layout_constraintTop_toBottomOf="@+id/name" />
+>>>>>>> Juan
 
         <TextView
             android:id="@+id/sinapsis"
@@ -65,7 +69,11 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
             app:layout_constraintTop_toBottomOf="@+id/sinapsis"/>
+=======
+            app:layout_constraintTop_toBottomOf="@+id/sinapsis" />
+>>>>>>> Juan
 
         <TextView
             android:id="@+id/genres"
@@ -87,7 +95,11 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
             app:layout_constraintTop_toBottomOf="@+id/genres"/>
+=======
+            app:layout_constraintTop_toBottomOf="@+id/genres" />
+>>>>>>> Juan
 
         <TextView
             android:id="@+id/budget"
@@ -109,7 +121,11 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+<<<<<<< HEAD
             app:layout_constraintTop_toBottomOf="@+id/budget"/>
+=======
+            app:layout_constraintTop_toBottomOf="@+id/budget" />
+>>>>>>> Juan
 
         <TextView
             android:id="@+id/vote"
@@ -145,12 +161,21 @@
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager"
+<<<<<<< HEAD
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/video"
             app:layout_constraintBottom_toBottomOf="@id/recyclerview">
+=======
+            android:layout_width="0dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/video">
+>>>>>>> Juan
 
         </androidx.viewpager2.widget.ViewPager2>
 
@@ -158,9 +183,18 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+<<<<<<< HEAD
+=======
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
+>>>>>>> Juan
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewpager" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> Juan
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
