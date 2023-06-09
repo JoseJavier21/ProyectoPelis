@@ -29,6 +29,8 @@ class ViewModel(): ViewModel() {
     val pelisPopu=MutableLiveData<PelisPopulares>()
     val peliSelecionada1= MutableLiveData<ResultEnCine?>()
     val peliSelecionada2= MutableLiveData<ResultPopulares?>()
+    val peliSeleccionada3= MutableLiveData<ResultRated?>()
+    val peliSeleccionada4= MutableLiveData<ResultComing?>()
     val liveDataPelisDetalles = MutableLiveData<PelisDetalles?>()
     val liveDataPelisImagenes = MutableLiveData<PelisImagenes?>()
     val liveDataPelisVideos = MutableLiveData<PelisVideos?>()
@@ -86,9 +88,9 @@ class ViewModel(): ViewModel() {
 
     }
 
-    fun getPelisDetalles(idioma: String, idpeli: Int) {
+    fun getPelisDetalles(idpeli: Int, idioma: String, key: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisDetalles(idioma, idpeli)
+            val response = repository.getPelisDetalles(idpeli, idioma, key)
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisDetalles.postValue(miRespuesta)
@@ -96,12 +98,22 @@ class ViewModel(): ViewModel() {
         }
     }
 
-    fun getPelisImagenes(idioma: String, idpeli: Int) {
+    fun getPelisImagenes(idpeli: Int, idioma: String, key: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val response = repository.getPelisImagenes(idioma, idpeli)
+            val response = repository.getPelisImagenes(idpeli, idioma, key)
             if (response.isSuccessful) {
                 val miRespuesta = response.body()
                 liveDataPelisImagenes.postValue(miRespuesta)
+            }
+        }
+    }
+
+    fun getPelisVideos(idpeli: Int, idioma: String, key: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val response = repository.getPelisVideos(idpeli, idioma, key)
+            if (response.isSuccessful) {
+                val miRespuesta = response.body()
+                liveDataPelisVideos.postValue(miRespuesta)
             }
         }
     }
