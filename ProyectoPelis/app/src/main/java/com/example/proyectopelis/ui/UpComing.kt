@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.proyectopelis.R
 import com.example.proyectopelis.ViewModel
 import com.example.proyectopelis.data.adapter.AdapterUpComing
+import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.databinding.FragmentUpComingBinding
 
 class UpComing : Fragment() {
@@ -99,7 +100,13 @@ class UpComing : Fragment() {
         }
 
         binding.recyclerComing.layoutManager = LinearLayoutManager(requireContext())
-        adapter = AdapterUpComing()
+        adapter = AdapterUpComing(object :AdapterUpComing.OnItemClickListener{
+            override fun OnItemClick(resultComing: ResultComing) {
+                findNavController().navigate(R.id.action_upComing_to_fragmentPelisDetalles)
+                myViewModel.selectPeli4(resultComing)
+            }
+
+        })
         binding.recyclerComing.adapter = adapter
 
         myViewModel.livePeliComing.observe(viewLifecycleOwner){

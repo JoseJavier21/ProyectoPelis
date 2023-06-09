@@ -9,16 +9,21 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.proyectopelis.R
 import com.example.proyectopelis.data.network.Detalles.Genre
+import com.example.proyectopelis.data.network.NowPlaying.ResultEnCine
 import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.data.network.UpComing.ResultComing
 import com.example.proyectopelis.data.network.UpComing.UpComing
 import com.example.proyectopelis.databinding.CeldacomingBinding
 
-class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>(), Filterable {
+class AdapterUpComing(val listener:OnItemClickListener): RecyclerView.Adapter<AdapterUpComing.CeldaComing>(), Filterable {
 
     private var listaOriginal = ArrayList<ResultComing?>()
     private var copiaLista = ArrayList<ResultComing?>()
     private val listageneros = ArrayList<Genre>()
+
+    interface  OnItemClickListener{
+        fun OnItemClick(resultComing: ResultComing)
+    }
 
     inner class CeldaComing(val binding: CeldacomingBinding):RecyclerView.ViewHolder(binding.root)
 
@@ -44,7 +49,9 @@ class AdapterUpComing: RecyclerView.Adapter<AdapterUpComing.CeldaComing>(), Filt
         Glide.with(context).load("https://image.tmdb.org/t/p/original/${comig?.posterPath}").into(holder.binding.imgComig)
 
         holder.itemView.setOnClickListener {
-            holder.itemView.findNavController().navigate(R.id.action_upComing_to_fragmentPelisDetalles) //nagevagion de la celda hacia la pantalla de detalle
+           if (comig != null){
+               listener.OnItemClick(comig)
+           }
         }
 
     }

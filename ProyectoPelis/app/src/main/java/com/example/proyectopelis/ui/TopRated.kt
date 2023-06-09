@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectopelis.R
 import com.example.proyectopelis.ViewModel
 import com.example.proyectopelis.data.adapter.AdapterRated
+import com.example.proyectopelis.data.network.TopRated.ResultRated
 import com.example.proyectopelis.databinding.FragmentTopRatedBinding
 
 
@@ -104,7 +105,13 @@ class TopRated : Fragment() {
 
 
         binding.recyclerRated.layoutManager = LinearLayoutManager(requireContext())
-        adapterRated = AdapterRated()
+        adapterRated = AdapterRated(object :AdapterRated.OnItemClickListener{
+            override fun OnItemClick(resultRated: ResultRated) {
+                findNavController().navigate(R.id.action_topRated_to_fragmentPelisDetalles)
+                myViewModel.selectPeli3(resultRated)
+            }
+
+        })
         binding.recyclerRated.adapter = adapterRated
 
         myViewModel.LivePeliRated.observe(viewLifecycleOwner){

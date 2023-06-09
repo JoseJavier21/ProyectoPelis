@@ -13,10 +13,14 @@ import com.example.proyectopelis.data.network.TopRated.Top_rated
 import com.example.proyectopelis.databinding.CeldaratedBinding
 import com.example.proyectopelis.ui.TopRated
 
-class AdapterRated: RecyclerView.Adapter<AdapterRated.CeldaRated>(), Filterable {
+class AdapterRated(val listener:OnItemClickListener): RecyclerView.Adapter<AdapterRated.CeldaRated>(), Filterable {
 
     private var listaOriginal = ArrayList<ResultRated?>()
     private var copiaLista = ArrayList<ResultRated?>()
+
+    interface OnItemClickListener{
+        fun OnItemClick(resultRated: ResultRated)
+    }
 
     inner class CeldaRated(val binding: CeldaratedBinding): RecyclerView.ViewHolder(binding.root)
 
@@ -39,7 +43,9 @@ class AdapterRated: RecyclerView.Adapter<AdapterRated.CeldaRated>(), Filterable 
         holder.binding.idioma.text = rated?.originalLanguage
         Glide.with(context).load("https://image.tmdb.org/t/p/original/${rated?.posterPath}").into(holder.binding.imgpeli)
         holder.itemView.setOnClickListener {
-            holder.itemView.findNavController().navigate(R.id.action_topRated_to_fragmentPelisDetalles)
+            if (rated!=null){
+                listener.OnItemClick(rated)
+            }
         }
     }
 
