@@ -117,6 +117,12 @@ class PelisPopulares : Fragment() {
                 myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", pagina)
             }
         }
+        myviewModel.pelisPopulares.observe(viewLifecycleOwner){
+            binding.swipe.isRefreshing = false
+            if (it != null) {
+                adapter.actualizaLista(it)
+            }
+        }
         myviewModel.getListaPopulares("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", 1)
 
         binding.swipe.setOnRefreshListener {
