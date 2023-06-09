@@ -55,12 +55,9 @@ interface ApiService {
         @Query("api_key") key : String
     ) : Response<PelisDetalles>
 
-<<<<<<< HEAD
+
 
     @Headers("Content-Type: application/json")
-=======
-    @Headers("Content-Type: application/json")//,"api-key: 5f7af1e971090ad23a762fcc923ac6ce")
->>>>>>> Juan
     @GET("movie/{movie_id}/images")
     suspend fun damePelisImagenes(
         @Path("movie_id") idpeli: Int,
@@ -68,11 +65,8 @@ interface ApiService {
         @Query("api_key") key : String
     ) : Response<PelisImagenes>
 
-<<<<<<< HEAD
+
     @Headers("Content-Type: application/json")
-=======
-    @Headers("Content-Type: application/json")//,"api-key: 5f7af1e971090ad23a762fcc923ac6ce")
->>>>>>> Juan
     @GET("movie/{movie_id}/videos")
     suspend fun damePelisVideos(
         @Path("movie_id") idpeli: Int,
