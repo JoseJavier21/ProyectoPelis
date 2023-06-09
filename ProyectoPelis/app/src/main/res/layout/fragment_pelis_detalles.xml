@@ -43,7 +43,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name"/>
+            app:layout_constraintTop_toBottomOf="@+id/name" />
 
         <TextView
             android:id="@+id/sinapsis"
@@ -65,7 +65,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sinapsis"/>
+            app:layout_constraintTop_toBottomOf="@+id/sinapsis" />
 
         <TextView
             android:id="@+id/genres"
@@ -87,7 +87,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/genres"/>
+            app:layout_constraintTop_toBottomOf="@+id/genres" />
 
         <TextView
             android:id="@+id/budget"
@@ -109,7 +109,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/budget"/>
+            app:layout_constraintTop_toBottomOf="@+id/budget" />
 
         <TextView
             android:id="@+id/vote"
@@ -145,12 +145,12 @@
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewpager"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_width="0dp"
+            android:layout_height="500dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/video"
-            app:layout_constraintBottom_toBottomOf="@id/recyclerview">
+            app:layout_constraintTop_toBottomOf="@+id/video">
 
         </androidx.viewpager2.widget.ViewPager2>
 
@@ -158,9 +158,12 @@
             android:id="@+id/recyclerview"
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewpager" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

@@ -1,20 +1,19 @@
 package com.example.proyectopelis.Fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
-//import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectopelis.databinding.FragmentPelisDetallesBinding
 import com.example.proyectopelis.ViewModel
 import com.example.proyectopelis.data.adapter.CarruselAdapter
 import com.example.proyectopelis.data.adapter.CarruselAdapterPager
-import com.example.proyectopelis.data.network.Imagenes.Poster
 
 class FragmentPelisDetalles : Fragment() {
 
@@ -33,21 +32,25 @@ class FragmentPelisDetalles : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*viewModel.peliSelecionada.observe(viewLifecycleOwner) {
+        viewModel.peliSelecionada.observe(viewLifecycleOwner) {
             when {
                 it != null -> {
                     it.id?.let { it1 ->
-                        viewModel.getPelisDetalles("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
-                        viewModel.getPelisVideos("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
-                        viewModel.getPelisImagenes("es-ES", "5f7af1e971090ad23a762fcc923ac6ce", it1)
+                        viewModel.getPelisDetalles(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                        viewModel.getPelisVideos(it1, "es-ES", "5f7af1e971090ad23a762fcc923ac6ce")
+                        viewModel.getPelisImagenes(it1, "es", "5f7af1e971090ad23a762fcc923ac6ce")
                     }
                     viewModel.liveDataPelisDetalles.observe(viewLifecycleOwner) {
                         if (it != null) {
                             binding.name.text = it.original_title
                             binding.sinapsis.text = it.overview
-                            binding.budget.text = it.budget.toString()
-                            binding.vote.text = it.vote_average.toString()
-                            binding.web.text = it.homepage
+                            binding.budget.text = it.budget.toString() + "$"
+                            binding.vote.text = it.vote_average.toString() + "/10"
+                            val homepage = it.homepage
+                            binding.web.setOnClickListener {
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(homepage))
+                                startActivity(intent)
+                            }
                             //binding.genres.text = it.genres.get(0).name
                             val genresText = StringBuilder()
                             for (genre in it.genres) {
@@ -63,8 +66,13 @@ class FragmentPelisDetalles : Fragment() {
 
                     viewModel.liveDataPelisVideos.observe(viewLifecycleOwner) {
                         if (it != null) {
-                            binding.video.text =
-                                "https://www.youtube.com/watch?v=" + it.results.get(0).key
+                            val results = it.results.get(0).key
+                            binding.video.setOnClickListener {
+                                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + results))
+                                startActivity(intent)
+
+                            }
+
                         }
                     }
 
@@ -257,7 +265,7 @@ class FragmentPelisDetalles : Fragment() {
                     }
                 }*/
             }
-        }*/
+        }
 
         val recyclerView = binding.recyclerview
         var glm = GridLayoutManager(requireContext(), 1, RecyclerView.HORIZONTAL, false)
@@ -268,14 +276,21 @@ class FragmentPelisDetalles : Fragment() {
         //viewpager.adapter = adaptador
         recyclerView.adapter = adapter
         //adapter.update()
+        viewModel.liveDataPelisImagenes.observe(viewLifecycleOwner) {
+            if (it != null) {
+                adapter.update(it.posters)
+            }
+        }
         adapter.setOnItemClickListener { poster ->
             val index = adapter.getPosition(poster)
             //val index = dataList.indexOf(poster)
             //val index = adapter.getDataList().indexOf(poster)
             binding.viewpager.setCurrentItem(index, true)
+
         }
         //adaptador = CarruselAdapterPager(carrusel.map { it.})
         //viewpager.adapter = adaptador
+
     }
 
     override fun onDestroyView() {

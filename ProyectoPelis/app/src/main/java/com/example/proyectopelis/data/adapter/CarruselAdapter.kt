@@ -45,9 +45,11 @@ class CarruselAdapter() :
         return dataListPoster.indexOf(poster)
     }
 
-    fun update(list: MutableList<Poster>) {
+    fun update(list: List<Poster>) {
     dataList.clear()
     dataList.addAll(list)
+        dataListPoster.clear()
+        dataListPoster.addAll(list)
     notifyDataSetChanged()
-     }
+    }
 }
